@@ -1,0 +1,15 @@
+{
+  "allowJs": true,
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "declaration": false,
+    "emitBOM": true,
+    "inlineSourceMap": true,
+    "inlineSources": true,
+    "outDir": "./"
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

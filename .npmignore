@@ -1,0 +1,17 @@
+/bin
+/built
+/coverage
+/node_modules
+/obj
+/src
+/tests
+/BANNER
+/*.sln
+/*.csproj
+/*.csproj.user
+/*.suo
+/dts-bundle.json
+/tsconfig.json
+/webpack.config.json
+/npm-install.*
+/.npmignore
