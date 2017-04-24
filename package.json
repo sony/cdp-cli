@@ -4,7 +4,28 @@
   "description": "CDP Command Line Interface",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "node ./tasks/build-pre.js",
+    "build": "tsc && webpack",
+    "postbuild": "node ./tasks/build-post.js",
+    "pretest": "tsc -p ./tests/jasmine/tsconfig.json",
+    "test": "npm run lint && npm run unit-test",
+    "posttest": "cd ./docs/reports/coverage/_org && remap-istanbul -i coverage.json -o ../ -t html",
+    "clean": "node ./tasks/clean.js",
+    "depends": "npm list --depth=0 --only=prod",
+    "depends-dev": "npm list --depth=0 --only=dev",
+    "depends-all": "npm list --depth=0",
+    "lint-js": "eslint tasks/**/*.js built/**/*.js -c tests/eslint/eslintrc.json",
+    "lint-ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json 'src/**/*.ts'",
+    "lint": "npm run lint-js && npm run lint-ts",
+    "unit-test": "istanbul cover ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/ --dir docs/reports/coverage/_org",
+    "document": "typedoc --out docs/typedoc/ src/",
+    "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/*.js",
+    "ci": "npm run build  && npm test",
+    "debug": "npm run pretest && node --inspect --debug-brk ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/",
+    "debug-t": "npm run pretest && node-debug ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/",
+    "deploy": "npm run clean && npm run build && npm test && npm run metrics && npm run document",
+    "setup": "node ./tasks/npm.js --install",
+    "update": "node ./tasks/npm.js --update && npm run deploy"
   },
   "repository": {
     "type": "git",
@@ -22,5 +43,8 @@
   "bugs": {
     "url": "https://github.com/CDP-Tokyo/cdp-cli/issues"
   },
-  "homepage": "https://github.com/CDP-Tokyo/cdp-cli#readme"
+  "homepage": "https://github.com/CDP-Tokyo/cdp-cli#readme",
+  "dependencies": {
+    "cdp-lib": "git+ssh://git@github.com:CDP-Tokyo/cdp-lib.git"
+  }
 }
