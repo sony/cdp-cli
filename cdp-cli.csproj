@@ -77,9 +77,12 @@ call compass compile -c config.rb
   <ItemGroup>
     <Content Include=".npmignore" />
     <Content Include="BANNER" />
+    <Content Include="built\cdp-cli.js" />
+    <Content Include="dist\cdp-cli.js" />
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
     <Content Include="docs\ja\README.md" />
+    <Content Include="docs\reports\coverage\index.html" />
     <Content Include="LICENSE" />
     <Content Include="NOTICE" />
     <Content Include="package.json" />
@@ -90,7 +93,12 @@ call compass compile -c config.rb
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="built\cdp-cli.d.ts">
+      <DependentUpon>cdp-cli.js</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="dist\%40types\cdp-cli.d.ts" />
     <TypeScriptCompile Include="src\cdp-cli.ts" />
+    <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="project.config.js" />
@@ -98,8 +106,12 @@ call compass compile -c config.rb
     <Content Include="tasks\build-post.js" />
     <Content Include="tasks\build-pre.js" />
     <Content Include="tasks\clean.js" />
-    <Content Include="tasks\npm.js" />
     <Content Include="tasks\srcmap.js" />
     <Content Include="webpack.config.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="built\cdp-cli.js.map">
+      <DependentUpon>cdp-cli.js</DependentUpon>
+    </Content>
   </ItemGroup>
 </Project>
