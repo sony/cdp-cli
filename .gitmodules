@@ -1,3 +1,0 @@
-[submodule "node_modules/cdp-lib"]
-	path = node_modules/cdp-lib
-	url = git@github.com:CDP-Tokyo/cdp-lib.git
