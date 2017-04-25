@@ -88,6 +88,7 @@ call compass compile -c config.rb
     <Content Include="package.json" />
     <Content Include="README.md" />
     <Content Include="submodules\cdp-lib\dist\cdp-lib.js" />
+    <Content Include="tasks\submodule.js" />
     <Content Include="tests\eslint\eslintrc.json" />
     <Content Include="tests\jasmine\tsconfig.json" />
     <Content Include="tests\tslint\tslint.json" />

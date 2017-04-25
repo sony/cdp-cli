@@ -1,6 +1,6 @@
 ﻿import { CDPLib } from "cdp-lib";
 
-if (CDPLib instanceof CDPLib) {
+if ("function" === typeof CDPLib.execute) {
     console.log("ok");
 }
 
