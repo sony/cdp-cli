@@ -4,7 +4,6 @@
   "description": "CDP Command Line Interface",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node ./tasks/submodule.js",
     "prebuild": "node ./tasks/build-pre.js",
     "build": "tsc && webpack",
     "postbuild": "node ./tasks/build-post.js",
@@ -25,8 +24,16 @@
     "deploy": "npm-run-all clean build test metrics document",
     "debug": "node --inspect --debug-brk ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/",
     "debug:tool": "node-debug ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/",
+    "submodule": "node ./tasks/submodule.js",
     "update": "npm update --save && npm update --save-dev && npm run deploy"
   },
+  "bin": {
+    "cdp": "bin/cdp"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CDP-Tokyo/cdp-cli.git"

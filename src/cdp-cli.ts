@@ -1,7 +1,6 @@
-﻿import { CDPLib } from "cdp-lib";
+﻿/* tslint:disable:no-unused-variable */
+import { CDPLib } from "cdp-lib";
 
-if ("function" === typeof CDPLib.execute) {
-    console.log("ok");
+export function run() {
+    console.log("okokok");
 }
-
-export { CDPLib };

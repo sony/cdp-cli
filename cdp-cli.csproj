@@ -112,7 +112,9 @@ call compass compile -c config.rb
     <Content Include="tasks\srcmap.js" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="bin\cdp" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="built\cdp-cli.js.map">
       <DependentUpon>cdp-cli.js</DependentUpon>
