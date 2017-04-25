@@ -17,13 +17,14 @@ const lib = {
     namespace: 'cdp',
     script: pkg.name + '.js',
     d_ts: pkg.name + '.d.ts',
+    bundle_d_ts: 'index.d.ts',
 };
 
 const d_ts_bundle = {
     name: pkg.name,
     main: path.join(dir.built, lib.d_ts),
     baseDir: dir.built,
-    out: path.join('..', dir.pkg, dir.types, lib.d_ts),
+    out: path.join('..', dir.pkg, dir.types, pkg.name, lib.bundle_d_ts),
     externals: false,
     verbose: false,
 };

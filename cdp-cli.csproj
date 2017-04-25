@@ -87,6 +87,7 @@ call compass compile -c config.rb
     <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="submodules\cdp-lib\dist\cdp-lib.js" />
     <Content Include="tests\eslint\eslintrc.json" />
     <Content Include="tests\jasmine\tsconfig.json" />
     <Content Include="tests\tslint\tslint.json" />
@@ -96,8 +97,9 @@ call compass compile -c config.rb
     <TypeScriptCompile Include="built\cdp-cli.d.ts">
       <DependentUpon>cdp-cli.js</DependentUpon>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="dist\%40types\cdp-cli.d.ts" />
+    <TypeScriptCompile Include="dist\%40types\cdp-cli\index.d.ts" />
     <TypeScriptCompile Include="src\cdp-cli.ts" />
+    <TypeScriptCompile Include="submodules\cdp-lib\dist\%40types\cdp-lib\index.d.ts" />
     <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
   </ItemGroup>
   <ItemGroup>
@@ -109,6 +111,7 @@ call compass compile -c config.rb
     <Content Include="tasks\srcmap.js" />
     <Content Include="webpack.config.js" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="built\cdp-cli.js.map">
       <DependentUpon>cdp-cli.js</DependentUpon>

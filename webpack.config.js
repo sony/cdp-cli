@@ -23,9 +23,14 @@ module.exports = {
     },
     // externals を指定しない場合、3rd Library の使用するものを concat 可能
     externals: {
-        'cdp-lib': {
-            commonjs: 'cdp-lib',
-            commonjs2: 'cdp-lib',
+        'jsdom': {
+            commonjs: 'jsdom',
+            commonjs2: 'jsdom',
+        },
+    },
+    resolve: {
+        alias: {
+            'cdp-lib': '../submodules/cdp-lib/dist/cdp-lib.js',
         },
     },
     plugins: [

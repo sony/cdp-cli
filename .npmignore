@@ -1,6 +1,4 @@
-/bin
 /built
-/coverage
 /node_modules
 /obj
 /src
@@ -10,7 +8,7 @@
 /*.csproj
 /*.csproj.user
 /*.suo
-/dts-bundle.json
+/submodules
 /tsconfig.json
 /webpack.config.json
 /npm-install.*

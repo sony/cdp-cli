@@ -1,8 +1,8 @@
 {
-  "allowJs": true,
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2015",
+    "allowJs": true,
     "declaration": false,
     "emitBOM": true,
     "inlineSourceMap": true,
