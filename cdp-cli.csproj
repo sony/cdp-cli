@@ -76,6 +76,9 @@
     <Content Include="BANNER" />
     <Content Include="built\cdp-cli.js" />
     <Content Include="built\command-parser.js" />
+    <Content Include="built\inquirer-app.js" />
+    <Content Include="built\inquirer-base.js" />
+    <Content Include="built\inquirer-module.js" />
     <Content Include="dist\cdp-cli.js" />
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
@@ -105,9 +108,21 @@
     <TypeScriptCompile Include="built\command-parser.d.ts">
       <DependentUpon>command-parser.js</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="built\inquirer-app.d.ts">
+      <DependentUpon>inquirer-app.js</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="built\inquirer-base.d.ts">
+      <DependentUpon>inquirer-base.js</DependentUpon>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="built\inquirer-module.d.ts">
+      <DependentUpon>inquirer-module.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="dist\%40types\cdp-cli\index.d.ts" />
     <TypeScriptCompile Include="src\cdp-cli.ts" />
     <TypeScriptCompile Include="src\command-parser.ts" />
+    <TypeScriptCompile Include="src\inquirer-app.ts" />
+    <TypeScriptCompile Include="src\inquirer-base.ts" />
+    <TypeScriptCompile Include="src\inquirer-module.ts" />
     <TypeScriptCompile Include="submodules\cdp-lib\dist\%40types\cdp-lib\index.d.ts" />
     <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
     <TypeScriptCompile Include="tests\jasmine\command-parser.spec.ts" />
@@ -132,6 +147,25 @@
   <ItemGroup>
     <Content Include="built\command-parser.js.map">
       <DependentUpon>command-parser.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="res\locales\messages.en-US.json" />
+    <Content Include="res\locales\messages.ja-JP.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="built\inquirer-app.js.map">
+      <DependentUpon>inquirer-app.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="built\inquirer-base.js.map">
+      <DependentUpon>inquirer-base.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="built\inquirer-module.js.map">
+      <DependentUpon>inquirer-module.js</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

@@ -1,0 +1,12 @@
+{
+  "common": {
+    "confirm": {
+      "message": "Would that be OK?"
+    }
+  },
+  "app": {
+  },
+  "module": {
+  },
+  "EOF": "EOF"
+}
