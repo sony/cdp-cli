@@ -2,13 +2,14 @@
 /node_modules
 /obj
 /src
+/submodules
+/tasks
 /tests
 /BANNER
 /*.sln
 /*.csproj
 /*.csproj.user
 /*.suo
-/submodules
 /tsconfig.json
 /webpack.config.json
 /npm-install.*

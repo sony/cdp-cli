@@ -7,8 +7,15 @@
     "emitBOM": true,
     "inlineSourceMap": true,
     "inlineSources": true,
-    "outDir": "./"
+    "outDir": "./",
+    "typeRoots": [
+      "../../node_modules/@types",
+      "../../submodules/cdp-lib/dist/@types"
+    ]
   },
+  "include": [
+      "**/*"
+  ],
   "exclude": [
     "node_modules"
   ]

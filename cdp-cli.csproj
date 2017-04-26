@@ -88,6 +88,12 @@
     <Content Include="submodules\cdp-lib\dist\cdp-lib.js" />
     <Content Include="tasks\submodule.js" />
     <Content Include="tests\eslint\eslintrc.json" />
+    <Content Include="tests\jasmine\cdp-cli.spec.js">
+      <DependentUpon>cdp-cli.spec.ts</DependentUpon>
+    </Content>
+    <Content Include="tests\jasmine\command-parser.spec.js">
+      <DependentUpon>command-parser.spec.ts</DependentUpon>
+    </Content>
     <Content Include="tests\jasmine\tsconfig.json" />
     <Content Include="tests\tslint\tslint.json" />
     <Content Include="tsconfig.json" />
@@ -104,6 +110,7 @@
     <TypeScriptCompile Include="src\command-parser.ts" />
     <TypeScriptCompile Include="submodules\cdp-lib\dist\%40types\cdp-lib\index.d.ts" />
     <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
+    <TypeScriptCompile Include="tests\jasmine\command-parser.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="project.config.js" />
