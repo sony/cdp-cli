@@ -68,16 +68,14 @@
     </PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)/assets/lib/stylesheets
-call compass compile -c config.rb
-cd $(ProjectDir)/assets/stylesheets
-call compass compile -c config.rb
+    <PostBuildEvent>
 </PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Content Include=".npmignore" />
     <Content Include="BANNER" />
     <Content Include="built\cdp-cli.js" />
+    <Content Include="built\command-parser.js" />
     <Content Include="dist\cdp-cli.js" />
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
@@ -98,8 +96,12 @@ call compass compile -c config.rb
     <TypeScriptCompile Include="built\cdp-cli.d.ts">
       <DependentUpon>cdp-cli.js</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="built\command-parser.d.ts">
+      <DependentUpon>command-parser.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="dist\%40types\cdp-cli\index.d.ts" />
     <TypeScriptCompile Include="src\cdp-cli.ts" />
+    <TypeScriptCompile Include="src\command-parser.ts" />
     <TypeScriptCompile Include="submodules\cdp-lib\dist\%40types\cdp-lib\index.d.ts" />
     <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
   </ItemGroup>
@@ -118,6 +120,11 @@ call compass compile -c config.rb
   <ItemGroup>
     <Content Include="built\cdp-cli.js.map">
       <DependentUpon>cdp-cli.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="built\command-parser.js.map">
+      <DependentUpon>command-parser.js</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

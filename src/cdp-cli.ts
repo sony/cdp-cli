@@ -1,6 +1,12 @@
-﻿/* tslint:disable:no-unused-variable */
-import { CDPLib } from "cdp-lib";
+﻿/* tslint:disable:no-unused-variable no-unused-vars */
+/* eslint-disable no-unused-vars */
 
-export function run() {
-    console.log("okokok");
+import { CommandParser } from "./command-parser";
+
+export function main() {
+    process.title = "cdp";
+    const cmdlineInfo = CommandParser.parse(process.argv);
+
+    console.log("action: " + cmdlineInfo.action);
+    console.log("target: " + cmdlineInfo.target);
 }

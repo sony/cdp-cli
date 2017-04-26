@@ -1,8 +1,8 @@
-﻿import { run } from "../../built/cdp-cli";
+﻿import { main } from "../../built/cdp-cli";
 
 describe("cdp-cli check", () => {
     it("cli:run", () => {
-        expect(run).toBeDefined();
-        expect("function" === typeof run).toBeTruthy();
+        expect(main).toBeDefined();
+        expect("function" === typeof main).toBeTruthy();
     });
 });

@@ -4,5 +4,5 @@
 
 (function () {
     var cli = require('../dist/cdp-cli');
-    cli.run();
+    cli.main();
 })();
