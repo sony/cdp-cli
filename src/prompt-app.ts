@@ -4,17 +4,17 @@
 import * as inquirer from "inquirer";
 import * as chalk from "chalk";
 import {
-    InquirerBase,
+    PromptBase,
     ICommandLineInfo,
-} from "./inquirer-base";
+} from "./prompt-base";
 
-export { InquirerBase };
+export { PromptBase };
 
 /**
- * @class InquirerApp
+ * @class PromptApp
  * @brief アプリ用 Inquire クラス
  */
-export class InquirerApp extends InquirerBase {
+export class PromptApp extends PromptBase {
 
     ///////////////////////////////////////////////////////////////////////
     // public methods
@@ -22,9 +22,9 @@ export class InquirerApp extends InquirerBase {
     /**
      * エントリ
      */
-    public inquire(cmdInfo: ICommandLineInfo): Promise<any> {
+    public prompting(cmdInfo: ICommandLineInfo): Promise<any> {
         return new Promise((resolve, reject) => {
-            reject("app inquirer, under construction.");
+            reject("app prompting, under construction.");
         });
     }
 
@@ -34,7 +34,7 @@ export class InquirerApp extends InquirerBase {
     /**
      * プロジェクト設定項目の取得
      */
-    get questions(): Object[] {
+    get questions(): inquirer.Questions {
         // TODO:
         return [];
     }
@@ -44,7 +44,7 @@ export class InquirerApp extends InquirerBase {
      *
      * @returns {TODO} 設定値を返却
      */
-    confirmSettings(): any {
+    displaySettingsByAnswers(answers: inquirer.Answers): any {
         // TODO: show
         return null;
     }

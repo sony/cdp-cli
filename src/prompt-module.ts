@@ -4,17 +4,17 @@
 import * as inquirer from "inquirer";
 import * as chalk from "chalk";
 import {
-    InquirerBase,
+    PromptBase,
     ICommandLineInfo,
-} from "./inquirer-base";
+} from "./prompt-base";
 
-export { InquirerBase };
+export { PromptBase };
 
 /**
- * @class InquirerModule
+ * @class PromptModule
  * @brief モジュール用 Inquire クラス
  */
-export class InquirerModule extends InquirerBase {
+export class PromptModule extends PromptBase {
 
     ///////////////////////////////////////////////////////////////////////
     // imprements abstruct methods
@@ -22,7 +22,7 @@ export class InquirerModule extends InquirerBase {
     /**
      * プロジェクト設定項目の取得
      */
-    get questions(): Object[] {
+    get questions(): inquirer.Questions {
         // TODO:
         return [
             {
@@ -39,7 +39,7 @@ export class InquirerModule extends InquirerBase {
      *
      * @returns {TODO} 設定値を返却
      */
-    confirmSettings(): any {
+    displaySettingsByAnswers(answers: inquirer.Answers): any {
         // TODO: show
         return null;
     }

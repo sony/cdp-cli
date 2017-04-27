@@ -17,10 +17,10 @@ const _ = Utils._;
 
 
 /**
- * @class InquirerBase
- * @brief Inquire のベースクラス
+ * @class PromptBase
+ * @brief Prompt のベースクラス
  */
-export abstract class InquirerBase {
+export abstract class PromptBase {
 
     private _cmdInfo: ICommandLineInfo;
     private _answers: inquirer.Answers = {};
@@ -32,13 +32,13 @@ export abstract class InquirerBase {
     /**
      * エントリ
      */
-    public inquire(cmdInfo: ICommandLineInfo): Promise<any> {
+    public prompting(cmdInfo: ICommandLineInfo): Promise<any> {
         this._cmdInfo = cmdInfo;
         return new Promise((resolve, reject) => {
             this.showPrologue();
-            this.setLanguage()
+            this.inquireLanguage()
                 .then(() => {
-                    return this.prompting();
+                    return this.inquire();
                 })
                 .then((settings: any) => {
                     resolve(settings);
@@ -55,14 +55,14 @@ export abstract class InquirerBase {
     /**
      * プロジェクト設定項目の取得
      */
-    abstract get questions(): Object[];
+    abstract get questions(): inquirer.Questions;
 
     /**
      * プロジェクト設定の確認
      *
      * @returns {TODO} 設定値を返却
      */
-    abstract confirmSettings(): any;
+    abstract displaySettingsByAnswers(answers: inquirer.Answers): any;
 
     ///////////////////////////////////////////////////////////////////////
     // protected methods
@@ -87,6 +87,13 @@ export abstract class InquirerBase {
     }
 
     /**
+     * Welcome 表示
+     */
+    protected showPrologue(): void {
+        // TODO:
+    }
+
+    /**
      * Answer オブジェクト の更新
      *
      * @return {Object} Answer オブジェクト
@@ -99,7 +106,7 @@ export abstract class InquirerBase {
      * プロジェクト設定
      * 分岐が必要な場合はオーバーライドすること
      */
-    protected setSettings(): Promise<inquirer.Answers> {
+    protected inquireSettings(): Promise<inquirer.Answers> {
         return new Promise((resolve, reject) => {
             inquirer.prompt(this.questions)
                 .then((answers) => {
@@ -115,13 +122,6 @@ export abstract class InquirerBase {
     // private methods
 
     /**
-     * Welcome 表示
-     */
-    private showPrologue(): void {
-        // TODO:
-    }
-
-    /**
      * ローカライズリソースのロード
      */
     private loadLanguage(locale: string): void {
@@ -131,9 +131,9 @@ export abstract class InquirerBase {
     }
 
     /**
-     * Welcome 表示
+     * 言語選択
      */
-    private setLanguage(): Promise<void> {
+    private inquireLanguage(): Promise<void> {
         return new Promise<void>((resolve, reject) => {
             const question = [
                 {
@@ -167,9 +167,10 @@ export abstract class InquirerBase {
     /**
      * 設定確認
      */
-    private confirm(): Promise<any> {
+    private confirmSettings(): Promise<any> {
         return new Promise((resolve, reject) => {
-            const settings = this.confirmSettings();
+            const settings = this.displaySettingsByAnswers(this._answers);
+            console.log("check: " + this.lang.common.confirm.message);
             const question = [
                 {
                     type: "confirm",
@@ -193,15 +194,15 @@ export abstract class InquirerBase {
     }
 
     /**
-     * 設定プロンプト
+     * 設定
      */
-    private prompting(): Promise<any> {
+    private inquire(): Promise<any> {
         return new Promise((resolve, reject) => {
             const proc = () => {
-                this.setSettings()
+                this.inquireSettings()
                     .then((answers) => {
                         this.updateAnswers(answers);
-                        this.confirm()
+                        this.confirmSettings()
                             .then((settings) => {
                                 resolve(settings);
                             })

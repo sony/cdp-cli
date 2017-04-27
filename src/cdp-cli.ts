@@ -7,17 +7,17 @@ import {
     ICommandLineInfo,
 } from "./command-parser";
 import {
-    InquirerApp,
-    InquirerBase,
-} from "./inquirer-app";
-import { InquirerModule } from "./inquirer-module";
+    PromptApp,
+    PromptBase,
+} from "./prompt-app";
+import { PromptModule } from "./prompt-module";
 
-function getInquirer(cmdInfo: ICommandLineInfo): InquirerBase {
+function getInquirer(cmdInfo: ICommandLineInfo): PromptBase {
     switch (cmdInfo.target) {
         case "app":
-            return new InquirerApp();
+            return new PromptApp();
         case "module":
-            return new InquirerModule();
+            return new PromptModule();
         default:
             console.error(chalk.red("unsupported target: " + cmdInfo.target));
             process.exit(1);
@@ -29,7 +29,7 @@ export function main() {
     const cmdInfo = CommandParser.parse(process.argv);
     const inquirer = getInquirer(cmdInfo);
 
-    inquirer.inquire(cmdInfo)
+    inquirer.prompting(cmdInfo)
         .then(() => {
             console.log("call cdp-lib");
         })
