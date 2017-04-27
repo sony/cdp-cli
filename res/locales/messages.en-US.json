@@ -1,12 +1,38 @@
 {
+  "type": "en",
   "common": {
+    "projectName": {
+      "message": "Enter the name of the project."
+    },
+    "version": {
+      "message": "Enter a version for the application. ex: 0.0.1",
+      "invalidMessage": "Please input semantic versioning string."
+    },
+    "license": {
+      "message": "Please choose the license of this project.",
+      "choices": {
+        "apache2": "Apache-2.0",
+        "mit": "MIT",
+        "proprietary": "Proprietary License (NONE)"
+      }
+    },
+    "webpackTarget": {
+      "choices": {
+        "node": "for Node.js environment",
+        "web": "for Web Browser(stil not available)",
+        "electron": "for electron main process (stil not available)",
+        "electronRenderer": "for electron renderer process (stil not available)"
+      }
+    },
     "confirm": {
       "message": "Would that be OK?"
+    },
+    "stilNotAvailable": "Sorry, the feature is not available, yet."
+  },
+  "library": {
+    "webpackTarget": {
+      "message": "Please choose the situation for using library."
     }
-  },
-  "app": {
-  },
-  "module": {
   },
   "EOF": "EOF"
 }

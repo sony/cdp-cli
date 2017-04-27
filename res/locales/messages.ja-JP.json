@@ -1,12 +1,38 @@
 {
+  "type": "ja",
   "common": {
+    "projectName": {
+      "message": "プロジェクト名を入力してください。"
+    },
+    "version": {
+      "message": "バージョン情報を入力してください。例: 0.0.1",
+      "invalidMessage": "セマンティックバージョニング記法を使用してください。"
+    },
+    "license": {
+      "message": "プロジェクトに使用するライセンスを選択してください",
+      "choices": {
+        "apache2": "Apache-2.0",
+        "mit": "MIT",
+        "proprietary": "プロプライエタリライセンス (NONE)"
+      }
+    },
+    "webpackTarget": {
+      "choices": {
+        "node": "Node.js 環境で使用する",
+        "web": "ブラウザ環境で使用する(まだ利用できません)",
+        "electron": "electron のメインプロセスで使用する (まだ利用できません)",
+        "electronRenderer": "electron のレンダラプロセスで使用する (まだ利用できません)"
+      }
+    },
     "confirm": {
       "message": "よろしいですか?"
+    },
+    "stilNotAvailable": "まだ利用できません"
+  },
+  "library": {
+    "webpackTarget": {
+      "message": "ライブラリの用途を選択してください"
     }
-  },
-  "app": {
-  },
-  "module": {
   },
   "EOF": "EOF"
 }
