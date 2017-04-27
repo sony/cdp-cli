@@ -2,7 +2,6 @@
 import * as path from "path";
 import * as commander from "commander";
 import * as chalk from "chalk";
-import { IBoilerplateOptions } from "cdp-lib";
 
 /**
  * @interface ICommandLineOptions
@@ -20,7 +19,7 @@ export interface ICommandLineOptions {
  * @interface ICommandLineInfo
  * @brief     コマンドライン情報格納インターフェイス
  */
-export interface ICommandLineInfo extends IBoilerplateOptions {
+export interface ICommandLineInfo {
     pkgDir: string;                     // CLI インストールディレクトリ
     action: string;                     // アクション定数
     target: string;                     // コマンドターゲット
@@ -76,11 +75,16 @@ export class CommandParser {
 
         commander
             .command("create <target>")
-            .description("create boilerplate for 'app' | 'module'")
+            .description("create boilerplate for 'library, module' | 'mobile, app' | 'desktop'")
             .action((target: string) => {
-                if (/^(app|module)$/i.test(target)) {
+                if (/^(module|app|library|mobile|desktop)$/i.test(target)) {
                     cmdline.action = "create";
                     cmdline.target = target;
+                    if ("module" === cmdline.target) {
+                        cmdline.target = "library";
+                    } else if ("app" === cmdline.target) {
+                        cmdline.target = "mobile";
+                    }
                 } else {
                     console.log(chalk.red.underline("  unsupported target: " + target));
                     this.showHelp();
@@ -89,8 +93,8 @@ export class CommandParser {
             .on("--help", () => {
                 console.log(chalk.green("  Examples:"));
                 console.log("");
-                console.log(chalk.green("    $ cdp create app"));
-                console.log(chalk.green("    $ cdp create module"));
+                console.log(chalk.green("    $ cdp create library"));
+                console.log(chalk.green("    $ cdp create mobile"));
                 console.log(chalk.green("    $ cdp create app -c setting.json"));
                 console.log("");
             });

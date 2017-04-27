@@ -7,17 +7,26 @@ import {
     ICommandLineInfo,
 } from "./command-parser";
 import {
-    PromptApp,
     PromptBase,
-} from "./prompt-app";
-import { PromptModule } from "./prompt-module";
+} from "./prompt-base";
+import {
+    PromptLibrary,
+} from "./prompt-library";
+import {
+    PromptMobileApp,
+} from "./prompt-mobile";
+import {
+    PromptDesktopApp,
+} from "./prompt-desktop";
 
 function getInquirer(cmdInfo: ICommandLineInfo): PromptBase {
     switch (cmdInfo.target) {
-        case "app":
-            return new PromptApp();
-        case "module":
-            return new PromptModule();
+        case "library":
+            return new PromptLibrary();
+        case "mobile":
+            return new PromptMobileApp();
+        case "desktop":
+            return new PromptDesktopApp();
         default:
             console.error(chalk.red("unsupported target: " + cmdInfo.target));
             process.exit(1);

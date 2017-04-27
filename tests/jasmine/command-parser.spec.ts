@@ -28,14 +28,14 @@ describe("CommandParser check", () => {
         const argv = (argsBase + cmd).split(" ");
         const cmdInfo = CommandParser.parse(argv);
         expect(cmdInfo.action).toEqual("create");
-        expect(cmdInfo.target).toEqual("app");
+        expect(cmdInfo.target).toEqual("mobile");
     });
     it("command: create module", () => {
         const cmd = "create module";
         const argv = (argsBase + cmd).split(" ");
         const cmdInfo = CommandParser.parse(argv);
         expect(cmdInfo.action).toEqual("create");
-        expect(cmdInfo.target).toEqual("module");
+        expect(cmdInfo.target).toEqual("library");
     });
     it("command: create hoge", () => {
         const cmd = "create hoge";

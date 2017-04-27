@@ -6,7 +6,7 @@ import * as path from "path";
 import * as chalk from "chalk";
 import * as inquirer from "inquirer";
 import {
-    IBoilerplateOptions,
+    IProjectConfigration,
     Utils,
 } from "cdp-lib";
 import { ICommandLineInfo } from "./command-parser";
@@ -32,7 +32,7 @@ export abstract class PromptBase {
     /**
      * エントリ
      */
-    public prompting(cmdInfo: ICommandLineInfo): Promise<any> {
+    public prompting(cmdInfo: ICommandLineInfo): Promise<IProjectConfigration> {
         this._cmdInfo = cmdInfo;
         return new Promise((resolve, reject) => {
             this.showPrologue();
@@ -40,7 +40,7 @@ export abstract class PromptBase {
                 .then(() => {
                     return this.inquire();
                 })
-                .then((settings: any) => {
+                .then((settings: IProjectConfigration) => {
                     resolve(settings);
                 })
                 .catch((reason: any) => {
@@ -60,9 +60,9 @@ export abstract class PromptBase {
     /**
      * プロジェクト設定の確認
      *
-     * @returns {TODO} 設定値を返却
+     * @returns {IProjectConfigration} 設定値を返却
      */
-    abstract displaySettingsByAnswers(answers: inquirer.Answers): any;
+    abstract displaySettingsByAnswers(answers: inquirer.Answers): IProjectConfigration;
 
     ///////////////////////////////////////////////////////////////////////
     // protected methods
@@ -167,7 +167,7 @@ export abstract class PromptBase {
     /**
      * 設定確認
      */
-    private confirmSettings(): Promise<any> {
+    private confirmSettings(): Promise<IProjectConfigration> {
         return new Promise((resolve, reject) => {
             const settings = this.displaySettingsByAnswers(this._answers);
             console.log("check: " + this.lang.common.confirm.message);
@@ -196,7 +196,7 @@ export abstract class PromptBase {
     /**
      * 設定
      */
-    private inquire(): Promise<any> {
+    private inquire(): Promise<IProjectConfigration> {
         return new Promise((resolve, reject) => {
             const proc = () => {
                 this.inquireSettings()
