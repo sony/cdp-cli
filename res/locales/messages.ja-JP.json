@@ -64,20 +64,20 @@
   },
   "settings": {
     "baseStructure": {
-      "title": "構成情報:                    ",
+      "label": "構成情報:                    ",
       "props": {
         "recommended": "おすすめ",
         "custom": "カスタム"
       }
     },
     "projectName": {
-      "title": "  プロジェクト名:            "
+      "label": "  プロジェクト名:            "
     },
     "version": {
-      "title": "  バージョン:                "
+      "label": "  バージョン:                "
     },
     "license": {
-      "title": "  ライセンス:                ",
+      "label": "  ライセンス:                ",
       "props": {
         "Apache-2.0": "Apache-2.0",
         "MIT": "MIT",
@@ -85,7 +85,7 @@
       }
     },
     "webpackTarget": {
-      "title": "  使用仕向け:                ",
+      "label": "  使用仕向け:                ",
       "props": {
         "web": "ブラウザ",
         "node": "Node.js",
@@ -94,7 +94,7 @@
       }
     },
     "moduleSystem": {
-      "title": "  モジュールシステム:        ",
+      "label": "  モジュールシステム:        ",
       "props": {
         "none": "なし",
         "commonjs": "CommonJS",
@@ -103,14 +103,14 @@
       }
     },
     "tsTranspileTarget": {
-      "title": "  トランスパイルターゲット:  ",
+      "label": "  トランスパイルターゲット:  ",
       "props": {
         "es5": "ES5",
         "es2015": "ES6 (ES2015)"
       }
     },
     "supportCSS": {
-      "title": "  CSS サポート:              ",
+      "label": "  CSS サポート:              ",
       "bool": {
         "yes": "する",
         "no": "しない"

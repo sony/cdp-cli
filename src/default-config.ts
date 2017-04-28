@@ -84,36 +84,12 @@ const webOnBrowser = <IWebAppConfigration>{
 
 //___________________________________________________________________________________________________________________//
 
-/**
- * @interface IDefaultConfig
- * @brief 設定の既定値
- */
-export interface IDefaultConfig {
-    library: {
-        browser: ILibraryConfigration;
-        node: ILibraryConfigration;
-        electron: ILibraryConfigration;
-    };
-
-    mobile: {
-        browser: IMobileAppConfigration;
-    };
-
-    desktop: {
-        browser: IDesktopAppConfigration;
-        electron: IDesktopAppConfigration;
-    };
-
-    web: {
-        browser: IWebAppConfigration;
-    };
-}
-
 export default {
     library: {
         browser: libraryOnBrowser,
         node: libraryOnNode,
         electron: libraryOnElectron,
+        ELECTRON_AVAILABLE: false,
     },
     mobile: {
         browser: mobileOnBrowser,

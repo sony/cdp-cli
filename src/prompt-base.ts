@@ -174,7 +174,7 @@ export abstract class PromptBase {
             }
         })();
 
-        return item.title + chalk[color](prop);
+        return item.label + chalk[color](prop);
     }
 
     ///////////////////////////////////////////////////////////////////////

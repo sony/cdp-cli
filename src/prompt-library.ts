@@ -15,8 +15,6 @@ import defaultConfig from "./default-config";
 const $ = Utils.$;
 const libConfig = defaultConfig.library;
 
-const ELECTRON_AVAILABLE = false;
-
 /**
  * @class PromptLibrary
  * @brief ライブラリモジュール用 Inquire クラス
@@ -103,7 +101,7 @@ export class PromptLibrary extends PromptBase {
                     }
                 ],
                 filter: (value) => {
-                    if (ELECTRON_AVAILABLE) {
+                    if (libConfig.ELECTRON_AVAILABLE) {
                         return value;
                     } else if ("electron" === value) {
                         return "node";
@@ -254,6 +252,8 @@ export class PromptLibrary extends PromptBase {
                     return $.extend({}, libConfig.node, answers);
                 case "electron":
                     return $.extend({}, libConfig.electron, answers);
+                case "electron-renderer":
+                    return $.extend({}, libConfig.electron, answers);
                 default:
                     console.error(chalk.red("unsupported target: " + answers.webpackTarget));
                     process.exit(1);
@@ -291,6 +291,6 @@ export class PromptLibrary extends PromptBase {
      * electron が有効出ない場合の補足文字を取得
      */
     private LIMITATION(): string {
-        return ELECTRON_AVAILABLE ? "" : " " + this.lang.prompt.common.stilNotAvailable;
+        return libConfig.ELECTRON_AVAILABLE ? "" : " " + this.lang.prompt.common.stilNotAvailable;
     }
 }
