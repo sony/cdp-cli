@@ -1,37 +1,120 @@
 {
   "type": "en",
-  "common": {
+  "prompt": {
+    "common": {
+      "projectName": {
+        "message": "Enter the name of the project."
+      },
+      "version": {
+        "message": "Enter a version for the application. ex: 0.0.1",
+        "invalidMessage": "Please input semantic versioning string."
+      },
+      "license": {
+        "message": "Please choose the license of this project.",
+        "choices": {
+          "apache2": "Apache-2.0",
+          "mit": "MIT",
+          "proprietary": "Proprietary License (NONE)"
+        }
+      },
+      "webpackTarget": {
+        "choices": {
+          "web": "for Browser environment",
+          "node": "for Node.js environment",
+          "electron": "for electron main process",
+          "electronRenderer": "for electron renderer process"
+        }
+      },
+      "baseStructure": {
+        "message": "Please choose the construction.",
+        "choices": {
+          "recommended": "Recommended",
+          "custom": "Custom"
+        }
+      },
+      "moduleSystem": {
+        "message": "Please choose JavaScript module system.",
+        "choices": {
+          "none": "None",
+          "commonjs": "CommonJS (Node.js environment standard)",
+          "amd": "AMD (Browser environment standard)",
+          "umd": "UMD (Independent runtime environment)"
+        }
+      },
+      "tsTranspileTarget": {
+        "message": "Please choose the transpile target of JavaScript version.",
+        "choices": {
+          "es5": "ES5",
+          "es2015": "ES6 (ES2015)"
+        }
+      },
+      "confirm": {
+        "message": "Would that be OK?"
+      },
+      "stilNotAvailable": "[stil not avialable]"
+    },
+    "library": {
+      "webpackTarget": {
+        "message": "Please choose the destination for using library."
+      },
+      "supportCSS": {
+        "message": "Do you develop CSS library?"
+      }
+    }
+  },
+  "settings": {
+    "baseStructure": {
+      "title": "Structure Info:      ",
+      "props": {
+        "recommended": "Recommended",
+        "custom": "Custom"
+      }
+    },
     "projectName": {
-      "message": "Enter the name of the project."
+      "title": "  Project Name:      "
     },
     "version": {
-      "message": "Enter a version for the application. ex: 0.0.1",
-      "invalidMessage": "Please input semantic versioning string."
+      "title": "  Version:           "
     },
     "license": {
-      "message": "Please choose the license of this project.",
-      "choices": {
-        "apache2": "Apache-2.0",
-        "mit": "MIT",
-        "proprietary": "Proprietary License (NONE)"
+      "title": "  License:           ",
+      "props": {
+        "Apache-2.0": "Apache-2.0",
+        "MIT": "MIT",
+        "NONE": "Proprietary(NONE)"
       }
     },
     "webpackTarget": {
-      "choices": {
-        "web": "for Web Browser",
-        "node": "for Node.js environment",
-        "electron": "for electron main process (stil not available)",
-        "electronRenderer": "for electron renderer process (stil not available)"
+      "title": "  Destination:       ",
+      "props": {
+        "web": "Browser",
+        "node": "Node.js",
+        "electron": "electron main process",
+        "electron-renderer": "electron renderer process"
       }
     },
-    "confirm": {
-      "message": "Would that be OK?"
+    "moduleSystem": {
+      "title": "  Module System:     ",
+      "props": {
+        "none": "None",
+        "commonjs": "CommonJS",
+        "amd": "AMD",
+        "umd": "UMD"
+      }
     },
-    "stilNotAvailable": "Sorry, the feature is not available, yet."
-  },
-  "library": {
-    "webpackTarget": {
-      "message": "Please choose the situation for using library."
+    "tsTranspileTarget": {
+      "title": "  Transpile Target:  ",
+      "props": {
+        "es5": "ES5",
+        "es2015": "ES6 (ES2015)"
+      }
+    },
+    "supportCSS": {
+      "title": "  CSS Support:       ",
+      "bool": {
+        "yes": "Yes",
+        "no": "No"
+      }
     }
   },
   "EOF": "EOF"

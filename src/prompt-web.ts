@@ -9,7 +9,7 @@ import {
 } from "cdp-lib";
 import {
     PromptBase,
-    ICommandLineInfo,
+    IAnswerSchema,
 } from "./prompt-base";
 
 /**
@@ -24,7 +24,7 @@ export class PromptWebApp extends PromptBase {
     /**
      * エントリ
      */
-    public prompting(cmdInfo: ICommandLineInfo): Promise<IProjectConfigration> {
+    public prompting(cmdInfo: any): Promise<IProjectConfigration> {
         return new Promise((resolve, reject) => {
             reject("web app prompting, under construction.");
         });
@@ -44,9 +44,10 @@ export class PromptWebApp extends PromptBase {
     /**
      * プロジェクト設定の確認
      *
-     * @returns {IProjectConfigration} 設定値を返却
+     * @param  {IAnswerSchema} answers 回答結果
+     * @return {IProjectConfigration} 設定値を返却
      */
-    displaySettingsByAnswers(answers: inquirer.Answers): IProjectConfigration {
+    displaySettingsByAnswers(answers: IAnswerSchema): IProjectConfigration {
         // TODO: show
         return null;
     }

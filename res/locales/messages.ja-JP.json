@@ -1,37 +1,120 @@
 {
   "type": "ja",
-  "common": {
+  "prompt": {
+    "common": {
+      "projectName": {
+        "message": "プロジェクト名を入力してください"
+      },
+      "version": {
+        "message": "バージョン情報を入力してください。例: 0.0.1",
+        "invalidMessage": "セマンティックバージョニング記法を使用してください"
+      },
+      "license": {
+        "message": "プロジェクトに使用するライセンスを選択してください",
+        "choices": {
+          "apache2": "Apache-2.0",
+          "mit": "MIT",
+          "proprietary": "プロプライエタリライセンス (NONE)"
+        }
+      },
+      "webpackTarget": {
+        "choices": {
+          "browser": "ブラウザ環境で使用する",
+          "node": "Node.js 環境で使用する",
+          "electron": "electron のメインプロセスで使用する",
+          "electronRenderer": "electron のレンダラプロセスで使用する"
+        }
+      },
+      "baseStructure": {
+        "message": "プロジェクト構成を選択してください",
+        "choices": {
+          "recommended": "おすすめ",
+          "custom": "カスタム"
+        }
+      },
+      "moduleSystem": {
+        "message": "JavaScript のモジュールシステム選択してください",
+        "choices": {
+          "none": "なし",
+          "commonjs": "CommonJS (Node.js 標準)",
+          "amd": "AMD (ブラウザ環境標準)",
+          "umd": "UMD (環境非依存)"
+        }
+      },
+      "tsTranspileTarget": {
+        "message": "TypeScript からトランスパイルした JavaScript バージョンを選択してください",
+        "choices": {
+          "es5": "ES5",
+          "es2015": "ES6 (ES2015)"
+        }
+      },
+      "confirm": {
+        "message": "よろしいですか?"
+      },
+      "stilNotAvailable": "[まだ利用できません]"
+    },
+    "library": {
+      "webpackTarget": {
+        "message": "ライブラリの使用仕向けを選択してください"
+      },
+      "supportCSS": {
+        "message": "CSS を使用しますか?"
+      }
+    }
+  },
+  "settings": {
+    "baseStructure": {
+      "title": "構成情報:                    ",
+      "props": {
+        "recommended": "おすすめ",
+        "custom": "カスタム"
+      }
+    },
     "projectName": {
-      "message": "プロジェクト名を入力してください。"
+      "title": "  プロジェクト名:            "
     },
     "version": {
-      "message": "バージョン情報を入力してください。例: 0.0.1",
-      "invalidMessage": "セマンティックバージョニング記法を使用してください。"
+      "title": "  バージョン:                "
     },
     "license": {
-      "message": "プロジェクトに使用するライセンスを選択してください",
-      "choices": {
-        "apache2": "Apache-2.0",
-        "mit": "MIT",
-        "proprietary": "プロプライエタリライセンス (NONE)"
+      "title": "  ライセンス:                ",
+      "props": {
+        "Apache-2.0": "Apache-2.0",
+        "MIT": "MIT",
+        "NONE": "プロプライエタリ(NONE)"
       }
     },
     "webpackTarget": {
-      "choices": {
-        "web": "ブラウザ環境で使用する",
-        "node": "Node.js 環境で使用する",
-        "electron": "electron のメインプロセスで使用する (まだ利用できません)",
-        "electronRenderer": "electron のレンダラプロセスで使用する (まだ利用できません)"
+      "title": "  使用仕向け:                ",
+      "props": {
+        "web": "ブラウザ",
+        "node": "Node.js",
+        "electron": "electron メインプロセス",
+        "electron-renderer": "electron レンダラプロセス"
       }
     },
-    "confirm": {
-      "message": "よろしいですか?"
+    "moduleSystem": {
+      "title": "  モジュールシステム:        ",
+      "props": {
+        "none": "なし",
+        "commonjs": "CommonJS",
+        "amd": "AMD",
+        "umd": "UMD"
+      }
     },
-    "stilNotAvailable": "まだ利用できません"
-  },
-  "library": {
-    "webpackTarget": {
-      "message": "ライブラリの用途を選択してください"
+    "tsTranspileTarget": {
+      "title": "  トランスパイルターゲット:  ",
+      "props": {
+        "es5": "ES5",
+        "es2015": "ES6 (ES2015)"
+      }
+    },
+    "supportCSS": {
+      "title": "  CSS サポート:              ",
+      "bool": {
+        "yes": "する",
+        "no": "しない"
+      }
     }
   },
   "EOF": "EOF"

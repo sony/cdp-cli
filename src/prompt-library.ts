@@ -1,17 +1,21 @@
-﻿/* tslint:disable:no-unused-variable no-unused-vars */
-/* eslint-disable no-unused-vars */
-
-import * as inquirer from "inquirer";
+﻿import * as inquirer from "inquirer";
 import * as chalk from "chalk";
 import * as semverRegex from "semver-regex";
 import {
     IProjectConfigration,
     ILibraryConfigration,
+    Utils,
 } from "cdp-lib";
 import {
     PromptBase,
-    ICommandLineInfo,
+    IAnswerSchema,
 } from "./prompt-base";
+import defaultConfig from "./default-config";
+
+const $ = Utils.$;
+const libConfig = defaultConfig.library;
+
+const ELECTRON_AVAILABLE = false;
 
 /**
  * @class PromptLibrary
@@ -26,19 +30,18 @@ export class PromptLibrary extends PromptBase {
      * プロジェクト設定項目の取得
      */
     get questions(): inquirer.Questions {
-        // TODO:
         return [
             // project common settnigs (IProjectConfigration)
             {
                 type: "input",
                 name: "projectName",
-                message: this.lang.common.projectName.message,
+                message: this.lang.prompt.common.projectName.message,
                 default: this.answers.projectName || "CoolProjectName",
             },
             {
                 type: "input",
                 name: "version",
-                message: this.lang.common.version.message,
+                message: this.lang.prompt.common.version.message,
                 default: this.answers.version || "0.0.1",
                 filter: (value) => {
                     if (semverRegex().test(value)) {
@@ -51,77 +54,243 @@ export class PromptLibrary extends PromptBase {
                     if (semverRegex().test(value)) {
                         return true;
                     } else {
-                        return this.lang.common.version.invalidMessage;
+                        return this.lang.prompt.common.version.invalidMessage;
                     }
                 },
             },
             {
                 type: "list",
                 name: "license",
-                message: this.lang.common.license.message,
+                message: this.lang.prompt.common.license.message,
                 choices: [
                     {
-                        name: this.lang.common.license.choices.apache2,
+                        name: this.lang.prompt.common.license.choices.apache2,
                         value: "Apache-2.0",
                     },
                     {
-                        name: this.lang.common.license.choices.mit,
+                        name: this.lang.prompt.common.license.choices.mit,
                         value: "MIT",
                     },
                     {
-                        name: this.lang.common.license.choices.proprietary,
+                        name: this.lang.prompt.common.license.choices.proprietary,
                         value: "NONE",
                     }
                 ],
-                default: "NONE",
+                default: this.answers.license || "NONE",
             },
             // library settnigs (ICompileConfigration)
             {
                 type: "list",
                 name: "webpackTarget",
-                message: this.lang.library.webpackTarget.message,
+                message: this.lang.prompt.library.webpackTarget.message,
                 choices: [
                     {
-                        name: this.lang.common.webpackTarget.choices.web,
+                        name: this.lang.prompt.common.webpackTarget.choices.browser,
                         value: "web",
                     },
                     {
-                        name: this.lang.common.webpackTarget.choices.node,
+                        name: this.lang.prompt.common.webpackTarget.choices.node,
                         value: "node",
                     },
                     new inquirer.Separator(),
                     {
-                        name: this.lang.common.webpackTarget.choices.electron,
+                        name: this.lang.prompt.common.webpackTarget.choices.electron + this.LIMITATION(),
                         value: "electron",
                     },
                     {
-                        name: this.lang.common.webpackTarget.choices.electronRenderer,
+                        name: this.lang.prompt.common.webpackTarget.choices.electronRenderer + this.LIMITATION(),
                         value: "electron-renderer",
                     }
                 ],
                 filter: (value) => {
-                    if (/^(electron|electron-renderer)$/i.test(value)) {
+                    if (ELECTRON_AVAILABLE) {
+                        return value;
+                    } else if ("electron" === value) {
+                        return "node";
+                    } else if ("electron-renderer" === value) {
                         return "web";
                     } else {
                         return value;
                     }
                 },
-                default: "web",
+                default: this.answers.webpackTarget || "web",
             },
-            // TODO: when を使って moduleSystem
+            // base structure
+            {
+                type: "list",
+                name: "baseStructure",
+                message: this.lang.prompt.common.baseStructure.message,
+                choices: [
+                    {
+                        name: this.lang.prompt.common.baseStructure.choices.recommended,
+                        value: "recommended",
+                    },
+                    {
+                        name: this.lang.prompt.common.baseStructure.choices.custom,
+                        value: "custom",
+                    },
+                ],
+                default: this.answers.baseStructure || "recommended",
+            },
+            // library settnigs (custom: moduleSystem)
+            {
+                type: "list",
+                name: "moduleSystem",
+                message: this.lang.prompt.common.moduleSystem.message,
+                choices: [
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.none,
+                        value: "none",
+                    },
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.commonjs,
+                        value: "commonjs",
+                    },
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.umd,
+                        value: "umd",
+                    },
+                ],
+                default: ("amd" !== this.answers.moduleSystem) ? (this.answers.moduleSystem || "commonjs") : "commonjs",
+                when: (answers: IAnswerSchema) => {
+                    return "custom" === answers.baseStructure && /^(node|electron)$/i.test(answers.webpackTarget);
+                },
+            },
+            {
+                type: "list",
+                name: "moduleSystem",
+                message: this.lang.prompt.common.moduleSystem.message,
+                choices: [
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.none,
+                        value: "none",
+                    },
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.amd,
+                        value: "amd",
+                    },
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.umd,
+                        value: "umd",
+                    },
+                ],
+                default: ("commonjs" !== this.answers.moduleSystem) ? (this.answers.moduleSystem || "amd") : "amd",
+                when: (answers: IAnswerSchema) => {
+                    return "custom" === answers.baseStructure && "web" === answers.webpackTarget;
+                },
+            },
+            {
+                type: "list",
+                name: "moduleSystem",
+                message: this.lang.prompt.common.moduleSystem.message,
+                choices: [
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.none,
+                        value: "none",
+                    },
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.commonjs,
+                        value: "commonjs",
+                    },
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.amd,
+                        value: "amd",
+                    },
+                    {
+                        name: this.lang.prompt.common.moduleSystem.choices.umd,
+                        value: "umd",
+                    },
+                ],
+                default: this.answers.moduleSystem || "commonjs",
+                when: (answers: IAnswerSchema) => {
+                    return "custom" === answers.baseStructure && "electron-renderer" === answers.webpackTarget;
+                },
+            },
+            // library settnigs (custom: tsTranspileTarget)
+            {
+                type: "list",
+                name: "tsTranspileTarget",
+                message: this.lang.prompt.common.tsTranspileTarget.message,
+                choices: [
+                    {
+                        name: this.lang.prompt.common.tsTranspileTarget.choices.es5,
+                        value: "es5",
+                    },
+                    {
+                        name: this.lang.prompt.common.tsTranspileTarget.choices.es2015,
+                        value: "es2015",
+                    },
+                ],
+                default: this.answers.tsTranspileTarget || ("web" === this.answers.webpackTarget ? "es5" : "es2015"),
+                when: (answers: IAnswerSchema) => {
+                    return "custom" === answers.baseStructure;
+                },
+            },
+            // library settnigs (custom: supportCSS)
+            {
+                type: "confirm",
+                name: "supportCSS",
+                message: this.lang.prompt.library.supportCSS.message,
+                default: this.answers.supportCSS || false,
+                when: (answers: IAnswerSchema) => {
+                    return "custom" === answers.baseStructure;
+                },
+            },
         ];
     }
 
     /**
      * プロジェクト設定の確認
      *
-     * @returns {IProjectConfigration} 設定値を返却
+     * @param  {IAnswerSchema} answers 回答結果
+     * @return {IProjectConfigration} 設定値を返却
      */
-    displaySettingsByAnswers(answers: inquirer.Answers): IProjectConfigration {
-        // TODO: show
-        return null;
+    displaySettingsByAnswers(answers: IAnswerSchema): IProjectConfigration {
+        const config: ILibraryConfigration = (() => {
+            switch (answers.webpackTarget) {
+                case "web":
+                    return $.extend({}, libConfig.browser, answers);
+                case "node":
+                    return $.extend({}, libConfig.node, answers);
+                case "electron":
+                    return $.extend({}, libConfig.electron, answers);
+                default:
+                    console.error(chalk.red("unsupported target: " + answers.webpackTarget));
+                    process.exit(1);
+            }
+        })();
+
+        const items = [
+            { name: "baseStructure",        recommend: false    },
+            { name: "projectName",          recommend: false    },
+            { name: "version",              recommend: false    },
+            { name: "license",              recommend: false    },
+            { name: "webpackTarget",        recommend: false    },
+            { name: "moduleSystem",         recommend: true     },
+            { name: "tsTranspileTarget",    recommend: true     },
+            { name: "supportCSS",           recommend: true     },
+        ];
+
+        try {
+            items.forEach((item) => {
+                const color = (item.recommend && "recommended" === answers.baseStructure) ? "yellow" : undefined;
+                console.log(this.config2description(config, item.name, color));
+            });
+        } catch (error) {
+            console.error(chalk.red("error: " + JSON.stringify(error, null, 4)));
+            process.exit(1);
+        }
+
+        return config;
     }
 
     ///////////////////////////////////////////////////////////////////////
-    // private methods
+    // private methods:
+
+    /**
+     * electron が有効出ない場合の補足文字を取得
+     */
+    private LIMITATION(): string {
+        return ELECTRON_AVAILABLE ? "" : " " + this.lang.prompt.common.stilNotAvailable;
+    }
 }

@@ -1,20 +1,27 @@
-﻿/* tslint:disable:no-unused-variable no-unused-vars */
-/* eslint-disable no-unused-vars */
-
-import * as fs from "fs-extra";
+﻿import * as fs from "fs-extra";
 import * as path from "path";
 import * as chalk from "chalk";
 import * as inquirer from "inquirer";
 import {
     IProjectConfigration,
+    ICompileConfigration,
     Utils,
 } from "cdp-lib";
 import { ICommandLineInfo } from "./command-parser";
 
-export { ICommandLineInfo };
-
 const _ = Utils._;
 
+/**
+ * @interface IAnswerSchema
+ * @brief Answer オブジェクトのスキーマ定義インターフェイス
+ */
+export interface IAnswerSchema
+    extends inquirer.Answers, IProjectConfigration, ICompileConfigration {
+    // 共通拡張定義
+    baseStructure: "recommended" | "custom";
+}
+
+//___________________________________________________________________________________________________________________//
 
 /**
  * @class PromptBase
@@ -23,7 +30,7 @@ const _ = Utils._;
 export abstract class PromptBase {
 
     private _cmdInfo: ICommandLineInfo;
-    private _answers: inquirer.Answers = {};
+    private _answers = <IAnswerSchema>{};
     private _locale = {};
 
     ///////////////////////////////////////////////////////////////////////
@@ -49,6 +56,21 @@ export abstract class PromptBase {
         });
     }
 
+    /**
+     * Like cowsay
+     * https://en.wikipedia.org/wiki/Cowsay
+     */
+    public say(message: string): void {
+        const GREETING =
+            "\n  ≡     " + chalk.cyan("∧＿∧") + "    ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣" +
+            "\n    ≡ " + chalk.cyan("（ ´∀｀）") + "＜  " + chalk.yellow(message) +
+            "\n  ≡   " + chalk.cyan("（  つ") + "＝" + chalk.cyan("つ") + "  ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿" +
+            "\n    ≡  " + chalk.cyan("｜ ｜ |") + "＼" +
+            "\n    ≡ " + chalk.cyan("（_＿）＿）") + "＼" +
+            "\n  ≡   " + chalk.red("◎") + "￣￣￣￣" + chalk.red("◎");
+        console.log(GREETING);
+    }
+
     ///////////////////////////////////////////////////////////////////////
     // abstruct methods
 
@@ -60,16 +82,17 @@ export abstract class PromptBase {
     /**
      * プロジェクト設定の確認
      *
-     * @returns {IProjectConfigration} 設定値を返却
+     * @param  {IAnswerSchema} answers 回答結果
+     * @return {IProjectConfigration} 設定値を返却
      */
-    abstract displaySettingsByAnswers(answers: inquirer.Answers): IProjectConfigration;
+    abstract displaySettingsByAnswers(answers: IAnswerSchema): IProjectConfigration;
 
     ///////////////////////////////////////////////////////////////////////
     // protected methods
 
     /**
      * ローカライズリソースにアクセス
-     * ex) this.lang.projectName.message
+     * ex) this.lang.prompt.projectName.message
      *
      * @return {Object} リソースオブジェクト
      */
@@ -82,8 +105,15 @@ export abstract class PromptBase {
      *
      * @return {Object} Answer オブジェクト
      */
-    protected get answers(): inquirer.Answers {
+    protected get answers(): IAnswerSchema {
         return this._answers;
+    }
+
+    /**
+     * Prologue コメントの設定
+     */
+    protected get prologueComment(): string {
+        return "Welcome to CDP Boilerplate Generator!";
     }
 
     /**
@@ -91,7 +121,7 @@ export abstract class PromptBase {
      */
     protected showPrologue(): void {
         console.log("\n" + chalk.gray("================================================================"));
-        this.say("Welcome to CDP Boilerplate Generator!");
+        this.say(this.prologueComment);
         console.log("\n" + chalk.gray("================================================================") + "\n");
     }
 
@@ -100,7 +130,7 @@ export abstract class PromptBase {
      *
      * @return {Object} Answer オブジェクト
      */
-    protected updateAnswers(update: inquirer.Answers): inquirer.Answers {
+    protected updateAnswers(update: IAnswerSchema): IAnswerSchema {
         return _.merge(this._answers, update);
     }
 
@@ -108,7 +138,7 @@ export abstract class PromptBase {
      * プロジェクト設定
      * 分岐が必要な場合はオーバーライドすること
      */
-    protected inquireSettings(): Promise<inquirer.Answers> {
+    protected inquireSettings(): Promise<IAnswerSchema> {
         return new Promise((resolve, reject) => {
             inquirer.prompt(this.questions)
                 .then((answers) => {
@@ -118,6 +148,33 @@ export abstract class PromptBase {
                     reject(reason);
                 });
         });
+    }
+
+    /**
+     * setting から 設定説明の作成
+     *
+     * @param  {Object} config 設定
+     * @param  {String} itemName 設定項目名
+     * @return {String} 説明文
+     */
+    protected config2description(config: Object, itemName: string, color: string = "cyan"): string {
+        const item = this.lang.settings[itemName];
+        if (null == item) {
+            console.error(chalk.red("error. item not found. item name: " + itemName));
+            process.exit(1);
+        }
+
+        const prop: string = (() => {
+            if (item.props) {
+                return item.props[config[itemName]];
+            } else if ("boolean" === typeof config[itemName]) {
+                return item.bool[config[itemName] ? "yes" : "no"];
+            } else {
+                return config[itemName];
+            }
+        })();
+
+        return item.title + chalk[color](prop);
     }
 
     ///////////////////////////////////////////////////////////////////////
@@ -171,13 +228,15 @@ export abstract class PromptBase {
      */
     private confirmSettings(): Promise<IProjectConfigration> {
         return new Promise((resolve, reject) => {
+            console.log("\n" + chalk.gray("================================================================") + "\n");
             const settings = this.displaySettingsByAnswers(this._answers);
-            console.log("check: " + this.lang.common.confirm.message);
+            console.log("\n" + chalk.gray("================================================================") + "\n");
+            console.log("check: " + this.lang.prompt.common.confirm.message);
             const question = [
                 {
                     type: "confirm",
                     name: "confirmation",
-                    message: this.lang.common.confirm.message,
+                    message: this.lang.prompt.common.confirm.message,
                     default: true,
                 }
             ];
@@ -218,20 +277,5 @@ export abstract class PromptBase {
             };
             setTimeout(proc);
         });
-    }
-
-    /**
-     * Like cowsay
-     * https://en.wikipedia.org/wiki/Cowsay
-     */
-    private say(message: string): void {
-        const GREETING =
-            "\n  ≡     " + chalk.cyan("∧＿∧") + "    ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣" +
-            "\n    ≡ " + chalk.cyan("（ ´∀｀）") + "＜  " + chalk.yellow(message) +
-            "\n  ≡   " + chalk.cyan("（  つ＝つ") + "  ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿" +
-            "\n    ≡  " + chalk.cyan("｜ ｜ |") + "＼" +
-            "\n    ≡ " + chalk.cyan("（_＿）＿）") + "＼" +
-            "\n  ≡  " + chalk.red("◎") + "￣￣￣￣" + chalk.red("◎");
-            console.log(GREETING);
     }
 }
