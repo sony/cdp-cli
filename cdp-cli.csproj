@@ -76,10 +76,12 @@
     <Content Include="BANNER" />
     <Content Include="built\cdp-cli.js" />
     <Content Include="built\command-parser.js" />
+    <Content Include="built\default-config.js" />
     <Content Include="built\prompt-base.js" />
     <Content Include="built\prompt-desktop.js" />
     <Content Include="built\prompt-library.js" />
     <Content Include="built\prompt-mobile.js" />
+    <Content Include="built\prompt-web.js" />
     <Content Include="dist\cdp-cli.js" />
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
@@ -109,6 +111,9 @@
     <TypeScriptCompile Include="built\command-parser.d.ts">
       <DependentUpon>command-parser.js</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="built\default-config.d.ts">
+      <DependentUpon>default-config.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="built\prompt-base.d.ts">
       <DependentUpon>prompt-base.js</DependentUpon>
     </TypeScriptCompile>
@@ -121,13 +126,18 @@
     <TypeScriptCompile Include="built\prompt-mobile.d.ts">
       <DependentUpon>prompt-mobile.js</DependentUpon>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="built\prompt-web.d.ts">
+      <DependentUpon>prompt-web.js</DependentUpon>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="dist\%40types\cdp-cli\index.d.ts" />
     <TypeScriptCompile Include="src\cdp-cli.ts" />
     <TypeScriptCompile Include="src\command-parser.ts" />
+    <TypeScriptCompile Include="src\default-config.ts" />
     <TypeScriptCompile Include="src\prompt-desktop.ts" />
     <TypeScriptCompile Include="src\prompt-mobile.ts" />
     <TypeScriptCompile Include="src\prompt-base.ts" />
     <TypeScriptCompile Include="src\prompt-library.ts" />
+    <TypeScriptCompile Include="src\prompt-web.ts" />
     <TypeScriptCompile Include="submodules\cdp-lib\dist\%40types\cdp-lib\index.d.ts" />
     <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
     <TypeScriptCompile Include="tests\jasmine\command-parser.spec.ts" />
@@ -176,6 +186,16 @@
   <ItemGroup>
     <Content Include="built\prompt-desktop.js.map">
       <DependentUpon>prompt-desktop.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="built\default-config.js.map">
+      <DependentUpon>default-config.js</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="built\prompt-web.js.map">
+      <DependentUpon>prompt-web.js</DependentUpon>
     </Content>
   </ItemGroup>
 </Project>

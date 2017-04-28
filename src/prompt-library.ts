@@ -82,14 +82,14 @@ export class PromptLibrary extends PromptBase {
                 message: this.lang.library.webpackTarget.message,
                 choices: [
                     {
+                        name: this.lang.common.webpackTarget.choices.web,
+                        value: "web",
+                    },
+                    {
                         name: this.lang.common.webpackTarget.choices.node,
                         value: "node",
                     },
                     new inquirer.Separator(),
-                    {
-                        name: this.lang.common.webpackTarget.choices.web,
-                        value: "web",
-                    },
                     {
                         name: this.lang.common.webpackTarget.choices.electron,
                         value: "electron",
@@ -100,13 +100,13 @@ export class PromptLibrary extends PromptBase {
                     }
                 ],
                 filter: (value) => {
-                    if ("node" !== value) {
-                        return "node";
+                    if (/^(electron|electron-renderer)$/i.test(value)) {
+                        return "web";
                     } else {
                         return value;
                     }
                 },
-                default: "node",
+                default: "web",
             },
             // TODO: when を使って moduleSystem
         ];

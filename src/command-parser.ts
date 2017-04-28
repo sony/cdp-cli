@@ -75,9 +75,9 @@ export class CommandParser {
 
         commander
             .command("create <target>")
-            .description("create boilerplate for 'library, module' | 'mobile, app' | 'desktop'")
+            .description("create boilerplate for 'library, module' | 'mobile, app' | 'desktop'| 'web'")
             .action((target: string) => {
-                if (/^(module|app|library|mobile|desktop)$/i.test(target)) {
+                if (/^(module|app|library|mobile|desktop|web)$/i.test(target)) {
                     cmdline.action = "create";
                     cmdline.target = target;
                     if ("module" === cmdline.target) {

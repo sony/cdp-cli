@@ -90,7 +90,9 @@ export abstract class PromptBase {
      * Welcome 表示
      */
     protected showPrologue(): void {
-        // TODO:
+        console.log("\n" + chalk.gray("================================================================"));
+        this.say("Welcome to CDP Boilerplate Generator!");
+        console.log("\n" + chalk.gray("================================================================") + "\n");
     }
 
     /**
@@ -216,5 +218,20 @@ export abstract class PromptBase {
             };
             setTimeout(proc);
         });
+    }
+
+    /**
+     * Like cowsay
+     * https://en.wikipedia.org/wiki/Cowsay
+     */
+    private say(message: string): void {
+        const GREETING =
+            "\n  ≡     " + chalk.cyan("∧＿∧") + "    ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣" +
+            "\n    ≡ " + chalk.cyan("（ ´∀｀）") + "＜  " + chalk.yellow(message) +
+            "\n  ≡   " + chalk.cyan("（  つ＝つ") + "  ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿" +
+            "\n    ≡  " + chalk.cyan("｜ ｜ |") + "＼" +
+            "\n    ≡ " + chalk.cyan("（_＿）＿）") + "＼" +
+            "\n  ≡  " + chalk.red("◎") + "￣￣￣￣" + chalk.red("◎");
+            console.log(GREETING);
     }
 }

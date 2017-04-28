@@ -18,8 +18,8 @@
     },
     "webpackTarget": {
       "choices": {
+        "web": "ブラウザ環境で使用する",
         "node": "Node.js 環境で使用する",
-        "web": "ブラウザ環境で使用する(まだ利用できません)",
         "electron": "electron のメインプロセスで使用する (まだ利用できません)",
         "electronRenderer": "electron のレンダラプロセスで使用する (まだ利用できません)"
       }

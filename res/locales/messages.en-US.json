@@ -18,8 +18,8 @@
     },
     "webpackTarget": {
       "choices": {
+        "web": "for Web Browser",
         "node": "for Node.js environment",
-        "web": "for Web Browser(stil not available)",
         "electron": "for electron main process (stil not available)",
         "electronRenderer": "for electron renderer process (stil not available)"
       }

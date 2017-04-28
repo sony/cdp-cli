@@ -18,8 +18,19 @@ import {
 import {
     PromptDesktopApp,
 } from "./prompt-desktop";
+import {
+    PromptWebApp,
+} from "./prompt-web";
 
 function getInquirer(cmdInfo: ICommandLineInfo): PromptBase {
+    switch (cmdInfo.action) {
+        case "create":
+            break;
+        default:
+            console.error(chalk.red(cmdInfo.action + " command: under construction."));
+            process.exit(1);
+    }
+
     switch (cmdInfo.target) {
         case "library":
             return new PromptLibrary();
@@ -27,6 +38,8 @@ function getInquirer(cmdInfo: ICommandLineInfo): PromptBase {
             return new PromptMobileApp();
         case "desktop":
             return new PromptDesktopApp();
+        case "web":
+            return new PromptWebApp();
         default:
             console.error(chalk.red("unsupported target: " + cmdInfo.target));
             process.exit(1);
@@ -40,7 +53,8 @@ export function main() {
 
     inquirer.prompting(cmdInfo)
         .then(() => {
-            console.log("call cdp-lib");
+            // TODO:
+            console.log(chalk.yellow("TODO: call cdp-lib"));
         })
         .catch((reason: any) => {
             if ("string" !== typeof reason) {
@@ -49,6 +63,6 @@ export function main() {
             console.error(chalk.red(reason));
         })
         .then(() => {
-            console.log("always");
+            // NOTE: es6 promise's always block.
         });
 }
