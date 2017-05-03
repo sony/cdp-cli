@@ -21,36 +21,67 @@ function unloadResouce(): void {
 }
 
 describe("prompt-base check", () => {
-    let value: any;
-
     afterEach(() => {
         unloadResouce();
     });
 
-    beforeEach((done) => {
+    describe("prompting check", () => {
+        let value: any;
+
+        beforeEach((done) => {
+            loadResouce("ja-JP");
+            const lang = (<any>instance).lang;
+
+            spyOn(console, "log").and.stub();
+            spyOn(<any>instance, "inquireLanguage").and.callFake(() => {
+                return new Promise((resolve, reject) => {
+                    resolve();
+                });
+            });
+            spyOn(<any>instance, "inquire").and.callFake(() => {
+                return new Promise((resolve, reject) => {
+                    resolve(libConfig);
+                });
+            });
+
+            instance.prompting(null)
+                .then((config) => {
+                    value = config;
+                    done();
+                });
+        });
+
+        it("check", () => {
+            expect(value).toEqual(libConfig);
+        });
+    });
+
+    it("check", (done) => {
         loadResouce("ja-JP");
         const lang = (<any>instance).lang;
 
         spyOn(console, "log").and.stub();
         spyOn(<any>instance, "inquireLanguage").and.callFake(() => {
             return new Promise((resolve, reject) => {
-                resolve();
-            });
-        });
-        spyOn(<any>instance, "inquire").and.callFake(() => {
-            return new Promise((resolve, reject) => {
-                resolve(libConfig);
+                reject("for TEST case");
             });
         });
 
         instance.prompting(null)
-            .then((config) => {
-                value = config;
+            .catch((reason) => {
+                expect(reason).toEqual("for TEST case");
                 done();
             });
     });
 
-    it("check", () => {
-        expect(value).toEqual(libConfig);
+    it("updateAnswers check", () => {
+        const instance: PromptBase = new PromptLibrary();
+        let answers = (<any>instance)._answers;
+        expect(answers).toEqual({});
+        answers = (<any>instance).updateAnswers({ test1: "hoge" });
+        expect(answers.test1).toEqual("hoge");
+        answers = (<any>instance).updateAnswers({ test2: "fuga" });
+        expect(answers.test1).toEqual("hoge");
+        expect(answers.test2).toEqual("fuga");
     });
 });
