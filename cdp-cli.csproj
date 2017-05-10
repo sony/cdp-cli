@@ -91,7 +91,7 @@
     <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
-    <Content Include="submodules\cdp-lib\dist\cdp-lib.js" />
+    <Content Include="tasks\lib-link.js" />
     <Content Include="tasks\submodule.js" />
     <Content Include="tests\eslint\eslintrc.json" />
     <Content Include="tests\jasmine\cdp-cli.spec.js">
@@ -144,7 +144,6 @@
     <TypeScriptCompile Include="src\prompt-base.ts" />
     <TypeScriptCompile Include="src\prompt-library.ts" />
     <TypeScriptCompile Include="src\prompt-web.ts" />
-    <TypeScriptCompile Include="submodules\cdp-lib\dist\%40types\cdp-lib\index.d.ts" />
     <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
     <TypeScriptCompile Include="tests\jasmine\command-parser.spec.ts" />
     <TypeScriptCompile Include="tests\jasmine\prompt-base.spec.ts" />

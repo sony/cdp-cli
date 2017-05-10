@@ -41,6 +41,13 @@ const submodules = {
     ],
 };
 
+const libmodules = {
+    root: '..',
+    modules: [
+        'cdp-lib',
+    ],
+};
+
 // project configuration
 module.exports = {
 

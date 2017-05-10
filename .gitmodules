@@ -1,5 +1,0 @@
-[submodule "submodules/cdp-lib"]
-	path = submodules/cdp-lib
-	url = git@github.com:CDP-Tokyo/cdp-lib.git
-	ignore = dirty
-	

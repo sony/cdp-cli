@@ -23,16 +23,28 @@ module.exports = {
     },
     // externals を指定しない場合、3rd Library の使用するものを concat 可能
     externals: {
-        'jsdom': {
-            commonjs: 'jsdom',
-            commonjs2: 'jsdom',
+        'cdp-lib': {
+            commonjs: 'cdp-lib',
+            commonjs2: 'cdp-lib',
+        },
+        'commander': {
+            commonjs: 'commander',
+            commonjs2: 'commander',
+        },
+        'inquirer': {
+            commonjs: 'inquirer',
+            commonjs2: 'inquirer',
+        },
+        'semver-regex': {
+            commonjs: 'semver-regex',
+            commonjs2: 'semver-regex',
         },
     },
-    resolve: {
-        alias: {
-            'cdp-lib': '../submodules/cdp-lib/dist/cdp-lib.js',
-        },
-    },
+    //resolve: {
+    //    alias: {
+    //        'cdp-lib': '../submodules/cdp-lib/dist/cdp-lib.js',
+    //    },
+    //},
     plugins: [
         new webpack.optimize.LimitChunkCountPlugin({
             maxChunks: 1,
