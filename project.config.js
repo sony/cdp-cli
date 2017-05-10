@@ -60,4 +60,6 @@ module.exports = {
     banner: banner,
 
     submodules: submodules,
+
+    libmodules: libmodules,
 };

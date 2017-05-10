@@ -10,7 +10,7 @@
     "outDir": "./",
     "typeRoots": [
       "../../node_modules/@types",
-      "../../submodules/cdp-lib/dist/@types"
+      "../../node_modules/cdp-lib/dist/@types"
     ]
   },
   "include": [

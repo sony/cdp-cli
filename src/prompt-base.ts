@@ -1,6 +1,4 @@
-﻿import * as fs from "fs-extra";
-import * as path from "path";
-import * as chalk from "chalk";
+﻿import * as path from "path";
 import * as inquirer from "inquirer";
 import {
     IProjectConfigration,
@@ -9,7 +7,9 @@ import {
 } from "cdp-lib";
 import { ICommandLineInfo } from "./command-parser";
 
-const _ = Utils._;
+const fs    = Utils.fs;
+const chalk = Utils.chalk;
+const _     = Utils._;
 
 /**
  * @interface IAnswerSchema

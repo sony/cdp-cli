@@ -1,7 +1,9 @@
-﻿import * as fs from "fs-extra";
-import * as path from "path";
+﻿import * as path from "path";
 import * as commander from "commander";
-import * as chalk from "chalk";
+import { Utils } from "cdp-lib";
+
+const fs    = Utils.fs;
+const chalk = Utils.chalk;
 
 /**
  * @interface ICommandLineOptions

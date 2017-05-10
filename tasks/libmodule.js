@@ -10,7 +10,7 @@ function remove() {
     modules.forEach((module) => {
         const src = path.join(process.cwd(), srcLocation, module);
         if (fs.existsSync(src)) {
-            fs.remove(src);
+            fs.removeSync(src);
         }
     });
 }

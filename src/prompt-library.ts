@@ -1,6 +1,4 @@
 ﻿import * as inquirer from "inquirer";
-import * as chalk from "chalk";
-import * as semverRegex from "semver-regex";
 import {
     IProjectConfigration,
     ILibraryConfigration,
@@ -12,7 +10,9 @@ import {
 } from "./prompt-base";
 import defaultConfig from "./default-config";
 
-const $ = Utils.$;
+const $             = Utils.$;
+const chalk         = Utils.chalk;
+const semverRegex   = Utils.semverRegex;
 const libConfig = defaultConfig.library;
 
 /**

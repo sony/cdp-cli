@@ -9,17 +9,9 @@
     "inlineSources": true,
     "outDir": "./built",
     "baseUrl": ".",
-    "paths": {
-      "cdp-lib": [
-        "./submodules/cdp-lib/dist/cdp-lib"
-      ]
-    },
-    "rootDirs": [
-      "submodules/cdp-lib/dist"
-    ],
     "typeRoots": [
       "./node_modules/@types",
-      "./submodules/cdp-lib/dist/@types"
+      "./node_modules/cdp-lib/dist/@types"
     ]
   },
   "include": [

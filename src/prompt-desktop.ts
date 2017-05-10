@@ -2,15 +2,17 @@
 /* eslint-disable no-unused-vars */
 
 import * as inquirer from "inquirer";
-import * as chalk from "chalk";
 import {
     IProjectConfigration,
     IDesktopAppConfigration,
+    Utils,
 } from "cdp-lib";
 import {
     PromptBase,
     IAnswerSchema,
 } from "./prompt-base";
+
+const chalk = Utils.chalk;
 
 /**
  * @class PromptDesktopApp

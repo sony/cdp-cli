@@ -1,5 +1,7 @@
-﻿import * as chalk from "chalk";
-import CDPLib from "cdp-lib";
+﻿import {
+    default as CDPLib,
+    Utils,
+} from "cdp-lib";
 import {
     CommandParser,
     ICommandLineInfo,
@@ -19,6 +21,8 @@ import {
 import {
     PromptWebApp,
 } from "./prompt-web";
+
+const chalk = Utils.chalk;
 
 function getInquirer(cmdInfo: ICommandLineInfo): PromptBase {
     switch (cmdInfo.action) {

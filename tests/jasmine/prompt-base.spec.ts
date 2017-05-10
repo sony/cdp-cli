@@ -1,5 +1,4 @@
-﻿import * as fs from "fs-extra";
-import * as path from "path";
+﻿import * as path from "path";
 import * as inquirer from "inquirer";
 import { Utils } from "cdp-lib";
 import { PromptBase } from "../../built/prompt-base";
@@ -7,7 +6,8 @@ import { PromptLibrary } from "../../built/prompt-library";
 import defaultConfig from "../../built/default-config";
 
 const libConfig = defaultConfig.library;
-const $ = Utils.$;
+const $     = Utils.$;
+const fs    = Utils.fs;
 
 function loadResouce(instance: any, locale: string): void {
     instance._locale = JSON.parse(fs.readFileSync(
