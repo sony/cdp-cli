@@ -264,13 +264,14 @@ export abstract class PromptBase {
                     .then((answers) => {
                         this.updateAnswers(answers);
                         this.confirmSettings()
-                            .then((settings) => {
-                                settings.logOptions = {
+                            .then((config) => {
+                                config.settings = {
                                     force: this._cmdInfo.cliOptions.force,
                                     verbose: this._cmdInfo.cliOptions.verbose,
                                     silent: this._cmdInfo.cliOptions.silent,
+                                    libPath: path.join(this._cmdInfo.pkgDir, "node_modules", "cdp-lib"),
                                 };
-                                resolve(settings);
+                                resolve(config);
                             })
                             .catch(() => {
                                 setTimeout(proc);

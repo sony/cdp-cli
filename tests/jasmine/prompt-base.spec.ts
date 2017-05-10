@@ -274,7 +274,10 @@ describe("prompt-base check", () => {
         it("inquire resolve coverage", (done) => {
             let instance: any = new PromptLibrary();
             loadResouce(instance, "ja-JP");
-            instance._cmdInfo = { cliOptions: {} };
+            instance._cmdInfo = {
+                pkgDir: "temp",
+                cliOptions: {}
+            };
             let times = 0;
             spyOn(instance, "inquireSettings").and.callFake(() => {
                 return new Promise((resolve, reject) => {
