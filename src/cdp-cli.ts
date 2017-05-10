@@ -1,4 +1,5 @@
 ﻿import * as chalk from "chalk";
+import CDPLib from "cdp-lib";
 import {
     CommandParser,
     ICommandLineInfo,
@@ -49,9 +50,9 @@ export function main() {
     const inquirer = getInquirer(cmdInfo);
 
     inquirer.prompting(cmdInfo)
-        .then(() => {
-            // TODO:
-            console.log(chalk.yellow("TODO: call cdp-lib"));
+        .then((config) => {
+            // execute
+            CDPLib.execute(config);
         })
         .catch((reason: any) => {
             if ("string" !== typeof reason) {

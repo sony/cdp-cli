@@ -265,6 +265,11 @@ export abstract class PromptBase {
                         this.updateAnswers(answers);
                         this.confirmSettings()
                             .then((settings) => {
+                                settings.logOptions = {
+                                    force: this._cmdInfo.cliOptions.force,
+                                    verbose: this._cmdInfo.cliOptions.verbose,
+                                    silent: this._cmdInfo.cliOptions.silent,
+                                };
                                 resolve(settings);
                             })
                             .catch(() => {
