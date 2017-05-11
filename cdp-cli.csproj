@@ -83,6 +83,12 @@
     <Content Include="built\prompt-mobile.js" />
     <Content Include="built\prompt-web.js" />
     <Content Include="dist\cdp-cli.js" />
+    <Content Include="dist\cdp-cli.min.js">
+      <DependentUpon>cdp-cli.js</DependentUpon>
+    </Content>
+    <Content Include="dist\cdp-cli.min.js.map">
+      <DependentUpon>cdp-cli.js</DependentUpon>
+    </Content>
     <Content Include="docs\en\README.md" />
     <Content Include="docs\images\.gitkeep" />
     <Content Include="docs\ja\README.md" />

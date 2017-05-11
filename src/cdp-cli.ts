@@ -55,6 +55,7 @@ export function main() {
 
     inquirer.prompting(cmdInfo)
         .then((config) => {
+            console.log(cmdInfo.cliOptions.config);
             // execute
             CDPLib.execute(config);
         })
