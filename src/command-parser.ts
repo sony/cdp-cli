@@ -11,7 +11,7 @@ const chalk = Utils.chalk;
  */
 export interface ICommandLineOptions {
     force: boolean;     // エラー継続用
-    targetdir: string;  // 作業ディレクトリ指定
+    targetDir: string;  // 作業ディレクトリ指定
     config: string;     // コンフィグファイル指定
     verbose: boolean;   // 詳細ログ
     silent: boolean;    // silent mode
@@ -142,7 +142,7 @@ export class CommandParser {
     private static toCommandLineOptions(commander: any): ICommandLineOptions {
         return {
             force: !!commander.force,
-            targetdir: commander.targetdir,
+            targetDir: commander.targetdir,
             config: commander.config,
             verbose: !!commander.verbose,
             silent: !!commander.silent,

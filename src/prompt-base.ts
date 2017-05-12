@@ -271,6 +271,7 @@ export abstract class PromptBase {
                                     verbose: this._cmdInfo.cliOptions.verbose,
                                     silent: this._cmdInfo.cliOptions.silent,
                                     libPath: path.join(this._cmdInfo.pkgDir, "node_modules", "cdp-lib"),
+                                    targetDir: this._cmdInfo.cliOptions.targetDir,
                                     lang: this.lang.type,
                                 };
                                 resolve(config);
