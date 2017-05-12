@@ -89,14 +89,14 @@ describe("prompt-base check", () => {
             spyOn(inquirer, "prompt").and.callFake(() => {
                 return new Promise((resolve, reject) => {
                     resolve({
-                        baseStructure: "recommended",
+                        extraSettings: "recommended",
                     });
                 });
             });
 
             instance.inquireSettings()
                 .then((answers) => {
-                    expect(answers.baseStructure).toEqual("recommended");
+                    expect(answers.extraSettings).toEqual("recommended");
                     done();
                 });
         });

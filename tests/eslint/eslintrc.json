@@ -8,6 +8,8 @@
     "indent": "off",
     "semi": ["error", "always"],
 
+    "require-yield": "off",
+
     "comma-dangle": "off",
     "no-cond-assign": ["error", "always"],
     "no-unused-vars": ["error", {"args": "none"}],

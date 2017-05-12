@@ -18,7 +18,7 @@ const _     = Utils._;
 export interface IAnswerSchema
     extends inquirer.Answers, IProjectConfigration, ICompileConfigration {
     // 共通拡張定義
-    baseStructure: "recommended" | "custom";
+    extraSettings: "recommended" | "custom";
 }
 
 //___________________________________________________________________________________________________________________//

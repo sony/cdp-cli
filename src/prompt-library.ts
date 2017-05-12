@@ -123,19 +123,19 @@ export class PromptLibrary extends PromptBase {
             // base structure
             {
                 type: "list",
-                name: "baseStructure",
-                message: this.lang.prompt.common.baseStructure.message,
+                name: "extraSettings",
+                message: this.lang.prompt.common.extraSettings.message,
                 choices: [
                     {
-                        name: this.lang.prompt.common.baseStructure.choices.recommended,
+                        name: this.lang.prompt.common.extraSettings.choices.recommended,
                         value: "recommended",
                     },
                     {
-                        name: this.lang.prompt.common.baseStructure.choices.custom,
+                        name: this.lang.prompt.common.extraSettings.choices.custom,
                         value: "custom",
                     },
                 ],
-                default: this.answers.baseStructure || "recommended",
+                default: this.answers.extraSettings || "recommended",
             },
             // library settnigs (custom: moduleSystem)
             {
@@ -158,7 +158,7 @@ export class PromptLibrary extends PromptBase {
                 ],
                 default: ("amd" !== this.answers.moduleSystem) ? (this.answers.moduleSystem || "commonjs") : "commonjs",
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.baseStructure && /^(node|electron)$/i.test(answers.webpackTarget);
+                    return "custom" === answers.extraSettings && /^(node|electron)$/i.test(answers.webpackTarget);
                 },
             },
             {
@@ -181,7 +181,7 @@ export class PromptLibrary extends PromptBase {
                 ],
                 default: ("commonjs" !== this.answers.moduleSystem) ? (this.answers.moduleSystem || "amd") : "amd",
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.baseStructure && "web" === answers.webpackTarget;
+                    return "custom" === answers.extraSettings && "web" === answers.webpackTarget;
                 },
             },
             {
@@ -208,7 +208,7 @@ export class PromptLibrary extends PromptBase {
                 ],
                 default: this.answers.moduleSystem || "commonjs",
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.baseStructure && "electron-renderer" === answers.webpackTarget;
+                    return "custom" === answers.extraSettings && "electron-renderer" === answers.webpackTarget;
                 },
             },
             // library settnigs (custom: tsTranspileTarget)
@@ -228,7 +228,7 @@ export class PromptLibrary extends PromptBase {
                 ],
                 default: this.answers.tsTranspileTarget || ("web" === this.answers.webpackTarget ? "es5" : "es2015"),
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.baseStructure;
+                    return "custom" === answers.extraSettings;
                 },
             },
             // library settnigs (custom: supportCSS)
@@ -238,7 +238,7 @@ export class PromptLibrary extends PromptBase {
                 message: this.lang.prompt.library.supportCSS.message,
                 default: this.answers.supportCSS || false,
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.baseStructure;
+                    return "custom" === answers.extraSettings;
                 },
             },
         ];
@@ -268,7 +268,7 @@ export class PromptLibrary extends PromptBase {
         })();
 
         const items = [
-            { name: "baseStructure",        recommend: false    },
+            { name: "extraSettings",        recommend: false    },
             { name: "projectName",          recommend: false    },
             { name: "version",              recommend: false    },
             { name: "license",              recommend: false    },
@@ -280,7 +280,7 @@ export class PromptLibrary extends PromptBase {
 
         try {
             items.forEach((item) => {
-                const color = (item.recommend && "recommended" === answers.baseStructure) ? "yellow" : undefined;
+                const color = (item.recommend && "recommended" === answers.extraSettings) ? "yellow" : undefined;
                 console.log(this.config2description(config, item.name, color));
             });
         } catch (error) {

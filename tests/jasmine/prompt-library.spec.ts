@@ -41,9 +41,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.webpackTarget.choices.node).toBeTruthy();
         expect("string" === typeof lang.prompt.common.webpackTarget.choices.electron).toBeTruthy();
         expect("string" === typeof lang.prompt.common.webpackTarget.choices.electronRenderer).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.baseStructure.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.baseStructure.choices.recommended).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.baseStructure.choices.custom).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.extraSettings.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.extraSettings.choices.recommended).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.extraSettings.choices.custom).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.message).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.none).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.commonjs).toBeTruthy();
@@ -55,9 +55,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
-        expect("string" === typeof lang.settings.baseStructure.label).toBeTruthy();
-        expect("string" === typeof lang.settings.baseStructure.props.recommended).toBeTruthy();
-        expect("string" === typeof lang.settings.baseStructure.props.custom).toBeTruthy();
+        expect("string" === typeof lang.settings.extraSettings.label).toBeTruthy();
+        expect("string" === typeof lang.settings.extraSettings.props.recommended).toBeTruthy();
+        expect("string" === typeof lang.settings.extraSettings.props.custom).toBeTruthy();
         expect("string" === typeof lang.settings.projectName.label).toBeTruthy();
         expect("string" === typeof lang.settings.version.label).toBeTruthy();
         expect("string" === typeof lang.settings.license.label).toBeTruthy();
@@ -99,9 +99,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.webpackTarget.choices.node).toBeTruthy();
         expect("string" === typeof lang.prompt.common.webpackTarget.choices.electron).toBeTruthy();
         expect("string" === typeof lang.prompt.common.webpackTarget.choices.electronRenderer).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.baseStructure.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.baseStructure.choices.recommended).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.baseStructure.choices.custom).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.extraSettings.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.extraSettings.choices.recommended).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.extraSettings.choices.custom).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.message).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.none).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.commonjs).toBeTruthy();
@@ -113,9 +113,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
-        expect("string" === typeof lang.settings.baseStructure.label).toBeTruthy();
-        expect("string" === typeof lang.settings.baseStructure.props.recommended).toBeTruthy();
-        expect("string" === typeof lang.settings.baseStructure.props.custom).toBeTruthy();
+        expect("string" === typeof lang.settings.extraSettings.label).toBeTruthy();
+        expect("string" === typeof lang.settings.extraSettings.props.recommended).toBeTruthy();
+        expect("string" === typeof lang.settings.extraSettings.props.custom).toBeTruthy();
         expect("string" === typeof lang.settings.projectName.label).toBeTruthy();
         expect("string" === typeof lang.settings.version.label).toBeTruthy();
         expect("string" === typeof lang.settings.license.label).toBeTruthy();
@@ -150,7 +150,7 @@ describe("prompt-library check", () => {
         expect(questions[1].name).toEqual("version");
         expect(questions[2].name).toEqual("license");
         expect(questions[3].name).toEqual("webpackTarget");
-        expect(questions[4].name).toEqual("baseStructure");
+        expect(questions[4].name).toEqual("extraSettings");
         expect(questions[5].name).toEqual("moduleSystem");
         expect(questions[6].name).toEqual("moduleSystem");
         expect(questions[7].name).toEqual("moduleSystem");
@@ -200,65 +200,65 @@ describe("prompt-library check", () => {
 
         const msNodeElectron = moduleSystems[0];
         expect((<any>msNodeElectron).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "node",
         })).toBeTruthy();
         expect((<any>msNodeElectron).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "electron",
         })).toBeTruthy();
         expect((<any>msNodeElectron).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "web",
         })).toBeFalsy();
         expect((<any>msNodeElectron).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "electron-renderer",
         })).toBeFalsy();
         expect((<any>msNodeElectron).when({
-            baseStructure: "recommended",
+            extraSettings: "recommended",
         })).toBeFalsy();
 
         const msWeb = moduleSystems[1];
         expect((<any>msWeb).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "web",
         })).toBeTruthy();
         expect((<any>msWeb).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "node",
         })).toBeFalsy();
         expect((<any>msWeb).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "electron",
         })).toBeFalsy();
         expect((<any>msWeb).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "electron-renderer",
         })).toBeFalsy();
         expect((<any>msWeb).when({
-            baseStructure: "recommended",
+            extraSettings: "recommended",
         })).toBeFalsy();
 
         const msElectronRenderer = moduleSystems[2];
         expect((<any>msElectronRenderer).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "electron-renderer",
         })).toBeTruthy();
         expect((<any>msElectronRenderer).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "web",
         })).toBeFalsy();
         expect((<any>msElectronRenderer).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "node",
         })).toBeFalsy();
         expect((<any>msElectronRenderer).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
             webpackTarget: "electron",
         })).toBeFalsy();
         expect((<any>msElectronRenderer).when({
-            baseStructure: "recommended",
+            extraSettings: "recommended",
         })).toBeFalsy();
 
         // tsTranspileTarget  when check
@@ -267,10 +267,10 @@ describe("prompt-library check", () => {
         });
         expect(tsTranspileTarget).not.toBeUndefined();
         expect((<any>tsTranspileTarget).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
         })).toBeTruthy();
         expect((<any>tsTranspileTarget).when({
-            baseStructure: "recommended",
+            extraSettings: "recommended",
         })).toBeFalsy();
 
         // supportCSS  when check
@@ -279,10 +279,10 @@ describe("prompt-library check", () => {
         });
         expect(supportCSS).not.toBeUndefined();
         expect((<any>supportCSS).when({
-            baseStructure: "custom",
+            extraSettings: "custom",
         })).toBeTruthy();
         expect((<any>supportCSS).when({
-            baseStructure: "recommended",
+            extraSettings: "recommended",
         })).toBeFalsy();
     });
 
@@ -301,10 +301,10 @@ describe("prompt-library check", () => {
         expect(instance.displaySettingsByAnswers(<any>{
             webpackTarget: "web",
         })).toEqual(libConfig.browser);
-        compared = $.extend({}, libConfig.node, { baseStructure: "recommended" });
+        compared = $.extend({}, libConfig.node, { extraSettings: "recommended" });
         expect(instance.displaySettingsByAnswers(<any>{
             webpackTarget: "node",
-            baseStructure: "recommended",
+            extraSettings: "recommended",
         })).toEqual(compared);
         expect(instance.displaySettingsByAnswers(<any>{
             webpackTarget: "electron",

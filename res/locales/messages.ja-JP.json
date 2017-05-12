@@ -26,7 +26,7 @@
           "electronRenderer": "electron のレンダラプロセスで使用する"
         }
       },
-      "baseStructure": {
+      "extraSettings": {
         "message": "プロジェクト構成を選択してください",
         "choices": {
           "recommended": "おすすめ",
@@ -64,7 +64,7 @@
     }
   },
   "settings": {
-    "baseStructure": {
+    "extraSettings": {
       "label": "構成情報:                    ",
       "props": {
         "recommended": "おすすめ",
