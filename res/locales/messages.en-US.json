@@ -1,9 +1,10 @@
 {
-  "type": "en",
+  "type": "en-US",
   "prompt": {
     "common": {
       "projectName": {
-        "message": "Enter the name of the project."
+        "message": "Enter the name of the project.",
+        "invalidMessage": "Please input The character which can be used by a file system."
       },
       "version": {
         "message": "Enter a version for the application. ex: 0.0.1",
@@ -116,6 +117,9 @@
         "no": "No"
       }
     }
+  },
+  "finished":  {
+    "create": "Succeeded! Preparations of the new project have been completed."
   },
   "EOF": "EOF"
 }

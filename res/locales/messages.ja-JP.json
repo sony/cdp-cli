@@ -1,9 +1,10 @@
 {
-  "type": "ja",
+  "type": "ja-JP",
   "prompt": {
     "common": {
       "projectName": {
-        "message": "プロジェクト名を入力してください"
+        "message": "プロジェクト名を入力してください",
+        "invalidMessage": "ファイルシステムで使用できない文字が含まれています"
       },
       "version": {
         "message": "バージョン情報を入力してください。例: 0.0.1",
@@ -116,6 +117,9 @@
         "no": "しない"
       }
     }
+  },
+  "finished":  {
+    "create": "Succeeded! 新しいプロジェクトの準備が完了しました。"
   },
   "EOF": "EOF"
 }

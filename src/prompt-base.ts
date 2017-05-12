@@ -71,6 +71,16 @@ export abstract class PromptBase {
         console.log(GREETING);
     }
 
+    /**
+     * ローカライズリソースにアクセス
+     * ex) this.lang.prompt.projectName.message
+     *
+     * @return {Object} リソースオブジェクト
+     */
+    public get lang(): any {
+        return this._locale;
+    }
+
     ///////////////////////////////////////////////////////////////////////
     // abstruct methods
 
@@ -89,16 +99,6 @@ export abstract class PromptBase {
 
     ///////////////////////////////////////////////////////////////////////
     // protected methods
-
-    /**
-     * ローカライズリソースにアクセス
-     * ex) this.lang.prompt.projectName.message
-     *
-     * @return {Object} リソースオブジェクト
-     */
-    protected get lang(): any {
-        return this._locale;
-    }
 
     /**
      * 設定値にアクセス
@@ -265,11 +265,13 @@ export abstract class PromptBase {
                         this.updateAnswers(answers);
                         this.confirmSettings()
                             .then((config) => {
+                                config.action = this._cmdInfo.action;
                                 config.settings = {
                                     force: this._cmdInfo.cliOptions.force,
                                     verbose: this._cmdInfo.cliOptions.verbose,
                                     silent: this._cmdInfo.cliOptions.silent,
                                     libPath: path.join(this._cmdInfo.pkgDir, "node_modules", "cdp-lib"),
+                                    lang: this.lang.type,
                                 };
                                 resolve(config);
                             })

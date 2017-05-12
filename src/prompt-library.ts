@@ -34,7 +34,14 @@ export class PromptLibrary extends PromptBase {
                 type: "input",
                 name: "projectName",
                 message: this.lang.prompt.common.projectName.message,
-                default: this.answers.projectName || "CoolProjectName",
+                default: this.answers.projectName || "cool-project-name",
+                validate: (value) => {
+                    if (/^.*[(\\|/|:|\*|?|\"|<|>|\|)].*$/.test(value)) {
+                        return this.lang.prompt.common.projectName.invalidMessage;
+                    } else {
+                        return true;
+                    }
+                },
             },
             {
                 type: "input",

@@ -55,9 +55,11 @@ export function main() {
 
     inquirer.prompting(cmdInfo)
         .then((config) => {
-            console.log(cmdInfo.cliOptions.config);
             // execute
-            CDPLib.execute(config);
+            return CDPLib.execute(config);
+        })
+        .then(() => {
+            console.log(chalk.green(inquirer.lang.finished[cmdInfo.action]));
         })
         .catch((reason: any) => {
             if ("string" !== typeof reason) {
