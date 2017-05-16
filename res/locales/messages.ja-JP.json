@@ -42,7 +42,7 @@
           "umd": "UMD (環境非依存)"
         }
       },
-      "tsTranspileTarget": {
+      "esTarget": {
         "message": "TypeScript からトランスパイルした JavaScript バージョンを選択してください",
         "choices": {
           "es5": "ES5",
@@ -103,7 +103,7 @@
         "umd": "UMD"
       }
     },
-    "tsTranspileTarget": {
+    "esTarget": {
       "label": "  トランスパイルターゲット:  ",
       "props": {
         "es5": "ES5",

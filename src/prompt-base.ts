@@ -184,9 +184,13 @@ export abstract class PromptBase {
      * ローカライズリソースのロード
      */
     private loadLanguage(locale: string): void {
-        this._locale = JSON.parse(fs.readFileSync(
-            path.join(this._cmdInfo.pkgDir, "res/locales/messages." + locale + ".json"), "utf8").toString()
-        );
+        try {
+            this._locale = JSON.parse(fs.readFileSync(
+                path.join(this._cmdInfo.pkgDir, "res/locales/messages." + locale + ".json"), "utf8").toString()
+            );
+        } catch (error) {
+            throw Error("Language resource JSON parse error" + error.message);
+        }
     }
 
     /**

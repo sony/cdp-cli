@@ -42,7 +42,7 @@
           "umd": "UMD (Independent runtime environment)"
         }
       },
-      "tsTranspileTarget": {
+      "esTarget": {
         "message": "Please choose the transpile target of JavaScript version.",
         "choices": {
           "es5": "ES5",
@@ -103,7 +103,7 @@
         "umd": "UMD"
       }
     },
-    "tsTranspileTarget": {
+    "esTarget": {
       "label": "  Transpile Target:  ",
       "props": {
         "es5": "ES5",

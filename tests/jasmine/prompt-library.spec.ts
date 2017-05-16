@@ -49,9 +49,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.commonjs).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.amd).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.umd).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.tsTranspileTarget.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.tsTranspileTarget.choices.es5).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.tsTranspileTarget.choices.es2015).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.esTarget.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.esTarget.choices.es5).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.esTarget.choices.es2015).toBeTruthy();
         expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
@@ -74,9 +74,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.settings.moduleSystem.props.commonjs).toBeTruthy();
         expect("string" === typeof lang.settings.moduleSystem.props.amd).toBeTruthy();
         expect("string" === typeof lang.settings.moduleSystem.props.umd).toBeTruthy();
-        expect("string" === typeof lang.settings.tsTranspileTarget.label).toBeTruthy();
-        expect("string" === typeof lang.settings.tsTranspileTarget.props.es5).toBeTruthy();
-        expect("string" === typeof lang.settings.tsTranspileTarget.props.es2015).toBeTruthy();
+        expect("string" === typeof lang.settings.esTarget.label).toBeTruthy();
+        expect("string" === typeof lang.settings.esTarget.props.es5).toBeTruthy();
+        expect("string" === typeof lang.settings.esTarget.props.es2015).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.label).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.yes).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.no).toBeTruthy();
@@ -107,9 +107,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.commonjs).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.amd).toBeTruthy();
         expect("string" === typeof lang.prompt.common.moduleSystem.choices.umd).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.tsTranspileTarget.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.tsTranspileTarget.choices.es5).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.tsTranspileTarget.choices.es2015).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.esTarget.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.esTarget.choices.es5).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.esTarget.choices.es2015).toBeTruthy();
         expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
@@ -132,9 +132,9 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.settings.moduleSystem.props.commonjs).toBeTruthy();
         expect("string" === typeof lang.settings.moduleSystem.props.amd).toBeTruthy();
         expect("string" === typeof lang.settings.moduleSystem.props.umd).toBeTruthy();
-        expect("string" === typeof lang.settings.tsTranspileTarget.label).toBeTruthy();
-        expect("string" === typeof lang.settings.tsTranspileTarget.props.es5).toBeTruthy();
-        expect("string" === typeof lang.settings.tsTranspileTarget.props.es2015).toBeTruthy();
+        expect("string" === typeof lang.settings.esTarget.label).toBeTruthy();
+        expect("string" === typeof lang.settings.esTarget.props.es5).toBeTruthy();
+        expect("string" === typeof lang.settings.esTarget.props.es2015).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.label).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.yes).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.no).toBeTruthy();
@@ -154,7 +154,7 @@ describe("prompt-library check", () => {
         expect(questions[5].name).toEqual("moduleSystem");
         expect(questions[6].name).toEqual("moduleSystem");
         expect(questions[7].name).toEqual("moduleSystem");
-        expect(questions[8].name).toEqual("tsTranspileTarget");
+        expect(questions[8].name).toEqual("esTarget");
         expect(questions[9].name).toEqual("supportCSS");
 
         // semver check
@@ -261,15 +261,15 @@ describe("prompt-library check", () => {
             extraSettings: "recommended",
         })).toBeFalsy();
 
-        // tsTranspileTarget  when check
-        const tsTranspileTarget  = questions.find((elem) => {
-            return "tsTranspileTarget" === elem.name;
+        // esTarget  when check
+        const esTarget  = questions.find((elem) => {
+            return "esTarget" === elem.name;
         });
-        expect(tsTranspileTarget).not.toBeUndefined();
-        expect((<any>tsTranspileTarget).when({
+        expect(esTarget).not.toBeUndefined();
+        expect((<any>esTarget).when({
             extraSettings: "custom",
         })).toBeTruthy();
-        expect((<any>tsTranspileTarget).when({
+        expect((<any>esTarget).when({
             extraSettings: "recommended",
         })).toBeFalsy();
 

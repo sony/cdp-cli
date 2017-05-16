@@ -63,7 +63,11 @@ export function main() {
         })
         .catch((reason: any) => {
             if ("string" !== typeof reason) {
-                reason = JSON.stringify(reason);
+                if (null != reason.message) {
+                    reason = reason.message;
+                } else {
+                    reason = JSON.stringify(reason);
+                }
             }
             console.error(chalk.red(reason));
         })

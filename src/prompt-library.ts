@@ -211,22 +211,22 @@ export class PromptLibrary extends PromptBase {
                     return "custom" === answers.extraSettings && "electron-renderer" === answers.webpackTarget;
                 },
             },
-            // library settnigs (custom: tsTranspileTarget)
+            // library settnigs (custom: esTarget)
             {
                 type: "list",
-                name: "tsTranspileTarget",
-                message: this.lang.prompt.common.tsTranspileTarget.message,
+                name: "esTarget",
+                message: this.lang.prompt.common.esTarget.message,
                 choices: [
                     {
-                        name: this.lang.prompt.common.tsTranspileTarget.choices.es5,
+                        name: this.lang.prompt.common.esTarget.choices.es5,
                         value: "es5",
                     },
                     {
-                        name: this.lang.prompt.common.tsTranspileTarget.choices.es2015,
+                        name: this.lang.prompt.common.esTarget.choices.es2015,
                         value: "es2015",
                     },
                 ],
-                default: this.answers.tsTranspileTarget || ("web" === this.answers.webpackTarget ? "es5" : "es2015"),
+                default: this.answers.esTarget || ("web" === this.answers.webpackTarget ? "es5" : "es2015"),
                 when: (answers: IAnswerSchema) => {
                     return "custom" === answers.extraSettings;
                 },
@@ -274,7 +274,7 @@ export class PromptLibrary extends PromptBase {
             { name: "license",              recommend: false    },
             { name: "webpackTarget",        recommend: false    },
             { name: "moduleSystem",         recommend: true     },
-            { name: "tsTranspileTarget",    recommend: true     },
+            { name: "esTarget",    recommend: true     },
             { name: "supportCSS",           recommend: true     },
         ];
 
