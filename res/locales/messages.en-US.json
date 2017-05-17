@@ -4,7 +4,7 @@
     "common": {
       "projectName": {
         "message": "Enter the name of the project.",
-        "invalidMessage": "Please input The character which can be used by a file system."
+        "invalidMessage": "Please input URL safe characters."
       },
       "version": {
         "message": "Enter a version for the application. ex: 0.0.1",

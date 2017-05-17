@@ -4,7 +4,7 @@
     "common": {
       "projectName": {
         "message": "プロジェクト名を入力してください",
-        "invalidMessage": "ファイルシステムで使用できない文字が含まれています"
+        "invalidMessage": "URL で使用可能な文字列を使用してください"
       },
       "version": {
         "message": "バージョン情報を入力してください。例: 0.0.1",

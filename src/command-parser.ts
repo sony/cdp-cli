@@ -15,6 +15,7 @@ export interface ICommandLineOptions {
     config: string;     // コンフィグファイル指定
     verbose: boolean;   // 詳細ログ
     silent: boolean;    // silent mode
+    minify: boolean;    // minify support
 }
 
 /**
@@ -67,6 +68,7 @@ export class CommandParser {
             .option("-c, --config <path>", "Specify config file path")
             .option("-v, --verbose", "Show debug messages.")
             .option("-s, --silent", "Run as silent mode.")
+            .option("--no-minify", "Not minified on release.")
         ;
 
         commander
@@ -153,6 +155,7 @@ export class CommandParser {
             config: commander.config,
             verbose: !!commander.verbose,
             silent: !!commander.silent,
+            minify: commander.minify,
         };
     }
 

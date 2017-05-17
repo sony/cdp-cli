@@ -259,7 +259,30 @@ export abstract class PromptBase {
     }
 
     /**
-     * 設定
+     * command line 情報を Conficuration に反映
+     *
+     * @param  {IProjectConfiguration} config 設定
+     * @return {IProjectConfiguration} command line を反映させた config 設定
+     */
+    private reflectCommandInfo(config: IProjectConfigration): IProjectConfigration {
+        config.action = this._cmdInfo.action;
+
+        (<ICompileConfigration>config).minify = this._cmdInfo.cliOptions.minify;
+
+        config.settings = {
+            force: this._cmdInfo.cliOptions.force,
+            verbose: this._cmdInfo.cliOptions.verbose,
+            silent: this._cmdInfo.cliOptions.silent,
+            libPath: path.join(this._cmdInfo.pkgDir, "node_modules", "cdp-lib"),
+            targetDir: this._cmdInfo.cliOptions.targetDir,
+            lang: this.lang.type,
+        };
+
+        return config;
+    }
+
+    /**
+     * 設定インタラクション
      */
     private inquire(): Promise<IProjectConfigration> {
         return new Promise((resolve, reject) => {
@@ -269,16 +292,7 @@ export abstract class PromptBase {
                         this.updateAnswers(answers);
                         this.confirmSettings()
                             .then((config) => {
-                                config.action = this._cmdInfo.action;
-                                config.settings = {
-                                    force: this._cmdInfo.cliOptions.force,
-                                    verbose: this._cmdInfo.cliOptions.verbose,
-                                    silent: this._cmdInfo.cliOptions.silent,
-                                    libPath: path.join(this._cmdInfo.pkgDir, "node_modules", "cdp-lib"),
-                                    targetDir: this._cmdInfo.cliOptions.targetDir,
-                                    lang: this.lang.type,
-                                };
-                                resolve(config);
+                                resolve(this.reflectCommandInfo(config));
                             })
                             .catch(() => {
                                 setTimeout(proc);

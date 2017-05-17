@@ -36,7 +36,7 @@ export class PromptLibrary extends PromptBase {
                 message: this.lang.prompt.common.projectName.message,
                 default: this.answers.projectName || "cool-project-name",
                 validate: (value) => {
-                    if (/^.*[(\\|/|:|\*|?|\"|<|>|\|)].*$/.test(value)) {
+                    if (!/^[a-zA-Z0-9_-]*$/.test(value)) {
                         return this.lang.prompt.common.projectName.invalidMessage;
                     } else {
                         return true;
