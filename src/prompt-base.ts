@@ -2,7 +2,7 @@
 import * as inquirer from "inquirer";
 import {
     IProjectConfigration,
-    ICompileConfigration,
+    IBuildTargetConfigration,
     Utils,
 } from "cdp-lib";
 import { ICommandLineInfo } from "./command-parser";
@@ -16,7 +16,7 @@ const _     = Utils._;
  * @brief Answer オブジェクトのスキーマ定義インターフェイス
  */
 export interface IAnswerSchema
-    extends inquirer.Answers, IProjectConfigration, ICompileConfigration {
+    extends inquirer.Answers, IProjectConfigration, IBuildTargetConfigration {
     // 共通拡張定義
     extraSettings: "recommended" | "custom";
 }
@@ -267,7 +267,7 @@ export abstract class PromptBase {
     private reflectCommandInfo(config: IProjectConfigration): IProjectConfigration {
         config.action = this._cmdInfo.action;
 
-        (<ICompileConfigration>config).minify = this._cmdInfo.cliOptions.minify;
+        (<IBuildTargetConfigration>config).minify = this._cmdInfo.cliOptions.minify;
 
         config.settings = {
             force: this._cmdInfo.cliOptions.force,

@@ -18,7 +18,7 @@
           "proprietary": "プロプライエタリライセンス (NONE)"
         }
       },
-      "webpackTarget": {
+      "env": {
         "choices": {
           "browser": "ブラウザ環境で使用する",
           "node": "Node.js 環境で使用する",
@@ -33,7 +33,7 @@
           "custom": "カスタム"
         }
       },
-      "moduleSystem": {
+      "module": {
         "message": "JavaScript のモジュールシステム選択してください",
         "choices": {
           "none": "なし",
@@ -42,7 +42,7 @@
           "umd": "UMD (環境非依存)"
         }
       },
-      "esTarget": {
+      "es": {
         "message": "TypeScript からトランスパイルした JavaScript バージョンを選択してください",
         "choices": {
           "es5": "ES5",
@@ -55,7 +55,7 @@
       "stilNotAvailable": "[まだ利用できません]"
     },
     "library": {
-      "webpackTarget": {
+      "env": {
         "message": "ライブラリの使用仕向けを選択してください"
       },
       "supportCSS": {
@@ -85,7 +85,7 @@
         "NONE": "プロプライエタリ(NONE)"
       }
     },
-    "webpackTarget": {
+    "env": {
       "label": "  使用仕向け:                ",
       "props": {
         "web": "ブラウザ",
@@ -94,7 +94,7 @@
         "electron-renderer": "electron レンダラプロセス"
       }
     },
-    "moduleSystem": {
+    "module": {
       "label": "  モジュールシステム:        ",
       "props": {
         "none": "なし",
@@ -103,7 +103,7 @@
         "umd": "UMD"
       }
     },
-    "esTarget": {
+    "es": {
       "label": "  トランスパイルターゲット:  ",
       "props": {
         "es5": "ES5",

@@ -36,22 +36,22 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.license.choices.apache2).toBeTruthy();
         expect("string" === typeof lang.prompt.common.license.choices.mit).toBeTruthy();
         expect("string" === typeof lang.prompt.common.license.choices.proprietary).toBeTruthy();
-        expect("string" === typeof lang.prompt.library.webpackTarget.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.browser).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.node).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.electron).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.electronRenderer).toBeTruthy();
+        expect("string" === typeof lang.prompt.library.env.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.browser).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.node).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.electron).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.electronRenderer).toBeTruthy();
         expect("string" === typeof lang.prompt.common.extraSettings.message).toBeTruthy();
         expect("string" === typeof lang.prompt.common.extraSettings.choices.recommended).toBeTruthy();
         expect("string" === typeof lang.prompt.common.extraSettings.choices.custom).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.none).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.commonjs).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.amd).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.umd).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.esTarget.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.esTarget.choices.es5).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.esTarget.choices.es2015).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.none).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.commonjs).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.amd).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.umd).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.es.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.es.choices.es5).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.es.choices.es2015).toBeTruthy();
         expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
@@ -64,19 +64,19 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.settings.license.props["Apache-2.0"]).toBeTruthy();
         expect("string" === typeof lang.settings.license.props.MIT).toBeTruthy();
         expect("string" === typeof lang.settings.license.props.NONE).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.label).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props.web).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props.node).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props.electron).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props["electron-renderer"]).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.label).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.none).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.commonjs).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.amd).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.umd).toBeTruthy();
-        expect("string" === typeof lang.settings.esTarget.label).toBeTruthy();
-        expect("string" === typeof lang.settings.esTarget.props.es5).toBeTruthy();
-        expect("string" === typeof lang.settings.esTarget.props.es2015).toBeTruthy();
+        expect("string" === typeof lang.settings.env.label).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props.web).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props.node).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props.electron).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props["electron-renderer"]).toBeTruthy();
+        expect("string" === typeof lang.settings.module.label).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.none).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.commonjs).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.amd).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.umd).toBeTruthy();
+        expect("string" === typeof lang.settings.es.label).toBeTruthy();
+        expect("string" === typeof lang.settings.es.props.es5).toBeTruthy();
+        expect("string" === typeof lang.settings.es.props.es2015).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.label).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.yes).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.no).toBeTruthy();
@@ -94,22 +94,22 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.license.choices.apache2).toBeTruthy();
         expect("string" === typeof lang.prompt.common.license.choices.mit).toBeTruthy();
         expect("string" === typeof lang.prompt.common.license.choices.proprietary).toBeTruthy();
-        expect("string" === typeof lang.prompt.library.webpackTarget.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.browser).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.node).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.electron).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.webpackTarget.choices.electronRenderer).toBeTruthy();
+        expect("string" === typeof lang.prompt.library.env.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.browser).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.node).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.electron).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.env.choices.electronRenderer).toBeTruthy();
         expect("string" === typeof lang.prompt.common.extraSettings.message).toBeTruthy();
         expect("string" === typeof lang.prompt.common.extraSettings.choices.recommended).toBeTruthy();
         expect("string" === typeof lang.prompt.common.extraSettings.choices.custom).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.none).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.commonjs).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.amd).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.moduleSystem.choices.umd).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.esTarget.message).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.esTarget.choices.es5).toBeTruthy();
-        expect("string" === typeof lang.prompt.common.esTarget.choices.es2015).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.none).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.commonjs).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.amd).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.module.choices.umd).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.es.message).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.es.choices.es5).toBeTruthy();
+        expect("string" === typeof lang.prompt.common.es.choices.es2015).toBeTruthy();
         expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
@@ -122,19 +122,19 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.settings.license.props["Apache-2.0"]).toBeTruthy();
         expect("string" === typeof lang.settings.license.props.MIT).toBeTruthy();
         expect("string" === typeof lang.settings.license.props.NONE).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.label).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props.web).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props.node).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props.electron).toBeTruthy();
-        expect("string" === typeof lang.settings.webpackTarget.props["electron-renderer"]).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.label).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.none).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.commonjs).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.amd).toBeTruthy();
-        expect("string" === typeof lang.settings.moduleSystem.props.umd).toBeTruthy();
-        expect("string" === typeof lang.settings.esTarget.label).toBeTruthy();
-        expect("string" === typeof lang.settings.esTarget.props.es5).toBeTruthy();
-        expect("string" === typeof lang.settings.esTarget.props.es2015).toBeTruthy();
+        expect("string" === typeof lang.settings.env.label).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props.web).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props.node).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props.electron).toBeTruthy();
+        expect("string" === typeof lang.settings.env.props["electron-renderer"]).toBeTruthy();
+        expect("string" === typeof lang.settings.module.label).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.none).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.commonjs).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.amd).toBeTruthy();
+        expect("string" === typeof lang.settings.module.props.umd).toBeTruthy();
+        expect("string" === typeof lang.settings.es.label).toBeTruthy();
+        expect("string" === typeof lang.settings.es.props.es5).toBeTruthy();
+        expect("string" === typeof lang.settings.es.props.es2015).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.label).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.yes).toBeTruthy();
         expect("string" === typeof lang.settings.supportCSS.bool.no).toBeTruthy();
@@ -149,12 +149,12 @@ describe("prompt-library check", () => {
         expect(questions[0].name).toEqual("projectName");
         expect(questions[1].name).toEqual("version");
         expect(questions[2].name).toEqual("license");
-        expect(questions[3].name).toEqual("webpackTarget");
+        expect(questions[3].name).toEqual("env");
         expect(questions[4].name).toEqual("extraSettings");
-        expect(questions[5].name).toEqual("moduleSystem");
-        expect(questions[6].name).toEqual("moduleSystem");
-        expect(questions[7].name).toEqual("moduleSystem");
-        expect(questions[8].name).toEqual("esTarget");
+        expect(questions[5].name).toEqual("module");
+        expect(questions[6].name).toEqual("module");
+        expect(questions[7].name).toEqual("module");
+        expect(questions[8].name).toEqual("es");
         expect(questions[9].name).toEqual("supportCSS");
 
         // semver check
@@ -177,43 +177,43 @@ describe("prompt-library check", () => {
         expect(version.filter("v1.0.0 hoge")).toBe("v1.0.0");
         expect(version.filter("hoge")).toBe("hoge");
 
-        // webpackTarget check
-        const webpackTarget = questions.find((elem) => {
-            return "webpackTarget" === elem.name;
+        // env check
+        const env = questions.find((elem) => {
+            return "env" === elem.name;
         });
-        expect(webpackTarget).not.toBeUndefined();
-        expect(webpackTarget.filter("electron")).toBe("node");
-        expect(webpackTarget.filter("electron-renderer")).toBe("web");
-        expect(webpackTarget.filter("web")).toBe("web");
-        expect(webpackTarget.filter("node")).toBe("node");
+        expect(env).not.toBeUndefined();
+        expect(env.filter("electron")).toBe("node");
+        expect(env.filter("electron-renderer")).toBe("web");
+        expect(env.filter("web")).toBe("web");
+        expect(env.filter("node")).toBe("node");
         if (false === libConfig.ELECTRON_AVAILABLE) {
             libConfig.ELECTRON_AVAILABLE = true;
-            expect(webpackTarget.filter("electron")).toBe("electron");
+            expect(env.filter("electron")).toBe("electron");
             libConfig.ELECTRON_AVAILABLE = false;
         }
 
-        // moduleSystem when check
+        // module when check
         const moduleSystems = questions.filter((elem) => {
-            return "moduleSystem" === elem.name;
+            return "module" === elem.name;
         });
         expect(moduleSystems.length).toBe(3);
 
         const msNodeElectron = moduleSystems[0];
         expect((<any>msNodeElectron).when({
             extraSettings: "custom",
-            webpackTarget: "node",
+            env: "node",
         })).toBeTruthy();
         expect((<any>msNodeElectron).when({
             extraSettings: "custom",
-            webpackTarget: "electron",
+            env: "electron",
         })).toBeTruthy();
         expect((<any>msNodeElectron).when({
             extraSettings: "custom",
-            webpackTarget: "web",
+            env: "web",
         })).toBeFalsy();
         expect((<any>msNodeElectron).when({
             extraSettings: "custom",
-            webpackTarget: "electron-renderer",
+            env: "electron-renderer",
         })).toBeFalsy();
         expect((<any>msNodeElectron).when({
             extraSettings: "recommended",
@@ -222,19 +222,19 @@ describe("prompt-library check", () => {
         const msWeb = moduleSystems[1];
         expect((<any>msWeb).when({
             extraSettings: "custom",
-            webpackTarget: "web",
+            env: "web",
         })).toBeTruthy();
         expect((<any>msWeb).when({
             extraSettings: "custom",
-            webpackTarget: "node",
+            env: "node",
         })).toBeFalsy();
         expect((<any>msWeb).when({
             extraSettings: "custom",
-            webpackTarget: "electron",
+            env: "electron",
         })).toBeFalsy();
         expect((<any>msWeb).when({
             extraSettings: "custom",
-            webpackTarget: "electron-renderer",
+            env: "electron-renderer",
         })).toBeFalsy();
         expect((<any>msWeb).when({
             extraSettings: "recommended",
@@ -243,33 +243,33 @@ describe("prompt-library check", () => {
         const msElectronRenderer = moduleSystems[2];
         expect((<any>msElectronRenderer).when({
             extraSettings: "custom",
-            webpackTarget: "electron-renderer",
+            env: "electron-renderer",
         })).toBeTruthy();
         expect((<any>msElectronRenderer).when({
             extraSettings: "custom",
-            webpackTarget: "web",
+            env: "web",
         })).toBeFalsy();
         expect((<any>msElectronRenderer).when({
             extraSettings: "custom",
-            webpackTarget: "node",
+            env: "node",
         })).toBeFalsy();
         expect((<any>msElectronRenderer).when({
             extraSettings: "custom",
-            webpackTarget: "electron",
+            env: "electron",
         })).toBeFalsy();
         expect((<any>msElectronRenderer).when({
             extraSettings: "recommended",
         })).toBeFalsy();
 
-        // esTarget  when check
-        const esTarget  = questions.find((elem) => {
-            return "esTarget" === elem.name;
+        // es  when check
+        const es  = questions.find((elem) => {
+            return "es" === elem.name;
         });
-        expect(esTarget).not.toBeUndefined();
-        expect((<any>esTarget).when({
+        expect(es).not.toBeUndefined();
+        expect((<any>es).when({
             extraSettings: "custom",
         })).toBeTruthy();
-        expect((<any>esTarget).when({
+        expect((<any>es).when({
             extraSettings: "recommended",
         })).toBeFalsy();
 
@@ -296,22 +296,22 @@ describe("prompt-library check", () => {
 
         let compared: any;
         expect(instance.displaySettingsByAnswers(<any>{
-            webpackTarget: "hoge",
+            env: "hoge",
         })).toBeUndefined();
         expect(instance.displaySettingsByAnswers(<any>{
-            webpackTarget: "web",
+            env: "web",
         })).toEqual(libConfig.browser);
         compared = $.extend({}, libConfig.node, { extraSettings: "recommended" });
         expect(instance.displaySettingsByAnswers(<any>{
-            webpackTarget: "node",
+            env: "node",
             extraSettings: "recommended",
         })).toEqual(compared);
         expect(instance.displaySettingsByAnswers(<any>{
-            webpackTarget: "electron",
+            env: "electron",
         })).toEqual(libConfig.electron);
-        compared = $.extend({}, libConfig.electron, { webpackTarget: "electron-renderer" });
+        compared = $.extend({}, libConfig.electron, { env: "electron-renderer" });
         expect(instance.displaySettingsByAnswers(<any>{
-            webpackTarget: "electron-renderer",
+            env: "electron-renderer",
         })).toEqual(compared);
     });
 });

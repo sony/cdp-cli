@@ -1,5 +1,6 @@
-﻿'use strict';
-const fs        = require('fs-extra');
+﻿/* eslint-env node, es6 */
+'use strict';
+const fs        = require('fs');
 const path      = require('path');
 const config    = require('../project.config.js');
 

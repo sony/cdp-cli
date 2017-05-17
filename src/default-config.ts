@@ -10,11 +10,12 @@
  */
 const libraryOnBrowser = <ILibraryConfigration>{
     // IProjectConfigration
-    projectKind: "library",
-    // ICompileConfigration
-    esTarget: "es5",
-    moduleSystem: "umd",
-    webpackTarget: "web",
+    projectType: "library",
+    // IBuildTargetConfigration
+    es: "es5",
+    module: "umd",
+    env: "web",
+    tools: ["webpack"],
     supportCSS: false,
 };
 
@@ -23,11 +24,12 @@ const libraryOnBrowser = <ILibraryConfigration>{
  */
 const libraryOnNode = <ILibraryConfigration>{
     // IProjectConfigration
-    projectKind: "library",
-    // ICompileConfigration
-    esTarget: "es2015",
-    moduleSystem: "commonjs",
-    webpackTarget: "node",
+    projectType: "library",
+    // IBuildTargetConfigration
+    es: "es2015",
+    module: "commonjs",
+    env: "node",
+    tools: ["webpack"],
     supportCSS: false,
 };
 
@@ -36,11 +38,12 @@ const libraryOnNode = <ILibraryConfigration>{
  */
 const libraryOnElectron = <ILibraryConfigration>{
     // IProjectConfigration
-    projectKind: "library",
-    // ICompileConfigration
-    esTarget: "es2015",
-    moduleSystem: "commonjs",
-    webpackTarget: "electron",
+    projectType: "library",
+    // IBuildTargetConfigration
+    es: "es2015",
+    module: "commonjs",
+    env: "electron",
+    tools: ["webpack"],
     supportCSS: false,
 };
 
@@ -49,11 +52,11 @@ const libraryOnElectron = <ILibraryConfigration>{
  */
 const mobileOnBrowser = <IMobileAppConfigration>{
     // IProjectConfigration
-    projectKind: "mobile",
-    // ICompileConfigration
-    esTarget: "es5",
-    moduleSystem: "amd",
-    webpackTarget: "web",
+    projectType: "mobile",
+    // IBuildTargetConfigration
+    es: "es5",
+    module: "amd",
+    env: "web",
     supportCSS: true,
 };
 
@@ -62,11 +65,11 @@ const mobileOnBrowser = <IMobileAppConfigration>{
  */
 const desktopOnBrowser = <IDesktopAppConfigration>{
     // IProjectConfigration
-    projectKind: "desktop",
-    // ICompileConfigration
-    esTarget: "es5",
-    moduleSystem: "amd",
-    webpackTarget: "web",
+    projectType: "desktop",
+    // IBuildTargetConfigration
+    es: "es5",
+    module: "amd",
+    env: "web",
     supportCSS: true,
 };
 
@@ -75,11 +78,12 @@ const desktopOnBrowser = <IDesktopAppConfigration>{
  */
 const desktopOnElectron = <IDesktopAppConfigration>{
     // IProjectConfigration
-    projectKind: "desktop",
-    // ICompileConfigration
-    esTarget: "es2015",
-    moduleSystem: "commonjs",
-    webpackTarget: "electron-renderer",
+    projectType: "desktop",
+    // IBuildTargetConfigration
+    es: "es2015",
+    module: "commonjs",
+    env: "electron-renderer",
+    tools: ["webpack"],
     supportCSS: true,
 };
 
@@ -88,11 +92,11 @@ const desktopOnElectron = <IDesktopAppConfigration>{
  */
 const webOnBrowser = <IWebAppConfigration>{
     // IProjectConfigration
-    projectKind: "web",
-    // ICompileConfigration
-    esTarget: "es5",
-    moduleSystem: "amd",
-    webpackTarget: "web",
+    projectType: "web",
+    // IBuildTargetConfigration
+    es: "es5",
+    module: "amd",
+    env: "web",
     supportCSS: true,
 };
 

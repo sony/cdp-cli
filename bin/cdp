@@ -3,6 +3,6 @@
 'use strict';
 
 (function () {
-    var cli = require('../dist/cdp-cli');
+    var cli = require('../dist/cdp-cli.min');
     cli.main();
 })();

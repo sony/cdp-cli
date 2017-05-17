@@ -83,27 +83,27 @@ export class PromptLibrary extends PromptBase {
                 ],
                 default: this.answers.license || "NONE",
             },
-            // library settnigs (ICompileConfigration)
+            // library settnigs (IBuildTargetConfigration)
             {
                 type: "list",
-                name: "webpackTarget",
-                message: this.lang.prompt.library.webpackTarget.message,
+                name: "env",
+                message: this.lang.prompt.library.env.message,
                 choices: [
                     {
-                        name: this.lang.prompt.common.webpackTarget.choices.browser,
+                        name: this.lang.prompt.common.env.choices.browser,
                         value: "web",
                     },
                     {
-                        name: this.lang.prompt.common.webpackTarget.choices.node,
+                        name: this.lang.prompt.common.env.choices.node,
                         value: "node",
                     },
                     new inquirer.Separator(),
                     {
-                        name: this.lang.prompt.common.webpackTarget.choices.electron + this.LIMITATION(),
+                        name: this.lang.prompt.common.env.choices.electron + this.LIMITATION(),
                         value: "electron",
                     },
                     {
-                        name: this.lang.prompt.common.webpackTarget.choices.electronRenderer + this.LIMITATION(),
+                        name: this.lang.prompt.common.env.choices.electronRenderer + this.LIMITATION(),
                         value: "electron-renderer",
                     }
                 ],
@@ -118,7 +118,7 @@ export class PromptLibrary extends PromptBase {
                         return value;
                     }
                 },
-                default: this.answers.webpackTarget || "web",
+                default: this.answers.env || "web",
             },
             // base structure
             {
@@ -137,96 +137,96 @@ export class PromptLibrary extends PromptBase {
                 ],
                 default: this.answers.extraSettings || "recommended",
             },
-            // library settnigs (custom: moduleSystem)
+            // library settnigs (custom: module)
             {
                 type: "list",
-                name: "moduleSystem",
-                message: this.lang.prompt.common.moduleSystem.message,
+                name: "module",
+                message: this.lang.prompt.common.module.message,
                 choices: [
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.none,
+                        name: this.lang.prompt.common.module.choices.none,
                         value: "none",
                     },
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.commonjs,
+                        name: this.lang.prompt.common.module.choices.commonjs,
                         value: "commonjs",
                     },
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.umd,
+                        name: this.lang.prompt.common.module.choices.umd,
                         value: "umd",
                     },
                 ],
-                default: ("amd" !== this.answers.moduleSystem) ? (this.answers.moduleSystem || "commonjs") : "commonjs",
+                default: ("amd" !== this.answers.module) ? (this.answers.module || "commonjs") : "commonjs",
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.extraSettings && /^(node|electron)$/i.test(answers.webpackTarget);
+                    return "custom" === answers.extraSettings && /^(node|electron)$/i.test(answers.env);
                 },
             },
             {
                 type: "list",
-                name: "moduleSystem",
-                message: this.lang.prompt.common.moduleSystem.message,
+                name: "module",
+                message: this.lang.prompt.common.module.message,
                 choices: [
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.none,
+                        name: this.lang.prompt.common.module.choices.none,
                         value: "none",
                     },
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.amd,
+                        name: this.lang.prompt.common.module.choices.amd,
                         value: "amd",
                     },
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.umd,
+                        name: this.lang.prompt.common.module.choices.umd,
                         value: "umd",
                     },
                 ],
-                default: ("commonjs" !== this.answers.moduleSystem) ? (this.answers.moduleSystem || "amd") : "amd",
+                default: ("commonjs" !== this.answers.module) ? (this.answers.module || "amd") : "amd",
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.extraSettings && "web" === answers.webpackTarget;
+                    return "custom" === answers.extraSettings && "web" === answers.env;
                 },
             },
             {
                 type: "list",
-                name: "moduleSystem",
-                message: this.lang.prompt.common.moduleSystem.message,
+                name: "module",
+                message: this.lang.prompt.common.module.message,
                 choices: [
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.none,
+                        name: this.lang.prompt.common.module.choices.none,
                         value: "none",
                     },
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.commonjs,
+                        name: this.lang.prompt.common.module.choices.commonjs,
                         value: "commonjs",
                     },
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.amd,
+                        name: this.lang.prompt.common.module.choices.amd,
                         value: "amd",
                     },
                     {
-                        name: this.lang.prompt.common.moduleSystem.choices.umd,
+                        name: this.lang.prompt.common.module.choices.umd,
                         value: "umd",
                     },
                 ],
-                default: this.answers.moduleSystem || "commonjs",
+                default: this.answers.module || "commonjs",
                 when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.extraSettings && "electron-renderer" === answers.webpackTarget;
+                    return "custom" === answers.extraSettings && "electron-renderer" === answers.env;
                 },
             },
-            // library settnigs (custom: esTarget)
+            // library settnigs (custom: es)
             {
                 type: "list",
-                name: "esTarget",
-                message: this.lang.prompt.common.esTarget.message,
+                name: "es",
+                message: this.lang.prompt.common.es.message,
                 choices: [
                     {
-                        name: this.lang.prompt.common.esTarget.choices.es5,
+                        name: this.lang.prompt.common.es.choices.es5,
                         value: "es5",
                     },
                     {
-                        name: this.lang.prompt.common.esTarget.choices.es2015,
+                        name: this.lang.prompt.common.es.choices.es2015,
                         value: "es2015",
                     },
                 ],
-                default: this.answers.esTarget || ("web" === this.answers.webpackTarget ? "es5" : "es2015"),
+                default: this.answers.es || ("web" === this.answers.env ? "es5" : "es2015"),
                 when: (answers: IAnswerSchema) => {
                     return "custom" === answers.extraSettings;
                 },
@@ -252,7 +252,7 @@ export class PromptLibrary extends PromptBase {
      */
     displaySettingsByAnswers(answers: IAnswerSchema): IProjectConfigration {
         const config: ILibraryConfigration = (() => {
-            switch (answers.webpackTarget) {
+            switch (answers.env) {
                 case "web":
                     return $.extend({}, libConfig.browser, answers);
                 case "node":
@@ -262,20 +262,20 @@ export class PromptLibrary extends PromptBase {
                 case "electron-renderer":
                     return $.extend({}, libConfig.electron, answers);
                 default:
-                    console.error(chalk.red("unsupported target: " + answers.webpackTarget));
+                    console.error(chalk.red("unsupported target: " + answers.env));
                     process.exit(1);
             }
         })();
 
         const items = [
-            { name: "extraSettings",        recommend: false    },
-            { name: "projectName",          recommend: false    },
-            { name: "version",              recommend: false    },
-            { name: "license",              recommend: false    },
-            { name: "webpackTarget",        recommend: false    },
-            { name: "moduleSystem",         recommend: true     },
-            { name: "esTarget",    recommend: true     },
-            { name: "supportCSS",           recommend: true     },
+            { name: "extraSettings",    recommend: false    },
+            { name: "projectName",      recommend: false    },
+            { name: "version",          recommend: false    },
+            { name: "license",          recommend: false    },
+            { name: "env",              recommend: false    },
+            { name: "module",           recommend: true     },
+            { name: "es",               recommend: true     },
+            { name: "supportCSS",       recommend: true     },
         ];
 
         try {

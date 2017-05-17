@@ -18,7 +18,7 @@
           "proprietary": "Proprietary License (NONE)"
         }
       },
-      "webpackTarget": {
+      "env": {
         "choices": {
           "browser": "for Browser environment",
           "node": "for Node.js environment",
@@ -33,7 +33,7 @@
           "custom": "Custom"
         }
       },
-      "moduleSystem": {
+      "module": {
         "message": "Please choose JavaScript module system.",
         "choices": {
           "none": "None",
@@ -42,7 +42,7 @@
           "umd": "UMD (Independent runtime environment)"
         }
       },
-      "esTarget": {
+      "es": {
         "message": "Please choose the transpile target of JavaScript version.",
         "choices": {
           "es5": "ES5",
@@ -55,7 +55,7 @@
       "stilNotAvailable": "[stil not avialable]"
     },
     "library": {
-      "webpackTarget": {
+      "env": {
         "message": "Please choose the destination for using library."
       },
       "supportCSS": {
@@ -85,7 +85,7 @@
         "NONE": "Proprietary(NONE)"
       }
     },
-    "webpackTarget": {
+    "env": {
       "label": "  Destination:       ",
       "props": {
         "web": "Browser",
@@ -94,7 +94,7 @@
         "electron-renderer": "electron renderer process"
       }
     },
-    "moduleSystem": {
+    "module": {
       "label": "  Module System:     ",
       "props": {
         "none": "None",
@@ -103,7 +103,7 @@
         "umd": "UMD"
       }
     },
-    "esTarget": {
+    "es": {
       "label": "  Transpile Target:  ",
       "props": {
         "es5": "ES5",

@@ -2,12 +2,12 @@
   "name": "cdp-cli",
   "version": "0.0.2",
   "description": "CDP Command Line Interface",
-  "main": "index.js",
+  "main": "dist/cdp-cli.min.js",
   "scripts": {
     "build": "run-p build:*",
     "build:ts": "tsc && webpack",
-    "prebuild:ts": "node ./tasks/build-pre.js",
-    "postbuild:ts": "node ./tasks/build-post.js",
+    "prebuild:ts": "node ./tasks/build-ts-clean.js",
+    "postbuild:ts": "node ./tasks/build-ts-normalize.js",
     "minify": "uglifyjs dist/cdp-cli.js -o dist/cdp-cli.min.js --comments /^!/ --source-map includeSources,url=cdp-cli.min.js.map",
     "test": "run-s lint unit-test",
     "pretest": "tsc -p ./tests/jasmine/tsconfig.json",
@@ -19,16 +19,16 @@
     "lint": "run-s -l lint:*",
     "lint:js": "eslint tasks/**/*.js built/**/*.js -c tests/eslint/eslintrc.json",
     "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json 'src/**/*.ts'",
-    "unit-test": "istanbul cover ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/ --dir docs/reports/coverage/_org -x submodules/**",
+    "unit-test": "istanbul cover ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/ --dir docs/reports/coverage/_org",
     "document": "typedoc --out docs/typedoc/ src/",
     "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/**/*.js",
     "ci": "run-s build test",
     "deploy": "run-s -l clean build minify test metrics document",
     "debug": "node --inspect --debug-brk ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/",
     "debug:tool": "node-debug ./node_modules/jasmine-node/bin/jasmine-node tests/jasmine/",
+    "update": "npm update --save-dev && npm update --save && npm run deploy",
     "submodule": "node ./tasks/submodule.js",
-    "libmodule": "node ./tasks/libmodule.js",
-    "update": "npm update --save-dev && npm update --save && npm run deploy"
+    "libmodule": "node ./tasks/libmodule.js"
   },
   "bin": {
     "cdp": "bin/cdp"
@@ -62,6 +62,7 @@
   "devDependencies": {
     "@types/chalk": "^0.4.31",
     "@types/commander": "^2.9.0",
+    "@types/del": "^2.2.32",
     "@types/fs-extra": "^3.0.1",
     "@types/glob": "^5.0.30",
     "@types/inquirer": "0.0.34",
@@ -73,6 +74,7 @@
     "@types/uuid": "^2.0.29",
     "@types/which": "^1.0.28",
     "convert-source-map": "^1.5.0",
+    "del": "^2.2.2",
     "dts-bundle": "^0.7.2",
     "eslint": "^3.19.0",
     "jasmine-node": "^2.0.0",
