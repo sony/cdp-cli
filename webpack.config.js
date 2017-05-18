@@ -19,6 +19,10 @@ module.exports = {
         filename: OUTPUT_FILE_NAME,
         libraryTarget: OUTPUT_LIB_TARGET,
     },
+    node: {
+        __dirname: false,
+        __filename: false,
+    },
     devtool: 'inline-source-map',
     module: {
         rules: [
