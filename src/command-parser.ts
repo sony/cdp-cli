@@ -58,7 +58,7 @@ export class CommandParser {
         try {
             pkg = JSON.parse(fs.readFileSync(path.join(cmdline.pkgDir, "package.json"), "utf8").toString());
         } catch (error) {
-            throw Error("package.json parse error" + error.message);
+            throw Error("package.json parse error: " + error.message);
         }
 
         commander

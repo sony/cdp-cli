@@ -189,7 +189,7 @@ export abstract class PromptBase {
                 path.join(this._cmdInfo.pkgDir, "res/locales/messages." + locale + ".json"), "utf8").toString()
             );
         } catch (error) {
-            throw Error("Language resource JSON parse error" + error.message);
+            throw Error("Language resource JSON parse error: " + error.message);
         }
     }
 
@@ -273,7 +273,6 @@ export abstract class PromptBase {
             force: this._cmdInfo.cliOptions.force,
             verbose: this._cmdInfo.cliOptions.verbose,
             silent: this._cmdInfo.cliOptions.silent,
-            libPath: path.join(this._cmdInfo.pkgDir, "node_modules", "cdp-lib"),
             targetDir: this._cmdInfo.cliOptions.targetDir,
             lang: this.lang.type,
         };

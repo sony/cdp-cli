@@ -14,6 +14,7 @@
     "no-cond-assign": ["error", "always"],
     "no-unused-vars": ["error", {"args": "none"}],
     "no-extra-boolean-cast": "off",
+    "no-constant-condition": "off",
     "no-console": "off"
   }
 }
