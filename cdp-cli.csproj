@@ -97,22 +97,24 @@
     <Content Include="NOTICE" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="tasks\bundle-finalizer.js" />
     <Content Include="tasks\libmodule.js" />
+    <Content Include="tasks\remap-coverage.js" />
     <Content Include="tasks\submodule.js" />
     <Content Include="tests\eslint\eslintrc.json" />
-    <Content Include="tests\jasmine\cdp-cli.spec.js">
+    <Content Include="tests\unit\cdp-cli.spec.js">
       <DependentUpon>cdp-cli.spec.ts</DependentUpon>
     </Content>
-    <Content Include="tests\jasmine\command-parser.spec.js">
+    <Content Include="tests\unit\command-parser.spec.js">
       <DependentUpon>command-parser.spec.ts</DependentUpon>
     </Content>
-    <Content Include="tests\jasmine\prompt-base.spec.js">
+    <Content Include="tests\unit\prompt-base.spec.js">
       <DependentUpon>prompt-base.spec.ts</DependentUpon>
     </Content>
-    <Content Include="tests\jasmine\prompt-library.spec.js">
+    <Content Include="tests\unit\prompt-library.spec.js">
       <DependentUpon>prompt-library.spec.ts</DependentUpon>
     </Content>
-    <Content Include="tests\jasmine\tsconfig.json" />
+    <Content Include="tests\unit\tsconfig.json" />
     <Content Include="tests\tslint\tslint.json" />
     <Content Include="tsconfig.json" />
   </ItemGroup>
@@ -150,16 +152,14 @@
     <TypeScriptCompile Include="src\prompt-base.ts" />
     <TypeScriptCompile Include="src\prompt-library.ts" />
     <TypeScriptCompile Include="src\prompt-web.ts" />
-    <TypeScriptCompile Include="tests\jasmine\cdp-cli.spec.ts" />
-    <TypeScriptCompile Include="tests\jasmine\command-parser.spec.ts" />
-    <TypeScriptCompile Include="tests\jasmine\prompt-base.spec.ts" />
-    <TypeScriptCompile Include="tests\jasmine\prompt-library.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\cdp-cli.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\command-parser.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\prompt-base.spec.ts" />
+    <TypeScriptCompile Include="tests\unit\prompt-library.spec.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="project.config.js" />
     <Content Include="tasks\banner.js" />
-    <Content Include="tasks\build-post.js" />
-    <Content Include="tasks\build-pre.js" />
     <Content Include="tasks\clean.js" />
     <Content Include="tasks\srcmap.js" />
     <Content Include="webpack.config.js" />

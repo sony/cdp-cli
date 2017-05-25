@@ -18,12 +18,17 @@ const dir = {
     task: 'tasks',
     test: 'tests',
     types: '@types',
+    temp: '.temp',
 };
 
 const main = {
     namespace: 'cdp',
     basename: 'cdp-cli',
     bundle_d_ts: 'index.d.ts',
+};
+
+const built_cleanee = {
+    ts: ['**/*.js', '**/*.d.ts', '**/*.map'],
 };
 
 const d_ts_bundle = {
@@ -47,6 +52,8 @@ module.exports = {
     pkg: pkg,
     dir: dir,
     main: main,
+
+    built_cleanee: built_cleanee,
 
     dts_bundle: d_ts_bundle,
 

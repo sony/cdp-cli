@@ -12,8 +12,8 @@ function buildDate() {
 }
 
 function banner(extension) {
-    let pkg = require(path.join(process.cwd(), 'package.json'));
-    let bannerPath = path.join(process.cwd(), BANNER_FILE);
+    let pkg = require(path.join(__dirname, '..', 'package.json'));
+    let bannerPath = path.join(__dirname, '..', BANNER_FILE);
     if (fs.existsSync(bannerPath)) {
         let banner = fs.readFileSync(bannerPath).toString()
             .replace('@MODULE_NAME', pkg.name + extension)
