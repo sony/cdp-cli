@@ -4,7 +4,7 @@ const path      = require('path');
 const fs        = require('fs');
 const del       = require('del');
 const glob      = require('glob');
-const config    = require('../project.config.js');
+const config    = require('../project.config');
 
 const TEMP_DIR      = path.join(__dirname, '..', config.dir.temp);
 const COVERAGE_DIR  = path.join(__dirname, '..', config.dir.doc, 'reports', 'coverage');

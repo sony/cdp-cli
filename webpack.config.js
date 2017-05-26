@@ -1,7 +1,7 @@
 const webpack   = require('webpack');
 const path      = require('path');
 const banner    = require('./tasks/banner');
-const config    = require('./project.config.js');
+const config    = require('./project.config');
 
 const TARGET            = config.target.env;
 const MAIN_ENTRY        = path.join(__dirname, config.dir.built, config.main.basename + '.js');

@@ -1,7 +1,7 @@
 ﻿'use strict';
 const fs        = require('fs-extra');
 const path      = require('path');
-const config    = require('../project.config.js');
+const config    = require('../project.config');
 
 function remove() {
     const modules = config.libmodules.modules;

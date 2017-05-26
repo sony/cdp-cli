@@ -7,7 +7,7 @@ const dts       = require('dts-bundle');
 const tsfmt     = require('typescript-formatter');
 const banner    = require('./banner');
 const srcmap    = require('./srcmap');
-const config    = require('../project.config.js');
+const config    = require('../project.config');
 
 const PACKAGE_NAME  = config.pkg.name;
 const NAMESPACE     = config.main.namespace;

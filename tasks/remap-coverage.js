@@ -4,7 +4,7 @@ const path      = require('path');
 const fs        = require('fs');
 const NYC       = require('nyc');
 const srcmap    = require('./srcmap');
-const config    = require('../project.config.js');
+const config    = require('../project.config');
 
 const BUILT_DIR     = path.join(__dirname, '..', config.dir.built);
 const TEMP_DIR      = path.join(__dirname, '..', config.dir.temp);

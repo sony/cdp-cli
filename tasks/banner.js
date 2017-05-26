@@ -2,7 +2,7 @@
 'use strict';
 const fs        = require('fs');
 const path      = require('path');
-const config    = require('../project.config.js');
+const config    = require('../project.config');
 
 const BANNER_FILE       = config.banner.fileName;
 const D_TS_DESCRIPTION  = config.banner.d_ts_desc;  // @VERSION replaced this string.
