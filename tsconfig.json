@@ -2,19 +2,19 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es2015",
-    "allowJs": false,
     "declaration": true,
-    "emitBOM":  true,
+    "emitBOM": false,
     "sourceMap": true,
     "inlineSources": true,
-    "outDir": "./built"
+    "outDir": "built/"
   },
-  "include": [
-      "src/**/*"
-  ],
   "exclude": [
     "node_modules",
+    "dist",
     "built",
+    "docs",
+    "res",
+    "tasks",
     "submodules",
     "tests"
   ]

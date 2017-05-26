@@ -15,7 +15,7 @@ const libraryOnBrowser = <ILibraryConfigration>{
     es: "es5",
     module: "umd",
     env: "web",
-    tools: ["webpack"],
+    tools: ["webpack", "nyc"],
     supportCSS: false,
 };
 
@@ -29,7 +29,7 @@ const libraryOnNode = <ILibraryConfigration>{
     es: "es2015",
     module: "commonjs",
     env: "node",
-    tools: ["webpack"],
+    tools: ["webpack", "nyc"],
     supportCSS: false,
 };
 
@@ -43,7 +43,7 @@ const libraryOnElectron = <ILibraryConfigration>{
     es: "es2015",
     module: "commonjs",
     env: "electron",
-    tools: ["webpack"],
+    tools: ["webpack", "nyc"],
     supportCSS: false,
 };
 
@@ -57,6 +57,7 @@ const mobileOnBrowser = <IMobileAppConfigration>{
     es: "es5",
     module: "amd",
     env: "web",
+    tools: ["nyc"],
     supportCSS: true,
 };
 
@@ -70,6 +71,7 @@ const desktopOnBrowser = <IDesktopAppConfigration>{
     es: "es5",
     module: "amd",
     env: "web",
+    tools: ["nyc"],
     supportCSS: true,
 };
 
@@ -83,7 +85,7 @@ const desktopOnElectron = <IDesktopAppConfigration>{
     es: "es2015",
     module: "commonjs",
     env: "electron-renderer",
-    tools: ["webpack"],
+    tools: ["webpack", "nyc"],
     supportCSS: true,
 };
 

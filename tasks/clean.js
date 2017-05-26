@@ -9,7 +9,7 @@ const config    = require('../project.config.js');
 const TEMP_DIR      = path.join(__dirname, '..', config.dir.temp);
 const COVERAGE_DIR  = path.join(__dirname, '..', config.dir.doc, 'reports', 'coverage');
 const TYPEDOC_DIR   = path.join(__dirname, '..', config.dir.doc, 'typedoc');
-const TEST_SPEC_DIR = path.join(__dirname, '..', config.dir.test, 'unit');
+const TEST_UNIT_DIR = path.join(__dirname, '..', config.dir.test, 'unit');
 const BUILT_DIR     = path.join(__dirname, '..', config.dir.built);
 const PKG_DIR       = path.join(__dirname, '..', config.dir.pkg);
 
@@ -69,7 +69,7 @@ function main() {
         del.sync(TYPEDOC_DIR);
     }
     if (target.all || target.test) {
-        del.sync(['**/*.js', '**/*.map'], { cwd: TEST_SPEC_DIR });
+        del.sync(config.built_cleanee.ts, { cwd: TEST_UNIT_DIR });
     }
     if (target.all || target.built) {
         Object.keys(config.built_cleanee).forEach((key) => {

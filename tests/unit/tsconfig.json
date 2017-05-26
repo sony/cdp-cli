@@ -6,13 +6,6 @@
     "declaration": false,
     "emitBOM": true,
     "inlineSourceMap": true,
-    "inlineSources": true,
-    "outDir": "./"
-  },
-  "include": [
-      "**/*"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "inlineSources": true
+  }
 }
