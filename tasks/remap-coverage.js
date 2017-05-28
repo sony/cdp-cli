@@ -7,8 +7,7 @@ const srcmap    = require('./srcmap');
 const config    = require('../project.config');
 
 const BUILT_DIR     = path.join(__dirname, '..', config.dir.built);
-const TEMP_DIR      = path.join(__dirname, '..', config.dir.temp);
-const COVERAGE_PATH = path.join(TEMP_DIR, 'coverage.json');
+const COVERAGE_PATH = path.join(__dirname, '..', config.dir.doc, 'reports/coverage', 'coverage.json');
 
 const coverage = require(COVERAGE_PATH);
 

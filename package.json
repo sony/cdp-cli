@@ -39,7 +39,7 @@
     "unit-test": "npm run coverage:exec",
     "unit-test:ci": "node ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
     "coverage": "run-s clean:coverage compile:ts coverage:exec",
-    "coverage:exec": "nyc --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=./.temp -n=built/** ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
+    "coverage:exec": "nyc --reporter=html --reporter=text --report-dir=docs/reports/coverage --temp-directory=docs/reports/coverage -n=built/** ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
     "document": "typedoc --out docs/typedoc/ src/",
     "metrics": "plato -r -d docs/reports/metrics -e ./tests/eslint/eslintrc.json built/**/*.js"
   },
