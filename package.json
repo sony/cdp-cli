@@ -35,7 +35,7 @@
     "minify:ts": "uglifyjs dist/cdp-cli.js -o dist/cdp-cli.min.js --comments /^!/ --source-map includeSources,url=cdp-cli.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js built/**/*.js -c tests/eslint/eslintrc.json",
-    "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json 'src/**/*.ts,!src/**/*.d.ts'",
+    "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts src/**/*.ts",
     "unit-test": "npm run coverage:exec",
     "unit-test:ci": "node ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
     "coverage": "run-s clean:coverage compile:ts coverage:exec",
