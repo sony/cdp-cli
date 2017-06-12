@@ -30,7 +30,7 @@ function update_srcmap_namespace(code, options) {
 }
 
 ///////////////////////////////////////////////////////////////////////
-// lib:
+// library:
 
 function normalize_src(src, options) {
     return '\ufeff' + update_srcmap_namespace(src, options)
@@ -129,7 +129,7 @@ function normalize_package_src() {
 
 function main() {
     switch (config.target.type) {
-        case 'lib':
+        case 'library':
             normalize_lib_src();
             normalize_lib_d_ts();
             return;
