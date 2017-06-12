@@ -13,7 +13,7 @@ const TEST_UNIT_DIR = path.join(__dirname, '..', config.dir.test, 'unit');
 const BUILT_DIR     = path.join(__dirname, '..', config.dir.built);
 const PKG_DIR       = path.join(__dirname, '..', config.dir.pkg);
 
-function queryTarget() {
+function queryOptions() {
     const argv = process.argv.slice(2);
 
     let settings = {
@@ -24,6 +24,7 @@ function queryTarget() {
         test: false,
         built: false,
         pkg: false,
+        target: null,   // any file/dir available
     };
 
     if (0 < argv.length) {
@@ -32,7 +33,11 @@ function queryTarget() {
             argv.forEach((arg) => {
                 const option = arg.replace(/^--/, '');
                 if (option.split('=')[0] === key) {
-                    settings[key] = true;
+                    if ('target' === key) {
+                        settings[key] = option.split('=')[1];
+                    } else {
+                        settings[key] = true;
+                    }
                 }
             });
         });
@@ -42,7 +47,7 @@ function queryTarget() {
 }
 
 function cleanEmptyDir(target) {
-    const list = glob.sync("**", {
+    const list = glob.sync('**', {
         cwd: target,
         nodir: false,
     });
@@ -57,28 +62,31 @@ function cleanEmptyDir(target) {
 }
 
 function main() {
-    const target = queryTarget();
+    const options = queryOptions();
 
-    if (target.all || target.temp) {
+    if (options.all || options.temp) {
         del.sync(TEMP_DIR);
     }
-    if (target.all || target.coverage) {
+    if (options.all || options.coverage) {
         del.sync(COVERAGE_DIR);
     }
-    if (target.all || target.typedoc) {
+    if (options.all || options.typedoc) {
         del.sync(TYPEDOC_DIR);
     }
-    if (target.all || target.test) {
+    if (options.all || options.test) {
         del.sync(config.built_cleanee.ts, { cwd: TEST_UNIT_DIR });
     }
-    if (target.all || target.built) {
+    if (options.all || options.built) {
         Object.keys(config.built_cleanee).forEach((key) => {
             del.sync(config.built_cleanee[key], { cwd: BUILT_DIR });
         });
         cleanEmptyDir(BUILT_DIR);
     }
-    if (target.all || target.pkg) {
+    if (options.all || options.pkg) {
         del.sync(['**/*'], { cwd: PKG_DIR });
+    }
+    if (options.target) {
+        del.sync(options.target);
     }
 }
 

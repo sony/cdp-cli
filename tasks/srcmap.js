@@ -12,10 +12,15 @@ const SourceNode        = require('source-map').SourceNode;
 // get sourceNode from inline-source-map file
 function getNodeFromScriptFile(scriptfile) {
     if (fs.existsSync(scriptfile)) {
-        return SourceNode.fromStringWithSourceMap(
-            getScriptFromFile(scriptfile),
-            new SourceMapConsumer(getMapFromScriptFile(scriptfile))
-        );
+        try {
+            return SourceNode.fromStringWithSourceMap(
+                getScriptFromFile(scriptfile),
+                new SourceMapConsumer(getMapFromScriptFile(scriptfile))
+            );
+        } catch (error) {
+            console.error('getNodeFromScriptFile() error: ' + error);
+            return new SourceNode();
+        }
     } else {
         return new SourceNode();
     }
@@ -24,10 +29,15 @@ function getNodeFromScriptFile(scriptfile) {
 // get sourceNode from script and map files
 function getNodeFromFiles(scriptFile, mapFile) {
     if (fs.existsSync(scriptFile) && fs.existsSync(mapFile)) {
-        return SourceNode.fromStringWithSourceMap(
-            getScriptFromFile(scriptFile),
-            new SourceMapConsumer(getMapFromMapFile(mapFile))
-        );
+        try {
+            return SourceNode.fromStringWithSourceMap(
+                getScriptFromFile(scriptFile),
+                new SourceMapConsumer(getMapFromMapFile(mapFile))
+            );
+        } catch (error) {
+            console.error('getNodeFromFiles() error: ' + error);
+            return new SourceNode();
+        }
     } else {
         return new SourceNode();
     }
@@ -35,24 +45,31 @@ function getNodeFromFiles(scriptFile, mapFile) {
 
 // get sourceNode from code
 function getNodeFromCode(code) {
-    if (/^\/\/[@#]\s+sourceMappingURL=(.+)/gm.test(code)) {
-        return SourceNode.fromStringWithSourceMap(
-            convertCode2Script(code),
-            new SourceMapConsumer(convert.fromComment(code).toObject())
-        );
+    if (convert.mapFileCommentRegex.test(code)) {
+        try {
+            return SourceNode.fromStringWithSourceMap(
+                convertCode2Script(code),
+                new SourceMapConsumer(convert.fromComment(code).toObject())
+            );
+        } catch (error) {
+            console.error('getNodeFromCode() error: ' + error);
+            const node = new SourceNode();
+            node.add(convertCode2Script(code));
+            return node;
+        }
     } else {
-        let node = new SourceNode();
+        const node = new SourceNode();
         node.add(convertCode2Script(code));
         return node;
     }
 }
 
 // get code with inline-source-map from file SourceNode
-function getCodeFromNode(node, renameSources) {
-    let code_map = getCodeMap(node);
-    let rename = renameSources;
+function getCodeFromNode(node, renameSources, options) {
+    const code_map = getCodeMap(node);
+    const rename = renameSources;
+    const objMap = code_map.map.toJSON();
     let i, n;
-    let objMap = code_map.map.toJSON();
 
     if (rename) {
         if ('string' === typeof rename) {
@@ -70,17 +87,21 @@ function getCodeFromNode(node, renameSources) {
 
     return node.toString().replace(/\r\n/gm, '\n') +
         convert.fromObject(objMap)
-            .toComment()
-            .replace(/charset=utf\-8;/gm, '')
+            .toComment(options)
+            .replace(/charset=utf-8;/gm, '')
             .replace('data:application/json;', 'data:application/json;charset=utf-8;');
 }
 
 // separate source script and map from file
-function separateScriptAndMapFromScriptFile(scriptFile, mapPath) {
-    let node = getNodeFromScriptFile(scriptFile);
-    mapPath = mapPath || path.basename(scriptFile, '.js') + '.map';
+function separateScriptAndMapFromScriptFile(scriptFile, multiline, mapPath) {
+    const node = getNodeFromScriptFile(scriptFile);
+    mapPath = mapPath || path.basename(scriptFile) + '.map';
     return {
-        script: node.toString().replace(/\r\n/gm, '\n') + '//# sourceMappingURL=' + mapPath,
+        script: node.toString().replace(/\r\n/gm, '\n') + (
+            multiline
+            ? ('/*# sourceMappingURL=' + mapPath + ' */')
+            : ('//# sourceMappingURL=' + mapPath)
+           ),
         map: JSON.stringify(getCodeMap(node).map.toJSON()),
     };
 }
@@ -90,18 +111,18 @@ function separateScriptAndMapFromScriptFile(scriptFile, mapPath) {
 
 // // get sourceMap object from inline-source-map file
 function getMapFromScriptFile(scriptFile) {
-    let code = fs.readFileSync(scriptFile).toString();
+    const code = fs.readFileSync(scriptFile).toString();
     return convert.fromComment(code).toObject();
 }
 
 function getMapFromMapFile(mapFile) {
-    let json = fs.readFileSync(mapFile).toString();
+    const json = fs.readFileSync(mapFile).toString();
     return JSON.parse(json);
 }
 
 // get code from file
 function getScriptFromFile(scriptFile) {
-    let code = fs.readFileSync(scriptFile).toString();
+    const code = fs.readFileSync(scriptFile).toString();
     return convertCode2Script(code);
 }
 
@@ -110,12 +131,12 @@ function convertCode2Script(code) {
     // clean source code comment
     return code
         .replace(/\/\/\/ <reference path="[\s\S]*?>/gm, '')
-        .replace(/^\/\/[@#]\s+sourceMappingURL=(.+)/gm, '');
+        .replace(convert.mapFileCommentRegex, '');
 }
 
 // get code map with path from node
 function getCodeMap(node) {
-    let code_map = node.toStringWithSourceMap();
+    const code_map = node.toStringWithSourceMap();
 
     // patch
     node.walkSourceContents(function (sourceFile, sourceContent) {

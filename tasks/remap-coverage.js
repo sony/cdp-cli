@@ -3,7 +3,7 @@
 const path      = require('path');
 const fs        = require('fs');
 const NYC       = require('nyc');
-const srcmap    = require('./srcmap');
+const convert   = require('convert-source-map');
 const config    = require('../project.config');
 
 const BUILT_DIR     = path.join(__dirname, '..', config.dir.built);
@@ -18,8 +18,7 @@ function main() {
         if (fs.existsSync(srcPath + '.map')) {
             return JSON.parse(fs.readFileSync(srcPath + '.map').toString());
         } else {
-            const info = srcmap.separateScriptAndMapFromScriptFile(srcPath);
-            return JSON.parse(info.map);
+            return convert.fromComment(fs.readFileSync(srcPath).toString()).toObject();
         }
     };
 
@@ -27,7 +26,7 @@ function main() {
 
     let rebuild = {};
     for (let file in coverage) {
-        console.log('\tprocessing:' + file);
+        console.log('  processing... : ' + file);
         const absPath = path.join(BUILT_DIR, file);
         rebuild[absPath] = coverage[file];
         rebuild[absPath].path = absPath;
