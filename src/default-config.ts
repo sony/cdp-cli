@@ -1,5 +1,6 @@
 ﻿import {
     ILibraryConfigration,
+    IExternalModules,
     IMobileAppConfigration,
     IDesktopAppConfigration,
     IWebAppConfigration,
@@ -50,7 +51,7 @@ const libraryOnElectron = <ILibraryConfigration>{
 /**
  * ブラウザ(cordova)環境で動作するモバイルアプリケーションの既定値
  */
-const mobileOnBrowser = <IMobileAppConfigration>{
+const mobileOnBrowser: IMobileAppConfigration = <any>{
     // IProjectConfigration
     projectType: "mobile",
     // IBuildTargetConfigration
@@ -58,7 +59,79 @@ const mobileOnBrowser = <IMobileAppConfigration>{
     module: "amd",
     env: "web",
     tools: ["nyc"],
-    supportCSS: true,
+    // IMobileAppConfigration
+    platforms: ["android", "ios"],
+    projectStructure: [],
+    external: {
+        "hogan.js": {
+            acquisition: "npm",
+            regular: true,
+        },
+        "hammerjs": {
+            acquisition: "npm",
+            regular: true,
+            subset: {
+                "jquery-hammerjs": {
+                    acquisition: "npm",
+                    regular: true,
+                },
+                "@types/hammerjs": {
+                    acquisition: "npm:dev",
+                    regular: true,
+                },
+            },
+        },
+        "cordova-plugin-cdp-nativebridge": {
+            acquisition: "cordova",
+            regular: true,
+            subset: {
+                "cdp-nativebridge": {
+                    acquisition: "resource",
+                    regular: true,
+                },
+            },
+        },
+        "cordova-plugin-inappbrowser": {
+            acquisition: "cordova",
+            regular: false,
+            subset: {
+                "@types/cordova-plugin-inappbrowser": {
+                    acquisition: "npm:dev",
+                    default: true,
+                },
+            },
+        },
+        "cordova-plugin-app-version": {
+            acquisition: "cordova",
+            regular: false,
+            subset: {
+                "@types/cordova-plugin-app-version": {
+                    acquisition: "npm:dev",
+                    regular: true,
+                },
+            },
+        },
+        "iscroll": {
+            acquisition: "npm",
+            regular: false,
+            subset: {
+                "@types/iscroll": {
+                    acquisition: "npm:dev",
+                    regular: true,
+                },
+            },
+        },
+        "flipsnap": {
+            acquisition: "npm",
+            regular: false,
+            subset: {
+                "@types/flipsnap": {
+                    acquisition: "npm:dev",
+                    regular: true,
+                },
+            },
+        },
+    },
 };
 
 /**

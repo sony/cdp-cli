@@ -61,6 +61,39 @@
       "supportCSS": {
         "message": "Do you develop CSS library?"
       }
+    },
+    "mobile": {
+      "appName": {
+        "message": "Enter the name of the application.",
+        "invalidMessage": "Please input the allowed character by file system."
+      },
+      "appId": {
+        "message": "Enter an ID for the application. ex: org.bar.foo"
+      },
+      "platforms": {
+        "message": "Enter the platforms the application supports."
+      },
+      "projectStructure": {
+        "message": "Please choose project's additional structures.",
+        "lib": "lib: Add reusable library module development directory.",
+        "porting": "porting: Add platform specific development directories."
+      },
+      "external": {
+        "message": "What more would you like?",
+        "separator": {
+          "cordova": "=== Cordova Plugins ===",
+          "utils": "=== Utility libraries ==="
+        },
+        "modules": {
+          "cordova-plugin-cdp-nativebridge": "cordova-plugin-cdp-nativebridge: Generic Native Bridge",
+          "cordova-plugin-inappbrowser": "cordova-plugin-inappbrowser: In App Browser",
+          "cordova-plugin-app-version": "cordova-plugin-app-version: Acquisition app version",
+          "hogan.js": "hogan.js: '{{ mustache }}' template engine",
+          "hammerjs": "hammerjs: Touch gesture utility",
+          "iscroll": "iscroll: scroller utility",
+          "flipsnap": "flipsnap: carousel utility"
+        }
+      }
     }
   },
   "settings": {

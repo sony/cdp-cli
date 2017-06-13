@@ -13,7 +13,7 @@ import defaultConfig from "./default-config";
 const $             = Utils.$;
 const chalk         = Utils.chalk;
 const semverRegex   = Utils.semverRegex;
-const libConfig = defaultConfig.library;
+const libConfig     = defaultConfig.library;
 
 /**
  * @class PromptLibrary

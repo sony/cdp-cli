@@ -61,6 +61,39 @@
       "supportCSS": {
         "message": "CSS を使用しますか?"
       }
+    },
+    "mobile": {
+      "appName": {
+        "message": "アプリケーション名を入力してください。",
+        "invalidMessage": "ファイルシステムで使用可能な文字列を使用してください"
+      },
+      "appId": {
+        "message": "アプリケーションIDを入力してください。例: org.bar.foo"
+      },
+      "platforms": {
+        "message": "サポートプラットフォームを選択してください。"
+      },
+      "projectStructure": {
+        "message": "プロジェクト追加構成を選択してください。",
+        "lib": "lib: 再利用したいライブラリ開発を行うディレクトリの追加",
+        "porting": "porting: プラットフォーム固有機能を開発するディレクトリの追加"
+      },
+      "external": {
+        "message": "追加する機能を選択してください。",
+        "separator": {
+          "cordova": "=== Cordova プラグイン ===",
+          "utils": "=== ユーティリティ ==="
+        },
+        "modules": {
+          "cordova-plugin-cdp-nativebridge": "cordova-plugin-cdp-nativebridge: 汎用Native連携",
+          "cordova-plugin-inappbrowser": "cordova-plugin-inappbrowser: アプリ内ブラウザ",
+          "cordova-plugin-app-version": "cordova-plugin-app-version: アプリバージョン取得",
+          "hogan.js": "hogan.js: '{{ mustache }}' 形式のテンプレートエンジン",
+          "hammerjs": "hammerjs: タッチジェスチャーユーティリティ",
+          "iscroll": "iscroll: scroller ユーティリティ",
+          "flipsnap": "flipsnap: carousel ユーティリティ"
+        }
+      }
     }
   },
   "settings": {
