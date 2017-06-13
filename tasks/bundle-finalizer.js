@@ -4,7 +4,6 @@
 const fs        = require('fs');
 const path      = require('path');
 const glob      = require('glob');
-const dts       = require('dts-bundle');
 const tsfmt     = require('typescript-formatter');
 const banner    = require('./banner');
 const srcmap    = require('./srcmap');
@@ -12,7 +11,6 @@ const config    = require('../project.config');
 
 const PACKAGE_NAME  = config.pkg.name;
 const NAMESPACE     = config.main.namespace;
-const D_TS_SETTING  = config.dts_bundle;
 const SOURCE_MAP_NAMESPACE = (() => {
     if (NAMESPACE) {
         return NAMESPACE + ':///' + PACKAGE_NAME + '/';
@@ -58,9 +56,11 @@ function normalize_lib_src() {
 }
 
 function normalize_lib_d_ts() {
+    const dts = require('dts-bundle');
     const TYPE_DEF_FILE = path.join(__dirname, '..', config.dir.pkg, config.dir.types, PACKAGE_NAME, config.main.bundle_d_ts);
+
     // concat d.ts
-    dts.bundle(D_TS_SETTING);
+    dts.bundle(config.dts_bundle);
 
     // format d.ts
     tsfmt.processStream(TYPE_DEF_FILE, fs.createReadStream(TYPE_DEF_FILE), {
