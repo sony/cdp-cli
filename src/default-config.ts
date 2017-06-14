@@ -1,6 +1,5 @@
 ﻿import {
     ILibraryConfigration,
-    IExternalModules,
     IMobileAppConfigration,
     IDesktopAppConfigration,
     IWebAppConfigration,

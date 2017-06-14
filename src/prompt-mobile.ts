@@ -1,9 +1,7 @@
-﻿/* tslint:disable:no-unused-variable no-unused-vars */
-/* eslint-disable no-unused-vars */
-
-import * as inquirer from "inquirer";
+﻿import * as inquirer from "inquirer";
 import {
     IProjectConfigration,
+    IExternalModuleInfo,
     IMobileAppConfigration,
     Utils,
 } from "cdp-lib";
@@ -93,7 +91,7 @@ export class PromptMobileApp extends PromptBase {
                 name: "appId",
                 message: this.lang.prompt.mobile.appId.message,
                 default: this.answers.appId || "org.cool.appname",
-                filter: function (value) {
+                filter: (value) => {
                     return value.toLowerCase();
                 },
             },
@@ -199,18 +197,34 @@ export class PromptMobileApp extends PromptBase {
                         name: this.lang.prompt.mobile.external.modules["cordova-plugin-cdp-nativebridge"],
                         value: "cordova-plugin-cdp-nativebridge",
                         checked: (0 <= external_default.indexOf("cordova-plugin-cdp-nativebridge")),
+                        disabled: (answers: IAnswerSchema) => {
+                            if (!answers.platforms || answers.platforms.length <= 0) {
+                                return this.lang.prompt.mobile.external.noCordovaMessage;
+                            }
+                        },
                     },
                     {
                         name: this.lang.prompt.mobile.external.modules["cordova-plugin-inappbrowser"],
                         value: "cordova-plugin-inappbrowser",
                         checked: (0 <= external_default.indexOf("cordova-plugin-inappbrowser")),
+                        disabled: (answers: IAnswerSchema) => {
+                            if (!answers.platforms || answers.platforms.length <= 0) {
+                                return this.lang.prompt.mobile.external.noCordovaMessage;
+                            }
+                        },
                     },
                     {
                         name: this.lang.prompt.mobile.external.modules["cordova-plugin-app-version"],
                         value: "cordova-plugin-app-version",
                         checked: (0 <= external_default.indexOf("cordova-plugin-app-version")),
+                        disabled: (answers: IAnswerSchema) => {
+                            if (!answers.platforms || answers.platforms.length <= 0) {
+                                return this.lang.prompt.mobile.external.noCordovaMessage;
+                            }
+                        },
                     },
                     new inquirer.Separator(this.lang.prompt.mobile.external.separator.utils),
+                    /* tslint:disable:no-string-literal */
                     {
                         name: this.lang.prompt.mobile.external.modules["hogan.js"],
                         value: "hogan.js",
@@ -231,6 +245,7 @@ export class PromptMobileApp extends PromptBase {
                         value: "flipsnap",
                         checked: (0 <= external_default.indexOf("flipsnap")),
                     },
+                    /* tslint:enable:no-string-literal */
                 ],
                 when: (answers: IAnswerSchema) => {
                     return "custom" === answers.extraSettings;
@@ -247,24 +262,112 @@ export class PromptMobileApp extends PromptBase {
      */
     displaySettingsByAnswers(answers: IAnswerSchema): IProjectConfigration {
         const config: IMobileAppConfigration = (() => {
-            return $.extend({}, mobileConfig.browser, answers);
+            const defaults = $.extend({}, mobileConfig.browser);
+            const lookup = defaults.external;
+            delete defaults.external;
+            const _config: IMobileAppConfigration = $.extend({}, defaults, {
+                external: EXTERNAL_DEFAULTS,
+                dependencies: [],
+                devDependencies: [],
+                cordova_plugin: [],
+                resource_addon: [],
+            }, answers);
+
+            try {
+                const resolveDependencies = (moduleName: string, info: IExternalModuleInfo) => {
+                    switch (info.acquisition) {
+                        case "npm":
+                            _config.dependencies.push({ name: moduleName });
+                            return true;
+                        case "npm:dev":
+                            _config.devDependencies.push({ name: moduleName });
+                            return true;
+                        case "cordova":
+                            if (0 < _config.platforms.length) {
+                                _config.cordova_plugin.push({ name: moduleName });
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        case "resource":
+                            _config.resource_addon.push({ name: moduleName });
+                            return true;
+                        default:
+                            return false;
+                    }
+                };
+
+                (<any>_config).external.forEach((top: string) => {
+                    const info = <IExternalModuleInfo>lookup[top];
+                    const valid = resolveDependencies(top, info);
+                    if (valid && info.subset) {
+                        Object.keys(info.subset)
+                            .forEach((sub) => {
+                                resolveDependencies(sub, <IExternalModuleInfo>info.subset[sub]);
+                            });
+                    }
+                });
+            } catch (error) {
+                console.error(chalk.red("error: " + JSON.stringify(error, null, 4)));
+                process.exit(1);
+            }
+
+            delete _config.external;
+            return _config;
         })();
 
         const items = [
-            { name: "extraSettings",    recommend: false },
-            { name: "projectName",      recommend: false },
-            { name: "version",          recommend: false },
-            { name: "license",          recommend: false },
+            { name: "extraSettings",    fixed: false },
+            { name: "appName",          fixed: false },
+            { name: "projectName",      fixed: false },
+            { name: "appId",            fixed: false },
+            { name: "version",          fixed: false },
+            { name: "license",          fixed: false },
+            { name: "module",           fixed: true  },
+            { name: "es",               fixed: true  },
         ];
 
         try {
             items.forEach((item) => {
-                const color = (item.recommend && "recommended" === answers.extraSettings) ? "yellow" : undefined;
+                const color = (item.fixed) ? "yellow" : undefined;
                 console.log(this.config2description(config, item.name, color));
             });
         } catch (error) {
             console.error(chalk.red("error: " + JSON.stringify(error, null, 4)));
             process.exit(1);
+        }
+
+        // platforms
+        const platformInfo = (0 < config.platforms.length)
+            ? config.platforms.join(", ")
+            : this.lang.settings.mobile.platforms.none;
+        console.log("\n" + this.lang.settings.mobile.platforms.label + chalk.cyan(platformInfo));
+
+        const COLOR = ("recommended" === answers.extraSettings) ? "yellow" : "cyan";
+
+        // additional project structure
+        if (0 < config.projectStructure.length) {
+            const projectStructure = config.projectStructure.join(", ");
+            console.log("\n" + this.lang.settings.mobile.projectStructure.label + chalk[COLOR](projectStructure));
+        }
+
+        // additional cordova plugin
+        if (0 < config.cordova_plugin.length) {
+            console.log("\n" + this.lang.settings.mobile.cordovaPlugins.label);
+            config.cordova_plugin.forEach((info) => {
+                console.log("    " + chalk[COLOR](info.name));
+            });
+        }
+
+        // additional dependency
+        if (0 < config.dependencies.length) {
+            console.log("\n" + this.lang.settings.mobile.dependencies.label);
+            config.resource_addon.forEach((info) => {
+                console.log("    " + chalk[COLOR](info.name));
+            });
+            config.dependencies.forEach((info) => {
+                console.log("    " + chalk[COLOR](info.name));
+            });
         }
 
         return config;

@@ -80,6 +80,7 @@
       },
       "external": {
         "message": "What more would you like?",
+        "noCordovaMessage": "Platform is not chosen.",
         "separator": {
           "cordova": "=== Cordova Plugins ===",
           "utils": "=== Utility libraries ==="
@@ -140,7 +141,28 @@
       "label": "  Transpile Target:  ",
       "props": {
         "es5": "ES5",
-        "es2015": "ES6 (ES2015)"
+        "es2015": "ES2015 (ES6)"
+      }
+    },
+    "appName": {
+      "label": "  Application Name:  "
+    },
+    "appId": {
+      "label": "  Application ID:    "
+    },
+    "mobile": {
+      "platforms": {
+        "label": "Support Platform:    ",
+        "none": "None"
+      },
+      "projectStructure": {
+        "label": "Addon Project:       "
+      },
+      "cordovaPlugins": {
+        "label": "Cordova Plugins:"
+      },
+      "dependencies": {
+        "label": "Addon Modues:"
       }
     },
     "supportCSS": {

@@ -55,10 +55,8 @@ export function main() {
 
     inquirer.prompting(cmdInfo)
         .then((config) => {
-            // test
-            console.log(JSON.stringify(config, null, 4));
             // execute
-//            return CDPLib.execute(config);
+            return CDPLib.execute(config);
         })
         .then(() => {
             console.log(chalk.green(inquirer.lang.finished[cmdInfo.action]));

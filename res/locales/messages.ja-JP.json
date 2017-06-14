@@ -80,6 +80,7 @@
       },
       "external": {
         "message": "追加する機能を選択してください。",
+        "noCordovaMessage": "プラットフォームが選択されていません",
         "separator": {
           "cordova": "=== Cordova プラグイン ===",
           "utils": "=== ユーティリティ ==="
@@ -140,7 +141,28 @@
       "label": "  トランスパイルターゲット:  ",
       "props": {
         "es5": "ES5",
-        "es2015": "ES6 (ES2015)"
+        "es2015": "ES2015 (ES6)"
+      }
+    },
+    "appName": {
+      "label": "  アプリ名:                  "
+    },
+    "appId": {
+      "label": "  アプリID:                  "
+    },
+    "mobile": {
+      "platforms": {
+        "label": "プラットフォーム:            ",
+        "none": "なし"
+      },
+      "projectStructure": {
+        "label": "追加プロジェクト構成:        "
+      },
+      "cordovaPlugins": {
+        "label": "Cordova プラグイン:"
+      },
+      "dependencies": {
+        "label": "追加モジュール:"
       }
     },
     "supportCSS": {
