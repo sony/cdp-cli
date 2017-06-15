@@ -57,9 +57,6 @@
     "library": {
       "env": {
         "message": "ライブラリの使用仕向けを選択してください"
-      },
-      "supportCSS": {
-        "message": "CSS を使用しますか?"
       }
     },
     "mobile": {
@@ -165,13 +162,7 @@
         "label": "追加モジュール:"
       }
     },
-    "supportCSS": {
-      "label": "  CSS サポート:              ",
-      "bool": {
-        "yes": "する",
-        "no": "しない"
-      }
-    }
+    "end_of_settings": ""
   },
   "finished":  {
     "create": "Succeeded! 新しいプロジェクトの準備が完了しました。"

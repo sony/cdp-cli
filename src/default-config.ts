@@ -16,7 +16,6 @@ const libraryOnBrowser = <ILibraryConfigration>{
     module: "umd",
     env: "web",
     tools: ["webpack", "nyc"],
-    supportCSS: false,
 };
 
 /**
@@ -30,7 +29,6 @@ const libraryOnNode = <ILibraryConfigration>{
     module: "commonjs",
     env: "node",
     tools: ["webpack", "nyc"],
-    supportCSS: false,
 };
 
 /**
@@ -44,7 +42,6 @@ const libraryOnElectron = <ILibraryConfigration>{
     module: "commonjs",
     env: "electron",
     tools: ["webpack", "nyc"],
-    supportCSS: false,
 };
 
 /**
@@ -144,7 +141,6 @@ const desktopOnBrowser = <IDesktopAppConfigration>{
     module: "amd",
     env: "web",
     tools: ["nyc"],
-    supportCSS: true,
 };
 
 /**
@@ -158,7 +154,6 @@ const desktopOnElectron = <IDesktopAppConfigration>{
     module: "commonjs",
     env: "electron-renderer",
     tools: ["webpack", "nyc"],
-    supportCSS: true,
 };
 
 /**
@@ -171,7 +166,6 @@ const webOnBrowser = <IWebAppConfigration>{
     es: "es5",
     module: "amd",
     env: "web",
-    supportCSS: true,
 };
 
 //___________________________________________________________________________________________________________________//

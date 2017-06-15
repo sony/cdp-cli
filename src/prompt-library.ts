@@ -231,16 +231,6 @@ export class PromptLibrary extends PromptBase {
                     return "custom" === answers.extraSettings;
                 },
             },
-            // library settnigs (custom: supportCSS)
-            {
-                type: "confirm",
-                name: "supportCSS",
-                message: this.lang.prompt.library.supportCSS.message,
-                default: this.answers.supportCSS || false,
-                when: (answers: IAnswerSchema) => {
-                    return "custom" === answers.extraSettings;
-                },
-            },
         ];
     }
 
@@ -275,7 +265,6 @@ export class PromptLibrary extends PromptBase {
             { name: "env",              recommend: false    },
             { name: "module",           recommend: true     },
             { name: "es",               recommend: true     },
-            { name: "supportCSS",       recommend: true     },
         ];
 
         try {

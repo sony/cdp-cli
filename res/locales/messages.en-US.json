@@ -57,9 +57,6 @@
     "library": {
       "env": {
         "message": "Please choose the destination for using library."
-      },
-      "supportCSS": {
-        "message": "Do you develop CSS library?"
       }
     },
     "mobile": {
@@ -165,13 +162,7 @@
         "label": "Addon Modues:"
       }
     },
-    "supportCSS": {
-      "label": "  CSS Support:       ",
-      "bool": {
-        "yes": "Yes",
-        "no": "No"
-      }
-    }
+    "end_of_settings": ""
   },
   "finished":  {
     "create": "Succeeded! Preparations of the new project have been completed."

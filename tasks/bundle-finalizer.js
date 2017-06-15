@@ -4,7 +4,6 @@
 const fs        = require('fs');
 const path      = require('path');
 const glob      = require('glob');
-const tsfmt     = require('typescript-formatter');
 const banner    = require('./banner');
 const srcmap    = require('./srcmap');
 const config    = require('../project.config');
@@ -56,7 +55,8 @@ function normalize_lib_src() {
 }
 
 function normalize_lib_d_ts() {
-    const dts = require('dts-bundle');
+    const dts   = require('dts-bundle');
+    const tsfmt = require('typescript-formatter');
     const TYPE_DEF_FILE = path.join(__dirname, '..', config.dir.pkg, config.dir.types, PACKAGE_NAME, config.main.bundle_d_ts);
 
     // concat d.ts

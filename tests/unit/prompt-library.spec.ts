@@ -52,7 +52,6 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.es.message).toBeTruthy();
         expect("string" === typeof lang.prompt.common.es.choices.es5).toBeTruthy();
         expect("string" === typeof lang.prompt.common.es.choices.es2015).toBeTruthy();
-        expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
         expect("string" === typeof lang.settings.extraSettings.label).toBeTruthy();
@@ -77,9 +76,6 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.settings.es.label).toBeTruthy();
         expect("string" === typeof lang.settings.es.props.es5).toBeTruthy();
         expect("string" === typeof lang.settings.es.props.es2015).toBeTruthy();
-        expect("string" === typeof lang.settings.supportCSS.label).toBeTruthy();
-        expect("string" === typeof lang.settings.supportCSS.bool.yes).toBeTruthy();
-        expect("string" === typeof lang.settings.supportCSS.bool.no).toBeTruthy();
     });
 
     it("library resource check: en-US", () => {
@@ -110,7 +106,6 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.prompt.common.es.message).toBeTruthy();
         expect("string" === typeof lang.prompt.common.es.choices.es5).toBeTruthy();
         expect("string" === typeof lang.prompt.common.es.choices.es2015).toBeTruthy();
-        expect("string" === typeof lang.prompt.library.supportCSS.message).toBeTruthy();
 
         //// setting strings
         expect("string" === typeof lang.settings.extraSettings.label).toBeTruthy();
@@ -135,15 +130,12 @@ describe("prompt-library check", () => {
         expect("string" === typeof lang.settings.es.label).toBeTruthy();
         expect("string" === typeof lang.settings.es.props.es5).toBeTruthy();
         expect("string" === typeof lang.settings.es.props.es2015).toBeTruthy();
-        expect("string" === typeof lang.settings.supportCSS.label).toBeTruthy();
-        expect("string" === typeof lang.settings.supportCSS.bool.yes).toBeTruthy();
-        expect("string" === typeof lang.settings.supportCSS.bool.no).toBeTruthy();
     });
 
     it("questioin check", () => {
         loadResouce("ja-JP");
         const questions = <inquirer.Question[]>instance.questions;
-        expect(questions.length).toEqual(10);
+        expect(questions.length).toEqual(9);
 
         // property check
         expect(questions[0].name).toEqual("projectName");
@@ -155,7 +147,6 @@ describe("prompt-library check", () => {
         expect(questions[6].name).toEqual("module");
         expect(questions[7].name).toEqual("module");
         expect(questions[8].name).toEqual("es");
-        expect(questions[9].name).toEqual("supportCSS");
 
         // semver check
         const version = questions.find((elem) => {
@@ -270,18 +261,6 @@ describe("prompt-library check", () => {
             extraSettings: "custom",
         })).toBeTruthy();
         expect((<any>es).when({
-            extraSettings: "recommended",
-        })).toBeFalsy();
-
-        // supportCSS  when check
-        const supportCSS = questions.find((elem) => {
-            return "supportCSS" === elem.name;
-        });
-        expect(supportCSS).not.toBeUndefined();
-        expect((<any>supportCSS).when({
-            extraSettings: "custom",
-        })).toBeTruthy();
-        expect((<any>supportCSS).when({
             extraSettings: "recommended",
         })).toBeFalsy();
     });
