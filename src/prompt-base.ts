@@ -142,7 +142,7 @@ export abstract class PromptBase {
         return new Promise((resolve, reject) => {
             inquirer.prompt(this.questions)
                 .then((answers) => {
-                    resolve(answers);
+                    resolve(<IAnswerSchema>answers);
                 })
                 .catch((reason: any) => {
                     reject(reason);
