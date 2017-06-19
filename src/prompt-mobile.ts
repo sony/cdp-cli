@@ -296,7 +296,13 @@ export class PromptMobileApp extends PromptBase {
                                 return false;
                             }
                         case "resource":
-                            _config.resource_addon.push({ name: moduleName });
+                            _config.resource_addon.push({
+                                name: moduleName,
+                                alias: info.alias,
+                                globalExport: info.globalExport,
+                                venderName: info.venderName,
+                                fileName: info.fileName,
+                            });
                             return true;
                         default:
                             return false;

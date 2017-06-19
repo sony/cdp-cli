@@ -88,6 +88,8 @@ const mobileOnBrowser: IMobileAppConfigration = <any>{
             subset: {
                 "cdp-nativebridge": {
                     acquisition: "resource",
+                    alias: "cdp.nativebridge",
+                    venderName: "cdp",
                     regular: true,
                 },
             },
