@@ -62,13 +62,18 @@ const mobileOnBrowser: IMobileAppConfigration = <any>{
         "hogan.js": {
             acquisition: "npm",
             regular: true,
+            alias: "hogan",
         },
         "hammerjs": {
             acquisition: "npm",
             regular: true,
+            globalExport: "Hammer",
+            fileName: "hammer",
             subset: {
                 "jquery-hammerjs": {
                     acquisition: "npm",
+                    venderName: "hammerjs",
+                    fileName: "jquery.hammer",
                     regular: true,
                 },
                 "@types/hammerjs": {
@@ -110,6 +115,8 @@ const mobileOnBrowser: IMobileAppConfigration = <any>{
         "iscroll": {
             acquisition: "npm",
             regular: false,
+            globalExport: "IScroll",
+            fileName: "iscroll-probe",
             subset: {
                 "@types/iscroll": {
                     acquisition: "npm:dev",
@@ -120,6 +127,7 @@ const mobileOnBrowser: IMobileAppConfigration = <any>{
         "flipsnap": {
             acquisition: "npm",
             regular: false,
+            globalExport: "Flipsnap",
             subset: {
                 "@types/flipsnap": {
                     acquisition: "npm:dev",

@@ -9,7 +9,7 @@ const srcmap    = require('./srcmap');
 const config    = require('../project.config');
 
 const PACKAGE_NAME  = config.pkg.name;
-const NAMESPACE     = config.main.namespace;
+const NAMESPACE     = config.main ? (config.main.namespace || null) : null;
 const SOURCE_MAP_NAMESPACE = (() => {
     if (NAMESPACE) {
         return NAMESPACE + ':///' + PACKAGE_NAME + '/';

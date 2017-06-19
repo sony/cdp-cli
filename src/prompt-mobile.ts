@@ -277,7 +277,13 @@ export class PromptMobileApp extends PromptBase {
                 const resolveDependencies = (moduleName: string, info: IExternalModuleInfo) => {
                     switch (info.acquisition) {
                         case "npm":
-                            _config.dependencies.push({ name: moduleName });
+                            _config.dependencies.push({
+                                name: moduleName,
+                                alias: info.alias,
+                                globalExport: info.globalExport,
+                                venderName: info.venderName,
+                                fileName: info.fileName,
+                            });
                             return true;
                         case "npm:dev":
                             _config.devDependencies.push({ name: moduleName });
