@@ -23,7 +23,17 @@ Folder and file structure of this repository is the following list.
 
 ### How to install
 
-    $npm install cdp-cli -g
+    $ npm install cdp-cli -g
+
+#### for internal
+
+* cmd.exe user
+
+    $ start-ssh-agent
+
+* install
+
+    $ npm install -g git+ssh://git@github.com/CDP-Tokyo/cdp-cli.git
 
 ### How to development
 
@@ -39,21 +49,21 @@ Folder and file structure of this repository is the following list.
 
 2. Run the following command.
 
-    $npm install
+    $ npm install
 
-    $npm run libmodule
+    $ npm run libmodule
 
 * build
 
-    $npm run build
+    $ npm run build
 
 * test
 
-    $npm test
+    $ npm test
 
 * deplay and update dependencies
 
-    $npm run update
+    $ npm run update
 
 
 ### How to use
