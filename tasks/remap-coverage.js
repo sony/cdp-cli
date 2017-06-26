@@ -6,7 +6,14 @@ const NYC       = require('nyc');
 const convert   = require('convert-source-map');
 const config    = require('../project.config');
 
-const BUILT_DIR     = path.join(__dirname, '..', config.dir.built);
+const BUILT_DIR = (() => {
+    switch (config.target.type) {
+        case 'classical-module':
+            return path.join(__dirname, '..', config.dir.src, config.dir.script);
+        default:
+            return path.join(__dirname, '..', config.dir.built);
+    }
+})();
 const COVERAGE_PATH = path.join(__dirname, '..', config.dir.doc, 'reports/coverage', 'coverage.json');
 
 const coverage = require(COVERAGE_PATH);
@@ -16,10 +23,15 @@ function main() {
 
     const detectMapFile = (srcPath) => {
         let map;
-        if (fs.existsSync(srcPath + '.map')) {
-            map = JSON.parse(fs.readFileSync(srcPath + '.map').toString());
-        } else {
-            map = convert.fromComment(fs.readFileSync(srcPath).toString()).toObject();
+        try {
+            if (fs.existsSync(srcPath + '.map')) {
+                map = JSON.parse(fs.readFileSync(srcPath + '.map').toString());
+            } else {
+                map = convert.fromComment(fs.readFileSync(srcPath).toString()).toObject();
+            }
+        } catch (error) {
+            console.log('    SKIPPED: cannot remap for ' + path.basename(srcPath) + `.`);
+            return;
         }
 
         // restore namespace to path
@@ -58,6 +70,9 @@ function main() {
             rebuild[absPath] = coverage[file];
             rebuild[absPath].path = absPath;
             rebuild[absPath].inputSourceMap = detectMapFile(absPath);
+            if (null == rebuild[absPath].inputSourceMap) {
+                delete rebuild[absPath];
+            }
         }
     }
 
