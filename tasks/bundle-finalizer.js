@@ -32,39 +32,7 @@ function update_srcmap_namespace(code, options) {
 function normalize_classical_module_src_copy() {
     const src = path.join(__dirname, '..', config.dir.built, config.main.basename + '.js');
     const dst = path.join(__dirname, '..', config.dir.pkg, config.main.basename + '.js');
-    fs.writeFileSync(dst, fs.readFileSync(src).toString(), 'utf8');
-}
-
-function normalize_classical_module_d_ts() {
-    const TYPE_DEF_FILE = path.join(__dirname, '..', config.dir.pkg, config.dir.types, config.main.bundle_d_ts);
-    const SRC_DEF_FILE  = path.join(__dirname, '..', config.dir.built, config.main.basename + '-all.d.ts');
-
-    let src = '\ufeff' + banner('.d.ts') + fs.readFileSync(SRC_DEF_FILE).toString()
-            .replace(/^\ufeff/gm, '')
-            .replace(/\r\n/gm, '\n')
-    ;
-
-    const refPathInfo = [];
-    const refPathDefs = src.match(/<reference path="[\s\S]*?"/g);
-
-    if (null != refPathDefs) {
-        refPathDefs.forEach((refpath) => {
-            const filePath = refpath.match(/("|')[\s\S]*?("|')/)[0].replace(/("|')/g, '');
-            const fileName = path.basename(filePath);
-            refPathInfo.push({
-                refpath: refpath,
-                path: filePath,
-                file: fileName,
-            });
-        });
-        refPathInfo.forEach((target) => {
-            src = src.replace(target.refpath, '<reference path="' + target.file + '"');
-        });
-        // remove '_dev.dependencies.d.ts' reference.
-        src = src.replace(/\/\/\/ <reference path="_dev.dependencies.d.ts"[\s\S]*?\n/g, '');
-    }
-
-    fs.writeFileSync(TYPE_DEF_FILE, src);
+    fs.writeFileSync(dst, fs.readFileSync(src).toString());
 }
 
 ///////////////////////////////////////////////////////////////////////
@@ -93,7 +61,7 @@ function normalize_lib_src(location) {
         },
         multiline: false,
     });
-    fs.writeFileSync(MAIN_FILE, src, 'utf8');
+    fs.writeFileSync(MAIN_FILE, src);
 }
 
 function normalize_lib_d_ts() {
@@ -165,7 +133,7 @@ function normalize_package_src() {
             },
             multiline: 'css' === basename[1].toLowerCase(),
         });
-        fs.writeFileSync(srcPath, src, 'utf8');
+        fs.writeFileSync(srcPath, src);
     });
 }
 
@@ -174,7 +142,6 @@ function main() {
         case 'classical-module':
             normalize_lib_src(config.dir.built);
             normalize_classical_module_src_copy();
-            normalize_classical_module_d_ts();
             return;
         case 'library':
             normalize_lib_src(config.dir.pkg);

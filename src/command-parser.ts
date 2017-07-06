@@ -148,14 +148,14 @@ export class CommandParser {
      * @param  {Object} commander parse 済み comannder インスタンス
      * @return {ICommandLineOptions} option オブジェクト
      */
-    private static toCommandLineOptions(commander: any): ICommandLineOptions {
+    private static toCommandLineOptions(command: any): ICommandLineOptions {
         return {
-            force: !!commander.force,
-            targetDir: commander.targetdir,
-            config: commander.config,
-            verbose: !!commander.verbose,
-            silent: !!commander.silent,
-            minify: commander.minify,
+            force: !!command.force,
+            targetDir: command.targetdir,
+            config: command.config,
+            verbose: !!command.verbose,
+            silent: !!command.silent,
+            minify: command.minify,
         };
     }
 
