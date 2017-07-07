@@ -85,14 +85,6 @@ const mobileOnBrowser: IMobileAppConfigration = <any>{
         "cordova-plugin-cdp-nativebridge": {
             acquisition: "cordova",
             regular: true,
-            subset: {
-                "cdp-nativebridge": {
-                    acquisition: "resource",
-                    alias: "cdp.nativebridge",
-                    venderName: "cdp",
-                    regular: true,
-                },
-            },
         },
         "cordova-plugin-inappbrowser": {
             acquisition: "cordova",
