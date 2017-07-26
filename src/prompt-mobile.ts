@@ -76,7 +76,7 @@ export class PromptMobileApp extends PromptBase {
                 name: "projectName",
                 message: this.lang.prompt.common.projectName.message,
                 default: (answers: IAnswerSchema) => {
-                    return _.trim(_.dasherize(answers.appName), "-");
+                    return _.trim(_.dasherize(answers.appName.toLowerCase()), "-");
                 },
                 validate: (value) => {
                     if (!/^[a-zA-Z0-9_-]*$/.test(value)) {
