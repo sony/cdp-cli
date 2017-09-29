@@ -23,17 +23,23 @@ Folder and file structure of this repository is the following list.
 
 ### How to install
 
+```
     $ npm install cdp-cli -g
+```
 
 #### for internal
 
 * cmd.exe user
 
+```
     $ start-ssh-agent
+```
 
 * install
 
+```
     $ npm install -g git+ssh://git@github.com/CDP-Tokyo/cdp-cli.git
+```
 
 ### How to development
 
@@ -49,21 +55,28 @@ Folder and file structure of this repository is the following list.
 
 2. Run the following command.
 
+```
     $ npm install
-
     $ npm run libmodule
+```
 
 * build
 
+```
     $ npm run build
+```
 
 * test
 
+```
     $ npm test
+```
 
 * deplay and update dependencies
 
+```
     $ npm run update
+```
 
 
 ### How to use
@@ -73,9 +86,22 @@ Please see the following documentation.
 - [Japanese/日本語](docs/ja)
 
 ## Release Notes
+Please see the following link.
 
-[TODO]
+- [Release Notes](RELEASENOTE.md)
 
 ## License
 
-Apache-2.0
+Copyright 2017 Sony Network Communications Inc.  
+
+Licensed under the Apache License, Version 2.0 (the "License");  
+you may not use this file except in compliance with the License.  
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software  
+distributed under the License is distributed on an "AS IS" BASIS,  
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  
+See the License for the specific language governing permissions and  
+limitations under the License.
