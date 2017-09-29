@@ -62,8 +62,9 @@ export abstract class PromptBase {
      */
     public say(message: string): void {
         const GREETING =
-            "\n  ≡     " + chalk.cyan("∧＿∧") + "    ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣" +
-            "\n    ≡ " + chalk.cyan("（ ´∀｀）") + "＜  " + chalk.yellow(message) +
+            "\n    ≡   " + chalk.yellow("|￣ |") +
+            "\n  ≡    " + chalk.yellow("_|___ |_") + "   ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣" +
+            "\n    ≡ " + chalk.cyan("（ -^0^ ）") + "＜  " + chalk.yellow(message) +
             "\n  ≡   " + chalk.cyan("（  つ") + "＝" + chalk.cyan("つ") + "  ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿" +
             "\n    ≡  " + chalk.cyan("｜ ｜ |") + "＼" +
             "\n    ≡ " + chalk.cyan("（_＿）＿）") + "＼" +

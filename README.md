@@ -2,7 +2,7 @@
 
 ## About cdp-cli
 
-cdp command line interface
+cdp command line interface for creating project's boilerplate.
 
 
 ### Repository structure
@@ -39,6 +39,20 @@ Folder and file structure of this repository is the following list.
 
 ```
     $ npm install -g git+ssh://git@github.com/CDP-Tokyo/cdp-cli.git
+```
+
+### How to use
+
+* for mobile application boilerplate setup
+
+```
+$ cdp create mobile
+```
+
+* for js library boilerplate setup
+
+```
+$ cdp create library
 ```
 
 ### How to development
@@ -79,7 +93,7 @@ Folder and file structure of this repository is the following list.
 ```
 
 
-### How to use
+### Developers Guide
 Please see the following documentation.
 
 - [English/英語](docs/en)
