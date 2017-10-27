@@ -252,7 +252,7 @@ export class PromptLibrary extends PromptBase {
                 case "electron-renderer":
                     return $.extend({}, libConfig.electron, answers);
                 default:
-                    console.error(chalk.red("unsupported target: " + answers.env));
+                    console.error((<any>chalk).red("unsupported target: " + answers.env));
                     process.exit(1);
             }
         })();
@@ -273,7 +273,7 @@ export class PromptLibrary extends PromptBase {
                 console.log(this.config2description(config, item.name, color));
             });
         } catch (error) {
-            console.error(chalk.red("error: " + JSON.stringify(error, null, 4)));
+            console.error((<any>chalk).red("error: " + JSON.stringify(error, null, 4)));
             process.exit(1);
         }
 

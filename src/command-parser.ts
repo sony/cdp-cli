@@ -78,9 +78,9 @@ export class CommandParser {
                 cmdline.action = "init";
             })
             .on("--help", () => {
-                console.log(chalk.green("  Examples:"));
+                console.log((<any>chalk).green("  Examples:"));
                 console.log("");
-                console.log(chalk.green("    $ cdp init"));
+                console.log((<any>chalk).green("    $ cdp init"));
                 console.log("");
             });
 
@@ -97,23 +97,23 @@ export class CommandParser {
                         cmdline.target = "mobile";
                     }
                 } else {
-                    console.log(chalk.red.underline("  unsupported target: " + target));
+                    console.log((<any>chalk).red.underline("  unsupported target: " + target));
                     this.showHelp();
                 }
             })
             .on("--help", () => {
-                console.log(chalk.green("  Examples:"));
+                console.log((<any>chalk).green("  Examples:"));
                 console.log("");
-                console.log(chalk.green("    $ cdp create library"));
-                console.log(chalk.green("    $ cdp create mobile"));
-                console.log(chalk.green("    $ cdp create app -c setting.json"));
+                console.log((<any>chalk).green("    $ cdp create library"));
+                console.log((<any>chalk).green("    $ cdp create mobile"));
+                console.log((<any>chalk).green("    $ cdp create app -c setting.json"));
                 console.log("");
             });
 
         commander
             .command("*", null, { noHelp: true })
             .action((cmd) => {
-                console.log(chalk.red.underline("  unsupported command: " + cmd));
+                console.log((<any>chalk).red.underline("  unsupported command: " + cmd));
                 this.showHelp();
             });
 
@@ -164,7 +164,7 @@ export class CommandParser {
      */
     private static showHelp(): void {
         const inform = (text: string) => {
-            return chalk.green(text);
+            return (<any>chalk).green(text);
         };
         commander.outputHelp(<any>inform);
         process.exit(1);

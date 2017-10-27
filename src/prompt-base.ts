@@ -62,13 +62,13 @@ export abstract class PromptBase {
      */
     public say(message: string): void {
         const GREETING =
-            "\n    ≡   " + chalk.yellow("|￣ |") +
-            "\n  ≡    " + chalk.yellow("_|___ |_") + "   ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣" +
-            "\n    ≡ " + chalk.cyan("（ -^0^ ）") + "＜  " + chalk.yellow(message) +
-            "\n  ≡   " + chalk.cyan("（  つ") + "＝" + chalk.cyan("つ") + "  ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿" +
-            "\n    ≡  " + chalk.cyan("｜ ｜ |") + "＼" +
-            "\n    ≡ " + chalk.cyan("（_＿）＿）") + "＼" +
-            "\n  ≡   " + chalk.red("◎") + "￣￣￣￣" + chalk.red("◎");
+            "\n    ≡   " + (<any>chalk).yellow("|￣ |") +
+            "\n  ≡    " + (<any>chalk).yellow("_|___ |_") + "   ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣" +
+            "\n    ≡ " + (<any>chalk).cyan("（ -^0^ ）") + "＜  " + (<any>chalk).yellow(message) +
+            "\n  ≡   " + (<any>chalk).cyan("（  つ") + "＝" + (<any>chalk).cyan("つ") + "  ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿" +
+            "\n    ≡  " + (<any>chalk).cyan("｜ ｜ |") + "＼" +
+            "\n    ≡ " + (<any>chalk).cyan("（_＿）＿）") + "＼" +
+            "\n  ≡   " + (<any>chalk).red("◎") + "￣￣￣￣" + (<any>chalk).red("◎");
         console.log(GREETING);
     }
 
@@ -121,9 +121,9 @@ export abstract class PromptBase {
      * Welcome 表示
      */
     protected showPrologue(): void {
-        console.log("\n" + chalk.gray("================================================================"));
+        console.log("\n" + (<any>chalk).gray("================================================================"));
         this.say(this.prologueComment);
-        console.log("\n" + chalk.gray("================================================================") + "\n");
+        console.log("\n" + (<any>chalk).gray("================================================================") + "\n");
     }
 
     /**
@@ -161,7 +161,7 @@ export abstract class PromptBase {
     protected config2description(config: Object, itemName: string, color: string = "cyan"): string {
         const item = this.lang.settings[itemName];
         if (null == item) {
-            console.error(chalk.red("error. item not found. item name: " + itemName));
+            console.error((<any>chalk).red("error. item not found. item name: " + itemName));
             process.exit(1);
         }
 
@@ -233,9 +233,9 @@ export abstract class PromptBase {
      */
     private confirmSettings(): Promise<IProjectConfigration> {
         return new Promise((resolve, reject) => {
-            console.log("\n" + chalk.gray("================================================================") + "\n");
+            console.log("\n" + (<any>chalk).gray("================================================================") + "\n");
             const settings = this.displaySettingsByAnswers(this._answers);
-            console.log("\n" + chalk.gray("================================================================") + "\n");
+            console.log("\n" + (<any>chalk).gray("================================================================") + "\n");
             console.log("check: " + this.lang.prompt.common.confirm.message);
             const question = [
                 {

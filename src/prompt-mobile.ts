@@ -320,7 +320,7 @@ export class PromptMobileApp extends PromptBase {
                     }
                 });
             } catch (error) {
-                console.error(chalk.red("error: " + JSON.stringify(error, null, 4)));
+                console.error((<any>chalk).red("error: " + JSON.stringify(error, null, 4)));
                 process.exit(1);
             }
 
@@ -345,7 +345,7 @@ export class PromptMobileApp extends PromptBase {
                 console.log(this.config2description(config, item.name, color));
             });
         } catch (error) {
-            console.error(chalk.red("error: " + JSON.stringify(error, null, 4)));
+            console.error((<any>chalk).red("error: " + JSON.stringify(error, null, 4)));
             process.exit(1);
         }
 
@@ -353,7 +353,7 @@ export class PromptMobileApp extends PromptBase {
         const platformInfo = (0 < config.platforms.length)
             ? config.platforms.join(", ")
             : this.lang.settings.mobile.platforms.none;
-        console.log("\n" + this.lang.settings.mobile.platforms.label + chalk.cyan(platformInfo));
+        console.log("\n" + this.lang.settings.mobile.platforms.label + (<any>chalk).cyan(platformInfo));
 
         const COLOR = ("recommended" === answers.extraSettings) ? "yellow" : "cyan";
 
