@@ -29,7 +29,7 @@ function getInquirer(cmdInfo: ICommandLineInfo): PromptBase {
         case "create":
             break;
         default:
-            console.error((<any>chalk).red(cmdInfo.action + " command: under construction."));
+            console.error(chalk.red(cmdInfo.action + " command: under construction."));
             process.exit(1);
     }
 
@@ -43,7 +43,7 @@ function getInquirer(cmdInfo: ICommandLineInfo): PromptBase {
         case "web":
             return new PromptWebApp();
         default:
-            console.error((<any>chalk).red("unsupported target: " + cmdInfo.target));
+            console.error(chalk.red("unsupported target: " + cmdInfo.target));
             process.exit(1);
     }
 }
@@ -59,7 +59,7 @@ export function main() {
             return CDPLib.execute(config);
         })
         .then(() => {
-            console.log((<any>chalk).green(inquirer.lang.finished[cmdInfo.action]));
+            console.log(chalk.green(inquirer.lang.finished[cmdInfo.action]));
         })
         .catch((reason: any) => {
             if ("string" !== typeof reason) {
@@ -69,7 +69,7 @@ export function main() {
                     reason = JSON.stringify(reason);
                 }
             }
-            console.error((<any>chalk).red(reason));
+            console.error(chalk.red(reason));
         })
         .then(() => {
             // NOTE: es6 promise's always block.

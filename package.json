@@ -1,6 +1,6 @@
 {
   "name": "cdp-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CDP Command Line Interface",
   "main": "dist/cdp-cli.min.js",
   "scripts": {
@@ -34,7 +34,7 @@
     "minify:ts": "uglifyjs dist/cdp-cli.js -o dist/cdp-cli.min.js --comments /^!/ --source-map includeSources,url=cdp-cli.min.js.map",
     "lint": "run-p -l lint:*",
     "lint:js": "eslint tasks/**/*.js built/**/*.js -c tests/eslint/eslintrc.json",
-    "lint:ts": "tslint --type-check -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts src/**/*.ts",
+    "lint:ts": "tslint -p ./tsconfig.json -c ./tests/tslint/tslint.json -e src/**/*.d.ts src/**/*.ts",
     "unit-test": "npm run coverage:exec",
     "unit-test:ci": "node ./node_modules/jasmine-node/bin/jasmine-node tests/unit/",
     "coverage": "run-s clean:coverage compile:ts coverage:exec",
@@ -69,7 +69,7 @@
   },
   "homepage": "https://github.com/sony/cdp-cli#readme",
   "dependencies": {
-    "cdp-lib": "^0.1.1",
+    "cdp-lib": "^0.1.2",
     "commander": "^2.11.0",
     "inquirer": "^3.3.0"
   },
@@ -89,7 +89,7 @@
     "convert-source-map": "^1.5.0",
     "del": "^3.0.0",
     "dts-bundle": "^0.7.3",
-    "eslint": "^4.9.0",
+    "eslint": "^4.10.0",
     "jasmine-node": "^2.0.0",
     "npm-run-all": "^4.1.1",
     "nyc": "^11.3.0",
@@ -100,7 +100,7 @@
     "typedoc": "^0.9.0",
     "typescript": "^2.5.3",
     "typescript-formatter": "^7.0.0",
-    "uglify-es": "^3.1.5",
+    "uglify-es": "^3.1.6",
     "webpack": "^3.8.1"
   }
 }
