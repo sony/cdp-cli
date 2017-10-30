@@ -214,4 +214,7 @@
   <ItemGroup>
     <Content Include="RELEASENOTE.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="docs\ja\quick-start-guide.md" />
+  </ItemGroup>
 </Project>
