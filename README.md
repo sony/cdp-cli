@@ -27,20 +27,6 @@ Folder and file structure of this repository is the following list.
     $ npm install cdp-cli -g
 ```
 
-#### for internal
-
-* cmd.exe user
-
-```
-    $ start-ssh-agent
-```
-
-* install
-
-```
-    $ npm install -g git+ssh://git@github.com/CDP-Tokyo/cdp-cli.git
-```
-
 ### How to use
 
 * for mobile application boilerplate setup
@@ -71,7 +57,6 @@ $ cdp create library
 
 ```
     $ npm install
-    $ npm run libmodule
 ```
 
 * build

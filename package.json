@@ -1,6 +1,6 @@
 {
   "name": "cdp-cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CDP Command Line Interface",
   "main": "dist/cdp-cli.min.js",
   "scripts": {
