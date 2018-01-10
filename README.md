@@ -91,7 +91,7 @@ Please see the following link.
 
 ## License
 
-Copyright 2017 Sony Network Communications Inc.  
+Copyright 2017, 2018 Sony Network Communications Inc.  
 
 Licensed under the Apache License, Version 2.0 (the "License");  
 you may not use this file except in compliance with the License.  
