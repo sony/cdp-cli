@@ -138,7 +138,10 @@ export class CommandParser {
      * @return {String} インストールディレクトリ
      */
     private static getPackageDirectory(argv: string[]): string {
-        const execDir = path.dirname(argv[1]);
+        // Added: Issue #4: get the real path of exec, because get the path of symbolic link of exec on Mac. 
+        const execRealPath = fs.realpathSync(argv[1]);
+        //
+        const execDir = path.dirname(execRealPath);
         return path.join(execDir, "..");
     }
 
