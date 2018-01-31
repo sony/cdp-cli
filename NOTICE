@@ -1,19 +1,4 @@
-﻿﻿--------------------------------------------------------------------------------
-NOTICES FOR jQuery
---------------------------------------------------------------------------------
+﻿﻿cdp-cli
+Copyright 2017, 2018 Sony Network Communications Inc.
 
-- jQuery - ./dev/app/modules/jquery/scripts/jquery.js
-    https://github.com/jquery/jquery
-
-    Released under the MIT Licenses.
-    http://jquery.org/license
-
---------------------------------------------------------------------------------
-NOTICES FOR Jasmine.d.ts
---------------------------------------------------------------------------------
-
- - jasmine.d.ts - ./external/include/jasmine.d.ts
-    https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/jasmine/jasmine.d.ts
-
-    Released under the MIT Licenses.
-    https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE
+This product includes software developed at Sony Network Communications Inc.

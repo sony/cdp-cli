@@ -104,3 +104,23 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  
 See the License for the specific language governing permissions and  
 limitations under the License.
+
+
+## License Notice
+### jQuery
+
+- jQuery - ./dev/app/modules/jquery/scripts/jquery.js
+
+    https://github.com/jquery/jquery
+
+    Released under the MIT Licenses.
+    http://jquery.org/license
+
+### Jasmine.d.ts
+
+- jasmine.d.ts - ./external/include/jasmine.d.ts
+
+    https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/jasmine/jasmine.d.ts
+
+    Released under the MIT Licenses.
+    https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/LICENSE
