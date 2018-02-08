@@ -1,0 +1,6 @@
+﻿define(["require", "exports", "./top/top-page", "./getstarted/getstarted-page", "./documents/documents-page", "./resources/resources-page", "./communication/communication-page", "./gallery/list-control"], function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+});
+// <<<TOP_VIEWS_ENTRY<<<
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9hZGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vYXBwL3NjcmlwdHMvdmlldy9sb2FkZXIudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7OztBQU9BLHdCQUF3QiIsInNvdXJjZXNDb250ZW50IjpbIi8vID4+PlRPUF9WSUVXU19FTlRSWT4+PiB0b3Agdmlld3MgZW50cnlcbmltcG9ydCBcIi4vdG9wL3RvcC1wYWdlXCI7XG5pbXBvcnQgXCIuL2dldHN0YXJ0ZWQvZ2V0c3RhcnRlZC1wYWdlXCI7XG5pbXBvcnQgXCIuL2RvY3VtZW50cy9kb2N1bWVudHMtcGFnZVwiO1xuaW1wb3J0IFwiLi9yZXNvdXJjZXMvcmVzb3VyY2VzLXBhZ2VcIjtcbmltcG9ydCBcIi4vY29tbXVuaWNhdGlvbi9jb21tdW5pY2F0aW9uLXBhZ2VcIjtcbmltcG9ydCBcIi4vZ2FsbGVyeS9saXN0LWNvbnRyb2xcIjtcbi8vIDw8PFRPUF9WSUVXU19FTlRSWTw8PFxuIl19

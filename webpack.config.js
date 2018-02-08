@@ -33,8 +33,16 @@ module.exports = {
             },
         ],
     },
-    // externals ‚ğw’è‚µ‚È‚¢ê‡A3rd Library ‚Ìg—p‚·‚é‚à‚Ì‚ğ concat ‰Â”\
+    // externals ï¿½ï¿½wï¿½è‚µï¿½È‚ï¿½ï¿½ê‡ï¿½A3rd Library ï¿½Ìgï¿½pï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½ concat ï¿½Â”\
     externals: {
+        'express': {
+            commonjs: 'express',
+            commonjs2: 'express',
+        },
+        'cdp-doc': {
+            commonjs: 'cdp-doc',
+            commonjs2: 'cdp-doc',
+        },
         'cdp-lib': {
             commonjs: 'cdp-lib',
             commonjs2: 'cdp-lib',
@@ -47,7 +55,7 @@ module.exports = {
             commonjs: 'inquirer',
             commonjs2: 'inquirer',
         },
-        // ˆÈ‰º‚Í cdp-lib ‚Å‚àg—p‚·‚é‚à‚Ì
+        // ï¿½È‰ï¿½ï¿½ï¿½ cdp-lib ï¿½Å‚ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         'fs-extra': {
             commonjs: 'fs-extra',
             commonjs2: 'fs-extra',

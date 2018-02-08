@@ -16,6 +16,7 @@ export interface ICommandLineOptions {
     verbose: boolean;   // 詳細ログ
     silent: boolean;    // silent mode
     minify: boolean;    // minify support
+    port: string;       // local server listening port
 }
 
 /**
@@ -69,6 +70,7 @@ export class CommandParser {
             .option("-v, --verbose", "Show debug messages.")
             .option("-s, --silent", "Run as silent mode.")
             .option("--no-minify", "Not minified on release.")
+            .option("-p, --port <port>", "Set local server port when browsing document")
         ;
 
         commander
@@ -117,6 +119,20 @@ export class CommandParser {
                 this.showHelp();
             });
 
+        commander
+            .command("doc")
+            .description("show document with browser")
+            .action(() => {
+                cmdline.action = "doc";
+            })
+            .on("--help", () => {
+                console.log(chalk.green("  Examples:"));
+                console.log("");
+                console.log(chalk.green("    $ cdp doc -p <port number>"));
+                console.log(chalk.green("    $ cdp doc <<in case of using default port: 8080>>"));
+                console.log("");
+            });
+
         commander.parse(argv);
 
         if (argv.length <= 2) {
@@ -159,6 +175,7 @@ export class CommandParser {
             verbose: !!command.verbose,
             silent: !!command.silent,
             minify: command.minify,
+            port: command.port,
         };
     }
 
