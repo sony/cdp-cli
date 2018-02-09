@@ -5,23 +5,24 @@
             　このチュートリアルでは アプリケーションのひな形生成ツール "cdp-cli" を使って、
             簡易なログイン機能を持つ Web アプリ "LoginSPASample" を作ります。<br>
             　なお、環境準備の作成についてはメニューの <a href="#getstarted/top"><strong>『 はじめる 』</strong></a> を参照してください。
-            ご利用の PC 環境（WindowsPC、Mac）に合わせて、開発環境のセットアップ、Cordova のセットアップ、CDP のセットアップと進めてください。
+            ご利用の PC 環境（WindowsPC、Mac）に合わせて、開発環境のセットアップ、Cordova のセットアップ、CDP のセットアップを進めてください。
             CDP のセットアップのところで "cdp-cli" のインストール方法を説明しています。
         </p>
-        <!--
-        <p>
-            アプリひな型の作成、ページやボタンの追加、ページ遷移のさせ方などのエッセンスについては メニュー『はじめる』の『はじめての CDP アプリ』に
-            解説がありますので、最初はそちらを読んで頂くことをお勧めします。
-        </p>
-        -->
         <p>
             　このアプリはふたつの画面で構成されます。 
-            ログインページ（左下図）はアプリの起動画面であり、ユーザー ID のプルダウンリストからユーザーを選択し、
-            正しい Password を入力して Login ボタンを押すと、詳細ページ（右下図）に遷移します。
-            詳細ページはログインしたユーザーの詳細データ（ ID、名前、顔写真）を表示します。
+            ログインページ（下図）はアプリの起動画面であり、ユーザー ID のプルダウンリストからユーザーを選択し、
+            正しい Password を入力して Login ボタンを押すと、詳細ページに遷移します。
+            詳細ページはログインしたユーザーの詳細データ（ ID、名前、顔写真）を表示します。<br>
+            　試しに起動画面の ID ボタンで "Karen" を選択し、Password 入力欄に "karen" と入力してから Login ボタンをクリックしてください。
+            画面は詳細ページに切り替わり、ログインユーザの詳細データが表示されます。
             Back ボタン（詳細ページのタイトルに表示された 左矢印）を押すと ログインページに戻ります。
         </p>
-        <img src="../../res/images/login-spa-sample/これから作るアプリ.png" alt="これから作るアプリ" width="100%" />
+
+        <div class="demo-container-loginspa chrome-frame zoom-out">
+            <div class="demo-area">
+                <iframe src="/res/website/login-spa-sample/index.html" sandbox="allow-same-origin allow-forms allow-scripts allow-modals" scrolling="no">LoginSPASample</iframe>
+            </div>
+        </div>
         <p>
             　アプリのクラス連携を下図に示しておきます。このイメージを掴んでおけば、実装に取り組みやすいと思います。
         </p>
