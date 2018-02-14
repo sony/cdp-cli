@@ -1,4 +1,4 @@
-const webpack   = require('webpack');
+﻿const webpack   = require('webpack');
 const path      = require('path');
 const banner    = require('./tasks/banner');
 const config    = require('./project.config');
@@ -33,11 +33,23 @@ module.exports = {
             },
         ],
     },
-    // externals ��w�肵�Ȃ��ꍇ�A3rd Library �̎g�p�����̂� concat �\
+    // externals を指定しない場合、3rd Library の使用するものを concat 可能
     externals: {
         'express': {
             commonjs: 'express',
             commonjs2: 'express',
+        },
+        'cli-spinner': {
+            commonjs: 'cli-spinner',
+            commonjs2: 'cli-spinner',
+        },
+        'deep-extend': {
+            commonjs: 'deep-extend',
+            commonjs2: 'deep-extend',
+        },
+        'opn': {
+            commonjs: 'opn',
+            commonjs2: 'opn',
         },
         'cdp-doc': {
             commonjs: 'cdp-doc',
@@ -55,7 +67,7 @@ module.exports = {
             commonjs: 'inquirer',
             commonjs2: 'inquirer',
         },
-        // �ȉ��� cdp-lib �ł�g�p������
+        // 以下は cdp-lib でも使用するもの
         'fs-extra': {
             commonjs: 'fs-extra',
             commonjs2: 'fs-extra',
@@ -109,11 +121,7 @@ module.exports = {
         'chalk': {
             commonjs: 'chalk',
             commonjs2: 'chalk',
-        },
-        'cli-spinner': {
-            commonjs: 'cli-spinner',
-            commonjs2: 'cli-spinner',
-        },
+        }
     },
     //resolve: {
     //    alias: {
