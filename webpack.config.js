@@ -1,4 +1,4 @@
-const webpack   = require('webpack');
+ï»¿const webpack   = require('webpack');
 const path      = require('path');
 const banner    = require('./tasks/banner');
 const config    = require('./project.config');
@@ -33,8 +33,28 @@ module.exports = {
             },
         ],
     },
-    // externals ‚ğw’è‚µ‚È‚¢ê‡A3rd Library ‚Ìg—p‚·‚é‚à‚Ì‚ğ concat ‰Â”\
+    // externals ã‚’æŒ‡å®šã—ãªã„å ´åˆã€3rd Library ã®ä½¿ç”¨ã™ã‚‹ã‚‚ã®ã‚’ concat å¯èƒ½
     externals: {
+        'express': {
+            commonjs: 'express',
+            commonjs2: 'express',
+        },
+        'cli-spinner': {
+            commonjs: 'cli-spinner',
+            commonjs2: 'cli-spinner',
+        },
+        'deep-extend': {
+            commonjs: 'deep-extend',
+            commonjs2: 'deep-extend',
+        },
+        'opn': {
+            commonjs: 'opn',
+            commonjs2: 'opn',
+        },
+        'cdp-doc': {
+            commonjs: 'cdp-doc',
+            commonjs2: 'cdp-doc',
+        },
         'cdp-lib': {
             commonjs: 'cdp-lib',
             commonjs2: 'cdp-lib',
@@ -47,7 +67,7 @@ module.exports = {
             commonjs: 'inquirer',
             commonjs2: 'inquirer',
         },
-        // ˆÈ‰º‚Í cdp-lib ‚Å‚àg—p‚·‚é‚à‚Ì
+        // ä»¥ä¸‹ã¯ cdp-lib ã§ã‚‚ä½¿ç”¨ã™ã‚‹ã‚‚ã®
         'fs-extra': {
             commonjs: 'fs-extra',
             commonjs2: 'fs-extra',
@@ -101,11 +121,7 @@ module.exports = {
         'chalk': {
             commonjs: 'chalk',
             commonjs2: 'chalk',
-        },
-        'cli-spinner': {
-            commonjs: 'cli-spinner',
-            commonjs2: 'cli-spinner',
-        },
+        }
     },
     //resolve: {
     //    alias: {
