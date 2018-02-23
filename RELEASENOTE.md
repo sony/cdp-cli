@@ -1,5 +1,10 @@
 ﻿## Release Notes
 
+### Release 0.1.5 (February 2018)
+
+* Add to document view function
+  * View document on browser with "cdp doc" command. 
+
 ### Release 0.1.4 (January 2018)
 
 * Update dependencies
