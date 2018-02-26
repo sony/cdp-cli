@@ -41,6 +41,12 @@ $ cdp create mobile
 $ cdp create library
 ```
 
+* for cdp documents browsing on local host server
+
+```
+$ cdp doc (or $ cdp doc -p <port>)
+```
+
 ### How to development
 
 * setup
