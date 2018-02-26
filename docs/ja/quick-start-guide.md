@@ -4,7 +4,7 @@
 - [開発環境構築](#DEVENV)
 - [モバイルアプリ用 Boilerplate 作成](#BOILERPLATE)
     - [ディレクトリ構成](#BOILERPLATE_DIRECTORY)
-    - [Boilerplate ドキュメント](#BOILERPLATE_DOCUMENT)
+    - [コマンドラインから Boilerplate ドキュメントを閲覧する方法](#BOILERPLATE_DOCUMENT)
 - [ブラウザで確認する](#BROWSER)
 - [実機で動かす](#DEVICE)
     - [cordova build で生成されるファイルの位置](#DEVICE_LOCATION)
@@ -100,14 +100,14 @@ root/
     www/                    // ビルド後の配置用ディレクトリ
 ```
 
-### <a name="BOILERPLATE_DOCUMENT" />Boilerplate ドキュメント
+### <a name="BOILERPLATE_DOCUMENT" />コマンドラインから Boilerplate ドキュメントを閲覧する方法
 
 ```
 $ cdp doc (or $ cdp doc -p <port>)
 ```
 
 コマンドラインから Boilerplate の解説ドキュメントをブラウザ表示させることもできます。
-このドキュメントには 環境構築の仕方、ひな形の作り方、チュートリアル（サンプルアプリ"LoginSPASample"）などの一連の流れが紹介されています。
+このドキュメントには 環境構築の仕方、ひな形の作り方、チュートリアル（サンプルアプリ "LoginSPASample" の作成）などのアプリ作成の流れが紹介されています。
 
 
 ## <a name="BROWSER" />ブラウザで確認する
