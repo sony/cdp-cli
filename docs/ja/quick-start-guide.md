@@ -12,7 +12,7 @@
     - [ファイルの状態](#BUILD_FILE)
     - [script lazyload と AMD](#BUILD_LOADER)
 - [サンプル実装](#SAMPLES)
-
+- [コマンドラインから Boilerplate ドキュメントを閲覧する方法](#BOILERPLATE_DOCUMENT)
 
 ## <a name="DEVENV" />開発環境構築
 
@@ -98,7 +98,6 @@ root/
     tests/                  // テストスクリプト用ディレクトリ
     www/                    // ビルド後の配置用ディレクトリ
 ```
-
 
 ## <a name="BROWSER" />ブラウザで確認する
 
@@ -197,3 +196,12 @@ $ cordova build android --release --no-minify
 
 そのほかのコンポーネントの使い方や、Native 連携のサンプル実装は  
 [cafeteria](https://github.com/sony/cdp-js/tree/master/packages/cafeteria) アプリケーションで確認ができます。
+
+## <a name="BOILERPLATE_DOCUMENT" />コマンドラインから Boilerplate ドキュメントを閲覧する方法
+
+```
+$ cdp doc (or $ cdp doc -p <port>)
+```
+
+コマンドラインから随時 Boilerplate 解説ドキュメントを呼び出して、ブラウザ表示させることもできます。
+このドキュメントにより、アプリ作成の全体の流れを把握することができます（環境構築の仕方 ～ アプリ動作の仕組み ～ アプリひな形の作り方 ～ サンプルアプリ "LoginSPASample" 作成チュートリアル などを収録しています）。
